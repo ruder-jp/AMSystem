@@ -18,7 +18,36 @@
 {
     [super viewDidLoad];
 	// Do any additional setup after loading the view, typically from a nib.
+    [NSTimer scheduledTimerWithTimeInterval:1.0
+                                     target:self
+                                   selector:@selector(driveClock:)
+                                   userInfo:nil
+                                    repeats:YES];
+    
+    NSDate *now = [NSDate date];
+    
+    NSDateFormatter *day = [[NSDateFormatter alloc] init];
+    [day setDateFormat:@"MM月dd日"];
+    
+    NSString *dayStr = [day stringFromDate:now];;
+    self.dayLavel.text = dayStr;
 }
+
+- (void)driveClock:(NSTimer *)timer
+{
+    NSDate *today = [NSDate date];
+    
+    NSCalendar *calender = [NSCalendar currentCalendar];
+    unsigned flags = NSHourCalendarUnit | NSMinuteCalendarUnit | NSSecondCalendarUnit;
+    NSDateComponents *todayComponents = [calender components:flags fromDate:today];
+    int hour = [todayComponents hour];
+    int min = [todayComponents minute];
+    int sec = [todayComponents second];
+    
+    self.timeLavel.text = [NSString stringWithFormat:@"%02d:%02d:%02d",hour,min,sec]; //時間を表示
+}
+
+
 
 - (void)didReceiveMemoryWarning
 {
