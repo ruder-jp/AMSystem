@@ -43,6 +43,8 @@
 
 -(void)toggleMenuController
 {
+    
+    NSLog(@"%@",@"もうだめだぁ");
     isRevealed = !isRevealed;
     
     UIView *targetView = contentController.view;

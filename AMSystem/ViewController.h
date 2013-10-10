@@ -12,6 +12,14 @@
 #import "FMDatabaseAdditions.h"
 
 @interface ViewController : UIViewController
+{
+    @private
+    BOOL isRevealed;
+    UIViewController *contentController;
+
+}
+
+-(void)toggleMenuController;
 
 
 //就業時間の表示
@@ -29,9 +37,11 @@
 @property (weak, nonatomic) IBOutlet UILabel *dayLavel;
 @property (weak, nonatomic) IBOutlet UILabel *timeLavel;
 //サイドメニュー
-@property (weak, nonatomic) IBOutlet UIBarButtonItem *sideTop;
+
+
 
 //勤務表
+
 
 
 @end

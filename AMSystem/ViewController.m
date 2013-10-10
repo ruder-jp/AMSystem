@@ -15,7 +15,6 @@
 
 @interface ViewController ()
 -(void)display;
--(void)toggleBoldface;
 
 //@property (nonatomic, copy) NSString* dbPath; //! データベース　ファイルへのパス
 //
@@ -31,10 +30,6 @@
 
 
 int i = 0;
-
-
-
-
 
 
 
@@ -54,6 +49,7 @@ int i = 0;
 {
     [super viewDidLoad];
 	// Do any additional setup after loading the view, typically from a nib.
+
     
     [NSTimer scheduledTimerWithTimeInterval:1.0
                                      target:self
@@ -68,11 +64,6 @@ int i = 0;
     
     NSString *dayStr = [day stringFromDate:now];;
     self.dayLavel.text = dayStr;
-    
-    
-    
-    
-   
     
     
 
@@ -132,6 +123,23 @@ int i = 0;
     
     self.timeLavel.text = [NSString stringWithFormat:@"%02d:%02d:%02d",hour,min,sec]; //時間を表示
 }
+
+-(void)toggleMenuController
+{
+    isRevealed = !isRevealed;
+    
+    UIView *targetView = contentController.view;
+    
+    [UIView animateWithDuration:0.2 animations:^{
+        CGFloat originX = isRevealed ? 260 : 0;
+        CGRect frame = targetView.frame;
+        frame.origin.x = originX;
+        targetView.frame = frame;
+    } completion:^(BOOL finished){
+        //NSLog(@"%@", finished ? @"YES" : @"NO");
+    }];
+}
+
 
 
 
@@ -197,7 +205,7 @@ int i = 0;
             UIButton *button =
             [UIButton buttonWithType:UIButtonTypeRoundedRect];
             
-            [self.topButton setTitle:@"始業"
+            [self.topButton setTitle:@"終業"
                             forState:UIControlStateNormal];
             
             [button addTarget:self
@@ -243,7 +251,7 @@ int i = 0;
             UIButton *button =
             [UIButton buttonWithType:UIButtonTypeRoundedRect];
             
-            [self.topButton setTitle:@"終業"
+            [self.topButton setTitle:@"始業"
                             forState:UIControlStateNormal];
             
             [button addTarget:self
@@ -304,4 +312,5 @@ int i = 0;
     
 
 }
+
 @end
