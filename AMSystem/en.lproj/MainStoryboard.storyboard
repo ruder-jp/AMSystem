@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="2.0" toolsVersion="3084" systemVersion="11G63" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" initialViewController="2">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="2.0" toolsVersion="3084" systemVersion="11G63" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" initialViewController="NlP-6q-PMY">
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="2083"/>
     </dependencies>
@@ -23,7 +23,7 @@
                                     </navigationItem>
                                 </items>
                             </navigationBar>
-                            <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" text="終業時間帯" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="nBF-vq-Odk">
+                            <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" text="就業時間帯" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="nBF-vq-Odk">
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                                 <nil key="highlightedColor"/>
@@ -480,6 +480,39 @@ AQABAAEAAQAB//+dkAEA//+PgAAE//+dkAEI//+dkAEMUERUAFBTVABQV1QAUFBUAAAAAAEAAAABA
             <point key="canvasLocation" x="1317" y="-255"/>
         </scene>
     </scenes>
+    <classes>
+        <class className="DisplaySetting" superclassName="UIViewController">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/DisplaySetting.h"/>
+            <relationships>
+                <relationship kind="action" name="changeDatePicker:"/>
+                <relationship kind="action" name="confirmButton:"/>
+                <relationship kind="action" name="datePickerDone:" candidateClass="UIBarButtonItem"/>
+                <relationship kind="action" name="textFieldClicked:" candidateClass="UITextField"/>
+                <relationship kind="outlet" name="cancelPicker" candidateClass="UIBarButtonItem"/>
+                <relationship kind="outlet" name="donePicker" candidateClass="UIBarButtonItem"/>
+                <relationship kind="outlet" name="endRest" candidateClass="UITextField"/>
+                <relationship kind="outlet" name="endTime" candidateClass="UITextField"/>
+                <relationship kind="outlet" name="myDatePicker" candidateClass="UIDatePicker"/>
+                <relationship kind="outlet" name="startRest" candidateClass="UITextField"/>
+                <relationship kind="outlet" name="startTime" candidateClass="UITextField"/>
+                <relationship kind="outlet" name="toolBar" candidateClass="UIToolbar"/>
+            </relationships>
+        </class>
+        <class className="NSLayoutConstraint" superclassName="NSObject">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/NSLayoutConstraint.h"/>
+        </class>
+        <class className="ViewController" superclassName="UIViewController">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/ViewController.h"/>
+            <relationships>
+                <relationship kind="action" name="bushButton:"/>
+                <relationship kind="outlet" name="dayLavel" candidateClass="UILabel"/>
+                <relationship kind="outlet" name="endTime" candidateClass="UILabel"/>
+                <relationship kind="outlet" name="startTime" candidateClass="UILabel"/>
+                <relationship kind="outlet" name="timeLavel" candidateClass="UILabel"/>
+                <relationship kind="outlet" name="topButton" candidateClass="UIButton"/>
+            </relationships>
+        </class>
+    </classes>
     <simulatedMetricsContainer key="defaultSimulatedMetrics">
         <simulatedStatusBarMetrics key="statusBar"/>
         <simulatedOrientationMetrics key="orientation"/>
