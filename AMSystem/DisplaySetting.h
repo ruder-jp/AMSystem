@@ -10,32 +10,35 @@
 
 @interface DisplaySetting : UIViewController
 
+//テキストフィールド
 @property (weak, nonatomic) IBOutlet UITextField *startTime;
-
 @property (weak, nonatomic) IBOutlet UITextField *endTime;
-
-
 @property (weak, nonatomic) IBOutlet UITextField *startRest;
 @property (weak, nonatomic) IBOutlet UITextField *endRest;
 
-@property (weak, nonatomic) IBOutlet UIToolbar *toolBar;
-
-@property (weak, nonatomic) IBOutlet UIBarButtonItem *donePicker;
-
-@property (weak, nonatomic) IBOutlet UIBarButtonItem *cancelPicker;
-
-@property (weak, nonatomic) IBOutlet UIDatePicker *myDatePicker;
-
-- (IBAction)datePickerDone:(UIBarButtonItem *)sender;
+//どのテキストがタップしたか検出する変数
+@property (weak, nonatomic) UITextField *whichText;
 
 //テキストフィールドをタップしたとき
 - (IBAction)textFieldClicked:(UITextField *)sender;
 
-//完了ボタンをタップしたときダイアログを表示する
-- (IBAction)confirmButton:(id)sender;
 
+
+//ツールバー
+@property (weak, nonatomic) IBOutlet UIToolbar *toolBar;
+@property (weak, nonatomic) IBOutlet UIBarButtonItem *donePicker;
+- (IBAction)datePickerDone:(UIBarButtonItem *)sender;
+@property (weak, nonatomic) IBOutlet UIBarButtonItem *cancelPicker;
+
+//デートピッカー
+@property (weak, nonatomic) IBOutlet UIDatePicker *myDatePicker;
+
+//デートピッカーの値が変更されたとき
 - (IBAction)changeDatePicker:(id)sender;
 
+
+//完了ボタンをタップしたときダイアログを表示する
+- (IBAction)confirmButton:(id)sender;
 
 
 @end

@@ -14,10 +14,6 @@
 
 @implementation DisplaySetting
 
-int i1 = 0;
-
-UITextField *whichText;
-
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
 {
     self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
@@ -74,13 +70,14 @@ UITextField *whichText;
 
 }
 
+//テキストフィールドをタップしたときの処理
 - (IBAction)textFieldClicked:(UITextField *)sender {
     
-    whichText = sender;
+    //どのテキストフィールドがタップしたのか検出する
+    _whichText = sender;
+    
     //テキストフィールドをタップしたときキーボードを非表示にする
     [sender resignFirstResponder];
-    
-    
     
     //ツールバーをにょわっと表示させる
     CGRect toolBarFrame = self.toolBar.frame;
@@ -100,14 +97,23 @@ UITextField *whichText;
                      animations:^{
                          _myDatePicker.frame = datePickerFrame;
                      }];
-    //NSLog(@"datePicker表示");
+}
 
+//デートピッカーの値が変更されたときの処理
+//※最終的にはDoneをタップしたときこの処理を行いたい
+- (IBAction)changeDatePicker:(id)sender {
     
-
+    //時間をテキストフィールドに表示する
+    NSDateFormatter *df = [[NSDateFormatter alloc] init];
+    df.dateFormat = @"HH:mm";
+    //指定した日付形式で日付を表示する
+    _whichText.text = [df stringFromDate:self.myDatePicker.date];
+    
+    
 }
 
 
-
+//完了ボタンの処理
 - (IBAction)confirmButton:(id)sender {
     UIAlertView *alert = [[UIAlertView alloc] init];
     alert.delegate = self;
@@ -119,17 +125,17 @@ UITextField *whichText;
 
 }
 
-
+//完了ボタンを押して表示させるアラートビューの詳細
 -(void)alertView:(UIAlertView*)alertView
 clickedButtonAtIndex:(NSInteger)buttonIndex {
     
     switch (buttonIndex) {
         case 0:
-            //１番目のボタンが押されたときの処理を記述する
-            NSLog(@"1番目！");
+            //キャンセルボタンがタップされたときの処理
+            NSLog(@"キャンセル！");
             break;
         case 1:
-            //２番目のボタンが押されたときの処理を記述する
+            //OKボタンがタップされたときの処理
             //NSString*  insert = @"INSERT INTO kinmu (day,start,end) VALUES (?,?,?)";
             
             break;
@@ -137,14 +143,5 @@ clickedButtonAtIndex:(NSInteger)buttonIndex {
 
 }
 
-- (IBAction)changeDatePicker:(id)sender {
-    
-    //時間をテキストフィールドに表示する
-    NSDateFormatter *df = [[NSDateFormatter alloc] init];
-    df.dateFormat = @"HH:mm";
-    //指定した日付形式で日付を表示する
-    whichText.text = [df stringFromDate:self.myDatePicker.date];
 
-
-}
 @end
