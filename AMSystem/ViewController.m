@@ -7,7 +7,6 @@
 //
 
 #import "ViewController.h"
-#import "smMenuViewController.h"
 #import "FMDatabase.h"
 #import "FMDatabaseAdditions.h"
 #define DBFILE     @"kinmu3.db"

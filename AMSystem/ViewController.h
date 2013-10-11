@@ -7,7 +7,6 @@
 //
 
 #import <UIKit/UIKit.h>
-#import "smMenuViewController.h"
 #import "FMDatabase.h"
 #import "FMDatabaseAdditions.h"
 

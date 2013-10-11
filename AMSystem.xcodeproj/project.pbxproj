@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		1BD159A81807C2CF00093AFA /* DisplaySetting.m in Sources */ = {isa = PBXBuildFile; fileRef = 1BD159A71807C2CF00093AFA /* DisplaySetting.m */; };
 		2381B55018066CE00044048A /* FMDatabase.m in Sources */ = {isa = PBXBuildFile; fileRef = 2381B54718066CE00044048A /* FMDatabase.m */; };
 		2381B55118066CE00044048A /* FMDatabaseAdditions.m in Sources */ = {isa = PBXBuildFile; fileRef = 2381B54918066CE00044048A /* FMDatabaseAdditions.m */; };
 		2381B55218066CE00044048A /* FMDatabasePool.m in Sources */ = {isa = PBXBuildFile; fileRef = 2381B54B18066CE00044048A /* FMDatabasePool.m */; };
@@ -42,6 +43,8 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		1BD159A61807C2CF00093AFA /* DisplaySetting.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DisplaySetting.h; sourceTree = "<group>"; };
+		1BD159A71807C2CF00093AFA /* DisplaySetting.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DisplaySetting.m; sourceTree = "<group>"; };
 		2381B54618066CE00044048A /* FMDatabase.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FMDatabase.h; sourceTree = "<group>"; };
 		2381B54718066CE00044048A /* FMDatabase.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FMDatabase.m; sourceTree = "<group>"; };
 		2381B54818066CE00044048A /* FMDatabaseAdditions.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FMDatabaseAdditions.h; sourceTree = "<group>"; };
@@ -159,6 +162,8 @@
 				43D4D39A1781C4140008BF14 /* MainStoryboard.storyboard */,
 				43D4D39D1781C4140008BF14 /* ViewController.h */,
 				43D4D39E1781C4140008BF14 /* ViewController.m */,
+				1BD159A61807C2CF00093AFA /* DisplaySetting.h */,
+				1BD159A71807C2CF00093AFA /* DisplaySetting.m */,
 				43D4D3891781C4140008BF14 /* Supporting Files */,
 			);
 			path = AMSystem;
@@ -315,6 +320,7 @@
 				2381B55218066CE00044048A /* FMDatabasePool.m in Sources */,
 				2381B55318066CE00044048A /* FMDatabaseQueue.m in Sources */,
 				2381B55418066CE00044048A /* FMResultSet.m in Sources */,
+				1BD159A81807C2CF00093AFA /* DisplaySetting.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

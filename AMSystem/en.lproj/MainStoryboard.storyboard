@@ -1,13 +1,13 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="2.0" toolsVersion="3084" systemVersion="11G63b" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" initialViewController="NlP-6q-PMY">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="2.0" toolsVersion="3084" systemVersion="11G63" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" initialViewController="2">
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="2083"/>
     </dependencies>
     <scenes>
-        <!--View Controller-->
+        <!--Display Setting-->
         <scene sceneID="5">
             <objects>
-                <viewController id="2" customClass="ViewController" sceneMemberID="viewController">
+                <viewController id="2" customClass="DisplaySetting" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="3">
                         <rect key="frame" x="0.0" y="20" width="320" height="460"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
@@ -15,7 +15,11 @@
                             <navigationBar contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="HLp-g1-a0k">
                                 <items>
                                     <navigationItem title="勤怠管理システム" id="gzk-ju-VhY">
-                                        <barButtonItem key="rightBarButtonItem" title="メニュー" id="G2i-UO-dwt"/>
+                                        <barButtonItem key="rightBarButtonItem" title="完了" id="G2i-UO-dwt">
+                                            <connections>
+                                                <action selector="confirmButton:" destination="2" id="Ad3-uK-FPm"/>
+                                            </connections>
+                                        </barButtonItem>
                                     </navigationItem>
                                 </items>
                             </navigationBar>
@@ -29,67 +33,33 @@
                                 <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" text="始業時間" borderStyle="roundedRect" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="LYf-iY-XvJ">
+                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="Dyp-Ry-3yr">
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits"/>
+                                <connections>
+                                    <action selector="textFieldClicked:" destination="2" eventType="editingDidBegin" id="jHC-iv-IX8"/>
+                                </connections>
+                            </textField>
+                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="mzI-bJ-xiG">
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits"/>
+                                <connections>
+                                    <action selector="textFieldClicked:" destination="2" eventType="editingDidBegin" id="CHI-2c-x54"/>
+                                </connections>
+                            </textField>
+                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="QLl-pb-5wQ">
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits"/>
+                                <connections>
+                                    <action selector="textFieldClicked:" destination="2" eventType="editingDidBegin" id="qIw-hH-6Qc"/>
+                                </connections>
+                            </textField>
+                            <datePicker contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" datePickerMode="time" minuteInterval="1" translatesAutoresizingMaskIntoConstraints="NO" id="JKE-6f-Eth">
                                 <constraints>
-                                    <constraint firstAttribute="width" constant="243" id="T6i-MB-nbQ"/>
+                                    <constraint firstAttribute="height" constant="216" id="4ZD-WH-KpR"/>
                                 </constraints>
-                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                <textInputTraits key="textInputTraits"/>
-                            </textField>
-                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" text="終業時間" borderStyle="roundedRect" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="Dyp-Ry-3yr">
-                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                <textInputTraits key="textInputTraits"/>
-                            </textField>
-                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" text="休憩開始" borderStyle="roundedRect" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="mzI-bJ-xiG">
-                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                <textInputTraits key="textInputTraits"/>
-                            </textField>
-                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" text="休憩終了" borderStyle="roundedRect" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="QLl-pb-5wQ">
-                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                <textInputTraits key="textInputTraits"/>
-                            </textField>
-                        </subviews>
-                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
-                        <constraints>
-                            <constraint firstItem="LYf-iY-XvJ" firstAttribute="top" secondItem="nBF-vq-Odk" secondAttribute="bottom" constant="8" symbolic="YES" type="default" id="BC4-vv-Ho4"/>
-                            <constraint firstItem="Dyp-Ry-3yr" firstAttribute="top" secondItem="LYf-iY-XvJ" secondAttribute="bottom" constant="8" symbolic="YES" type="default" id="DDW-TG-sfv"/>
-                            <constraint firstItem="QLl-pb-5wQ" firstAttribute="trailing" secondItem="mzI-bJ-xiG" secondAttribute="trailing" type="default" id="EyI-tL-Wkx"/>
-                            <constraint firstItem="HLp-g1-a0k" firstAttribute="trailing" secondItem="3" secondAttribute="trailing" type="default" id="HMU-he-idE"/>
-                            <constraint firstItem="QLl-pb-5wQ" firstAttribute="top" secondItem="mzI-bJ-xiG" secondAttribute="bottom" constant="8" symbolic="YES" type="default" id="Hv5-1Z-3OM"/>
-                            <constraint firstItem="nBF-vq-Odk" firstAttribute="top" secondItem="3" secondAttribute="top" constant="50" id="IcN-Vs-YLV"/>
-                            <constraint firstItem="mzI-bJ-xiG" firstAttribute="leading" secondItem="GIz-gn-yJI" secondAttribute="leading" type="default" id="KLe-k8-897"/>
-                            <constraint firstItem="HLp-g1-a0k" firstAttribute="top" secondItem="3" secondAttribute="top" type="default" id="P7b-iK-WY5"/>
-                            <constraint firstItem="HLp-g1-a0k" firstAttribute="leading" secondItem="3" secondAttribute="leading" type="default" id="Pzh-lo-NlV"/>
-                            <constraint firstItem="QLl-pb-5wQ" firstAttribute="leading" secondItem="mzI-bJ-xiG" secondAttribute="leading" type="default" id="UwA-fk-ASY"/>
-                            <constraint firstItem="nBF-vq-Odk" firstAttribute="leading" secondItem="3" secondAttribute="leading" constant="27" id="Ywf-L7-KVJ"/>
-                            <constraint firstItem="Dyp-Ry-3yr" firstAttribute="trailing" secondItem="LYf-iY-XvJ" secondAttribute="trailing" type="default" id="dVF-BO-KZ0"/>
-                            <constraint firstItem="GIz-gn-yJI" firstAttribute="top" secondItem="3" secondAttribute="top" constant="168" id="gly-Jx-0Nn"/>
-                            <constraint firstItem="mzI-bJ-xiG" firstAttribute="top" secondItem="GIz-gn-yJI" secondAttribute="bottom" constant="8" symbolic="YES" type="default" id="pq9-OK-JPb"/>
-                            <constraint firstItem="Dyp-Ry-3yr" firstAttribute="leading" secondItem="GIz-gn-yJI" secondAttribute="leading" type="default" id="rjp-Dq-gCs"/>
-                            <constraint firstItem="mzI-bJ-xiG" firstAttribute="trailing" secondItem="Dyp-Ry-3yr" secondAttribute="trailing" type="default" id="snY-Ze-uwR"/>
-                            <constraint firstItem="Dyp-Ry-3yr" firstAttribute="leading" secondItem="LYf-iY-XvJ" secondAttribute="leading" type="default" id="uw7-lh-Xc7"/>
-                            <constraint firstItem="LYf-iY-XvJ" firstAttribute="leading" secondItem="nBF-vq-Odk" secondAttribute="leading" type="default" id="zxU-3m-nRx"/>
-                        </constraints>
-                    </view>
-                </viewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="4" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="1317" y="-1075"/>
-        </scene>
-        <!--View Controller-->
-        <scene sceneID="Tzv-qC-Rcm">
-            <objects>
-                <viewController id="X1L-fs-htv" sceneMemberID="viewController">
-                    <view key="view" contentMode="scaleToFill" id="oYy-dN-Ukq">
-                        <rect key="frame" x="0.0" y="20" width="320" height="460"/>
-                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                        <subviews>
-                            <datePicker contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" datePickerMode="dateAndTime" minuteInterval="1" translatesAutoresizingMaskIntoConstraints="NO" id="yCf-OR-3El">
-                                <constraints>
-                                    <constraint firstAttribute="height" constant="216" id="S5I-fh-ab8"/>
-                                </constraints>
-                                <date key="date" timeIntervalSinceReferenceDate="394940292.091434">
-                                    <!--2013-07-08 01:38:12 +0000-->
+                                <date key="date" timeIntervalSinceReferenceDate="403160641.84118199">
+                                    <!--2013-10-11 05:04:01 +0000-->
                                 </date>
                                 <timeZone key="timeZone" name="America/Los_Angeles">
                                     <data key="data">
@@ -112,32 +82,73 @@ AQABAAEAAQABAAEAAQABAAEAAQABAAEAAQABAAEAAQABAAEAAQABAAEAAQABAAEAAQABAAEAAQABAAEA
 AQABAAEAAQAB//+dkAEA//+PgAAE//+dkAEI//+dkAEMUERUAFBTVABQV1QAUFBUAAAAAAEAAAABA
 </data>
                                 </timeZone>
+                                <connections>
+                                    <action selector="changeDatePicker:" destination="2" eventType="valueChanged" id="tuF-VL-NX2"/>
+                                </connections>
                             </datePicker>
+                            <toolbar opaque="NO" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="7e2-rs-f9J">
+                                <items>
+                                    <barButtonItem title="Cancel" id="wc5-zb-noy"/>
+                                    <barButtonItem style="plain" systemItem="flexibleSpace" id="Fwo-pt-7mm"/>
+                                    <barButtonItem title="Done" id="vvf-EV-mFp">
+                                        <connections>
+                                            <action selector="datePickerDone:" destination="2" id="nlh-xR-Jbh"/>
+                                        </connections>
+                                    </barButtonItem>
+                                </items>
+                            </toolbar>
+                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="KDo-XY-QGr">
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="243" id="YKa-V0-U8V"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits"/>
+                                <connections>
+                                    <action selector="textFieldClicked:" destination="2" eventType="editingDidBegin" id="0aI-Pm-JIS"/>
+                                </connections>
+                            </textField>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                         <constraints>
-                            <constraint firstItem="yCf-OR-3El" firstAttribute="bottom" secondItem="oYy-dN-Ukq" secondAttribute="bottom" type="default" id="i7L-fs-py3"/>
-                            <constraint firstItem="yCf-OR-3El" firstAttribute="centerX" secondItem="oYy-dN-Ukq" secondAttribute="centerX" type="default" id="j8v-0S-Uff"/>
+                            <constraint firstItem="KDo-XY-QGr" firstAttribute="leading" secondItem="Dyp-Ry-3yr" secondAttribute="leading" type="default" id="5UZ-qA-670"/>
+                            <constraint firstItem="7e2-rs-f9J" firstAttribute="leading" secondItem="3" secondAttribute="leading" type="default" id="EDQ-MF-29B"/>
+                            <constraint firstItem="QLl-pb-5wQ" firstAttribute="trailing" secondItem="mzI-bJ-xiG" secondAttribute="trailing" type="default" id="EyI-tL-Wkx"/>
+                            <constraint firstItem="KDo-XY-QGr" firstAttribute="trailing" secondItem="Dyp-Ry-3yr" secondAttribute="trailing" type="default" id="Gyp-yl-QSd"/>
+                            <constraint firstItem="HLp-g1-a0k" firstAttribute="trailing" secondItem="3" secondAttribute="trailing" type="default" id="HMU-he-idE"/>
+                            <constraint firstItem="QLl-pb-5wQ" firstAttribute="top" secondItem="mzI-bJ-xiG" secondAttribute="bottom" constant="8" symbolic="YES" type="default" id="Hv5-1Z-3OM"/>
+                            <constraint firstItem="Dyp-Ry-3yr" firstAttribute="top" secondItem="KDo-XY-QGr" secondAttribute="bottom" constant="8" symbolic="YES" type="default" id="Hzd-vF-wPy"/>
+                            <constraint firstItem="nBF-vq-Odk" firstAttribute="top" secondItem="3" secondAttribute="top" constant="50" id="IcN-Vs-YLV"/>
+                            <constraint firstItem="JKE-6f-Eth" firstAttribute="leading" secondItem="3" secondAttribute="leading" type="default" id="IhR-tg-D7D"/>
+                            <constraint firstItem="mzI-bJ-xiG" firstAttribute="leading" secondItem="GIz-gn-yJI" secondAttribute="leading" type="default" id="KLe-k8-897"/>
+                            <constraint firstItem="KDo-XY-QGr" firstAttribute="leading" secondItem="nBF-vq-Odk" secondAttribute="leading" type="default" id="MDJ-Ha-zEA"/>
+                            <constraint firstItem="KDo-XY-QGr" firstAttribute="top" secondItem="nBF-vq-Odk" secondAttribute="bottom" constant="8" symbolic="YES" type="default" id="Md2-Jv-Hrr"/>
+                            <constraint firstItem="HLp-g1-a0k" firstAttribute="top" secondItem="3" secondAttribute="top" type="default" id="P7b-iK-WY5"/>
+                            <constraint firstItem="HLp-g1-a0k" firstAttribute="leading" secondItem="3" secondAttribute="leading" type="default" id="Pzh-lo-NlV"/>
+                            <constraint firstItem="7e2-rs-f9J" firstAttribute="trailing" secondItem="3" secondAttribute="trailing" type="default" id="TUj-Y6-A9A"/>
+                            <constraint firstItem="JKE-6f-Eth" firstAttribute="top" secondItem="3" secondAttribute="top" constant="306" id="Uo9-3O-27a"/>
+                            <constraint firstItem="QLl-pb-5wQ" firstAttribute="leading" secondItem="mzI-bJ-xiG" secondAttribute="leading" type="default" id="UwA-fk-ASY"/>
+                            <constraint firstItem="nBF-vq-Odk" firstAttribute="leading" secondItem="3" secondAttribute="leading" constant="27" id="Ywf-L7-KVJ"/>
+                            <constraint firstItem="GIz-gn-yJI" firstAttribute="top" secondItem="3" secondAttribute="top" constant="168" id="gly-Jx-0Nn"/>
+                            <constraint firstItem="7e2-rs-f9J" firstAttribute="bottom" secondItem="JKE-6f-Eth" secondAttribute="top" type="default" id="hEZ-Dc-fs3"/>
+                            <constraint firstItem="mzI-bJ-xiG" firstAttribute="top" secondItem="GIz-gn-yJI" secondAttribute="bottom" constant="8" symbolic="YES" type="default" id="pq9-OK-JPb"/>
+                            <constraint firstItem="Dyp-Ry-3yr" firstAttribute="leading" secondItem="GIz-gn-yJI" secondAttribute="leading" type="default" id="rjp-Dq-gCs"/>
+                            <constraint firstItem="mzI-bJ-xiG" firstAttribute="trailing" secondItem="Dyp-Ry-3yr" secondAttribute="trailing" type="default" id="snY-Ze-uwR"/>
                         </constraints>
                     </view>
+                    <connections>
+                        <outlet property="cancelPicker" destination="wc5-zb-noy" id="Psv-82-vSi"/>
+                        <outlet property="donePicker" destination="vvf-EV-mFp" id="Lek-ux-4am"/>
+                        <outlet property="endRest" destination="QLl-pb-5wQ" id="z9k-Wx-l2M"/>
+                        <outlet property="endTime" destination="Dyp-Ry-3yr" id="Wy6-XK-nxe"/>
+                        <outlet property="myDatePicker" destination="JKE-6f-Eth" id="4oQ-TL-oPk"/>
+                        <outlet property="startRest" destination="mzI-bJ-xiG" id="hkr-fZ-XyW"/>
+                        <outlet property="startTime" destination="KDo-XY-QGr" id="iDX-kj-gsw"/>
+                        <outlet property="toolBar" destination="7e2-rs-f9J" id="nnc-ZF-oAW"/>
+                    </connections>
                 </viewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="soh-DN-lmc" userLabel="First Responder" sceneMemberID="firstResponder"/>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="4" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1735" y="-1075"/>
-        </scene>
-        <!--View Controller-->
-        <scene sceneID="FLe-wv-VJ0">
-            <objects>
-                <viewController id="L5Z-AU-a30" sceneMemberID="viewController">
-                    <view key="view" contentMode="scaleToFill" id="g8C-am-LeX">
-                        <rect key="frame" x="0.0" y="20" width="320" height="460"/>
-                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
-                    </view>
-                </viewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="Leu-dt-0pF" userLabel="First Responder" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="659" y="-1812"/>
+            <point key="canvasLocation" x="1317" y="-1075"/>
         </scene>
         <!--View Controller-->
         <scene sceneID="HO6-LT-20n">
@@ -468,73 +479,7 @@ AQABAAEAAQAB//+dkAEA//+PgAAE//+dkAEI//+dkAEMUERUAFBTVABQV1QAUFBUAAAAAAEAAAABA
             </objects>
             <point key="canvasLocation" x="1317" y="-255"/>
         </scene>
-        <!--View Controller-->
-        <scene sceneID="sdL-hs-DO2">
-            <objects>
-                <viewController id="Lp8-oF-WaT" sceneMemberID="viewController">
-                    <view key="view" contentMode="scaleToFill" id="q8l-cT-b4e">
-                        <rect key="frame" x="0.0" y="20" width="320" height="460"/>
-                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                        <subviews>
-                            <datePicker contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" datePickerMode="dateAndTime" minuteInterval="1" translatesAutoresizingMaskIntoConstraints="NO" id="vOD-Rx-udc">
-                                <constraints>
-                                    <constraint firstAttribute="height" constant="216" id="ziv-lB-ZSf"/>
-                                </constraints>
-                                <date key="date" timeIntervalSinceReferenceDate="394940292.091434">
-                                    <!--2013-07-08 01:38:12 +0000-->
-                                </date>
-                                <timeZone key="timeZone" name="America/Los_Angeles">
-                                    <data key="data">
-VFppZgAAAAAAAAAAAAAAAAAAAAAAAAAEAAAABAAAAAAAAAC5AAAABAAAABCepkign7sVkKCGKqChmveQ
-y4kaoNIj9HDSYSYQ1v50INiArZDa/tGg28CQENzes6DdqayQ3r6VoN+JjpDgnneg4WlwkOJ+WaDjSVKQ
-5F47oOUpNJDmR1gg5xJREOgnOiDo8jMQ6gccIOrSFRDr5v4g7LH3EO3G4CDukdkQ76/8oPBxuxDxj96g
-8n/BkPNvwKD0X6OQ9U+ioPY/hZD3L4Sg+CiiEPkPZqD6CIQQ+viDIPvoZhD82GUg/chIEP64RyD/qCoQ
-AJgpIAGIDBACeAsgA3EokARhJ6AFUQqQBkEJoAcw7JAHjUOgCRDOkAmtvyAK8LCQC+CvoAzZzRANwJGg
-DrmvEA+priAQmZEQEYmQIBJ5cxATaXIgFFlVEBVJVCAWOTcQFyk2IBgiU5AZCRggGgI1kBryNKAb4heQ
-HNIWoB3B+ZAesfigH6HbkCB2KyAhgb2QIlYNICNq2hAkNe8gJUq8ECYV0SAnKp4QJ/7toCkKgBAp3s+g
-KupiECu+saAs036QLZ6ToC6zYJAvfnWgMJNCkDFnkiAycySQM0d0IDRTBpA1J1YgNjLokDcHOCA4HAUQ
-OOcaIDn75xA6xvwgO9vJEDywGKA9u6sQPo/6oD+bjRBAb9ygQYSpkEJPvqBDZIuQRC+goEVEbZBF89Mg
-Ry2KEEfTtSBJDWwQSbOXIErtThBLnLOgTNZqkE18laBOtkyQT1x3oFCWLpBRPFmgUnYQkFMcO6BUVfKQ
-VPwdoFY11JBW5TogWB7xEFjFHCBZ/tMQWqT+IFvetRBchOAgXb6XEF5kwiBfnnkQYE3eoGGHlZBiLcCg
-Y2d3kGQNoqBlR1mQZe2EoGcnO5BnzWagaQcdkGmtSKBq5v+Qa5ZlIGzQHBBtdkcgbq/+EG9WKSBwj+AQ
-cTYLIHJvwhBzFe0gdE+kEHT/CaB2OMCQdt7roHgYopB4vs2gefiEkHqer6B72GaQfH6RoH24SJB+XnOg
-f5gqkAABAAECAwEAAQABAAEAAQABAAEAAQABAAEAAQABAAEAAQABAAEAAQABAAEAAQABAAEAAQABAAEA
-AQABAAEAAQABAAEAAQABAAEAAQABAAEAAQABAAEAAQABAAEAAQABAAEAAQABAAEAAQABAAEAAQABAAEA
-AQABAAEAAQABAAEAAQABAAEAAQABAAEAAQABAAEAAQABAAEAAQABAAEAAQABAAEAAQABAAEAAQABAAEA
-AQABAAEAAQAB//+dkAEA//+PgAAE//+dkAEI//+dkAEMUERUAFBTVABQV1QAUFBUAAAAAAEAAAABA
-</data>
-                                </timeZone>
-                            </datePicker>
-                        </subviews>
-                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
-                        <constraints>
-                            <constraint firstItem="vOD-Rx-udc" firstAttribute="leading" secondItem="q8l-cT-b4e" secondAttribute="leading" constant="-90" id="Bds-9B-Xxg"/>
-                            <constraint firstItem="vOD-Rx-udc" firstAttribute="bottom" secondItem="q8l-cT-b4e" secondAttribute="bottom" type="default" id="PsN-Be-end"/>
-                        </constraints>
-                    </view>
-                </viewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="ho6-7X-rXL" userLabel="First Responder" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="1735" y="-255"/>
-        </scene>
     </scenes>
-    <classes>
-        <class className="NSLayoutConstraint" superclassName="NSObject">
-            <source key="sourceIdentifier" type="project" relativePath="./Classes/NSLayoutConstraint.h"/>
-        </class>
-        <class className="ViewController" superclassName="UIViewController">
-            <source key="sourceIdentifier" type="project" relativePath="./Classes/ViewController.h"/>
-            <relationships>
-                <relationship kind="action" name="bushButton:"/>
-                <relationship kind="action" name="sideTop:"/>
-                <relationship kind="outlet" name="dayLavel" candidateClass="UILabel"/>
-                <relationship kind="outlet" name="endTime" candidateClass="UILabel"/>
-                <relationship kind="outlet" name="startTime" candidateClass="UILabel"/>
-                <relationship kind="outlet" name="timeLavel" candidateClass="UILabel"/>
-                <relationship kind="outlet" name="topButton" candidateClass="UIButton"/>
-            </relationships>
-        </class>
-    </classes>
     <simulatedMetricsContainer key="defaultSimulatedMetrics">
         <simulatedStatusBarMetrics key="statusBar"/>
         <simulatedOrientationMetrics key="orientation"/>
