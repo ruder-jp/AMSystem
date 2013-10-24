@@ -9,7 +9,7 @@
 #import "ViewController.h"
 #import "FMDatabase.h"
 #import "FMDatabaseAdditions.h"
-#define DBFILE     @"kinmu3.db"
+#define DBFILE     @"working.db"
 
 
 @interface ViewController ()
@@ -48,7 +48,7 @@ int i = 0;
 {
     [super viewDidLoad];
 	// Do any additional setup after loading the view, typically from a nib.
-
+    
     
     [NSTimer scheduledTimerWithTimeInterval:1.0
                                      target:self
@@ -65,26 +65,9 @@ int i = 0;
     self.dayLavel.text = dayStr;
     
     
-
-    //こっからDB
-//        NSArray*    paths = NSSearchPathForDirectoriesInDomains( NSDocumentDirectory, NSUserDomainMask, YES );
-//        NSString*   dir   = [paths objectAtIndex:0];
-//        FMDatabase* db    = [FMDatabase databaseWithPath:[dir stringByAppendingPathComponent:@"app.db"]];
-//    
-//        [db open];
-//        [db close];
-    
-//    NSArray*    paths = NSSearchPathForDirectoriesInDomains( NSDocumentDirectory, NSUserDomainMask, YES );
-//    NSString*   dir   = [paths objectAtIndex:0];
-//    FMDatabase* db    = [FMDatabase databaseWithPath:[dir stringByAppendingPathComponent:@"app.db"]];
-//    
-//    [db open];
-//    [db close];
-//    
-//
     FMDatabase* db = [self _getDB:DBFILE];
-    NSString*   sql = @"CREATE TABLE IF NOT EXISTS kinmu (id INTEGER PRIMARY KEY AUTOINCREMENT, day TEXT,start TEXT ,end TEXT);";
-
+    NSString*   sql = @"CREATE TABLE IF NOT EXISTS working (id INTEGER PRIMARY KEY AUTOINCREMENT, day TEXT,startTime TEXT ,endTime TEXT,startRest TEXT,endRest TEXT);";
+    
     [db open];
     [db executeUpdate:sql];
     [db close];
@@ -97,7 +80,7 @@ int i = 0;
     [UIButton buttonWithType:UIButtonTypeRoundedRect];
     
     [self.topButton setTitle:@"始業"
-            forState:UIControlStateNormal];
+                    forState:UIControlStateNormal];
     
     [button addTarget:self
                action:@selector(pushButton:)
@@ -123,21 +106,8 @@ int i = 0;
     self.timeLavel.text = [NSString stringWithFormat:@"%02d:%02d:%02d",hour,min,sec]; //時間を表示
 }
 
--(void)toggleMenuController
-{
-    isRevealed = !isRevealed;
-    
-    UIView *targetView = contentController.view;
-    
-    [UIView animateWithDuration:0.2 animations:^{
-        CGFloat originX = isRevealed ? 260 : 0;
-        CGRect frame = targetView.frame;
-        frame.origin.x = originX;
-        targetView.frame = frame;
-    } completion:^(BOOL finished){
-        //NSLog(@"%@", finished ? @"YES" : @"NO");
-    }];
-}
+
+
 
 
 
@@ -159,157 +129,186 @@ int i = 0;
 
 - (IBAction)bushButton:(id)sender {
     
-    
-    
-    if(i <= 1){
-        FMDatabase* db = [self _getDB:DBFILE];
+    if(i == 0){
+        //アラートビューの生成と設定
+        UIAlertView *alert = [[UIAlertView alloc]
+                              initWithTitle:@"始業確認"
+                              message:@"始業してもよろしいですか？"
+                              delegate:self
+                              cancelButtonTitle:@"キャンセル" otherButtonTitles:nil];
+        [alert addButtonWithTitle:@"OK"];
+        [alert show];
         
-        NSString*   insert = @"INSERT INTO kinmu (day,start,end) VALUES (?,?,?)";
+    }else if(i == 1){
         
-        NSString*   insert2 = @"INSERT INTO kinmu (end) VALUES (?)";
-        
-        NSString*   select = @"SELECT id, day ,start , end FROM kinmu;";
-        
-        NSString*   maxSelect = @"select MAX(id) as MAX_KEY_VALUE,start,end from kinmu;";
-        
-        [db open];
-        
-        
-        FMResultSet*    results = [db executeQuery:select];
-        FMResultSet*    results2 = [db executeQuery:maxSelect];
-        
-        
-        
-        
-        
-        if(i == 0){
-            
-            
-            
-            //日付の取得
-            NSDateFormatter *day = [[NSDateFormatter alloc] init];
-            NSDateFormatter *time = [[NSDateFormatter alloc] init];
-            
-            NSDate *now = [NSDate date];
-            [day setDateFormat:@"yyyy/MM/dd"];
-            [time setDateFormat:@"HH:mm"];
-            
-            //String型に変換
-            NSString *outputDay = [day stringFromDate:now];
-            NSString *outputTime = [time stringFromDate:now];
-            
-            //DBに登録
-            [db executeUpdate:insert,outputDay,outputTime,NULL];
-            
-            UIButton *button =
-            [UIButton buttonWithType:UIButtonTypeRoundedRect];
-            
-            [self.topButton setTitle:@"終業"
-                            forState:UIControlStateNormal];
-            
-            [button addTarget:self
-                       action:@selector(pushButton:)
-             forControlEvents:UIControlEventTouchUpInside];
-            i += 1;
-            
-            //DB取得
-            while( [results2 next] )
-            {
-                self.startTime.text = [results2 stringForColumn:@"start"];
-                //                    NSLog(@"%d %@ %@ %@", [results intForColumn:@"id"],[results stringForColumn:@"day"],[results stringForColumn:@"start"],[results stringForColumn:@"end"]);
-            }
-            
-            
-            
-            
-            
-            
-            
-        }else{
-            //日付の取得
-            NSDateFormatter *day = [[NSDateFormatter alloc] init];
-            NSDateFormatter *time = [[NSDateFormatter alloc] init];
-            
-            NSDate *now = [NSDate date];
-            [day setDateFormat:@"yyyy/MM/dd"];
-            [time setDateFormat:@"HH:mm"];
-            
-            //String型に変換
-            NSString *outputDay = [day stringFromDate:now];
-            NSString *outputTime = [time stringFromDate:now];
-            
-            self.endTime.text = outputTime;
-            //        NSLog(@"%@ %@",outputDay ,outputTime);
-            
-            //DBに登録
-            [db executeUpdate:insert,outputDay,NULL,outputTime];
-            
-            //NSLog(@"%@",[results2 stringForColumn:@"start"]);
-            
-            
-            UIButton *button =
-            [UIButton buttonWithType:UIButtonTypeRoundedRect];
-            
-            [self.topButton setTitle:@"始業"
-                            forState:UIControlStateNormal];
-            
-            [button addTarget:self
-                       action:@selector(pushButton:)
-             forControlEvents:UIControlEventTouchUpInside];
-            i += 1;
-            
-            //DB取得
-            while( [results2 next] )
-            {
-                
-                self.endTime.text = [results2 stringForColumn:@"end"];
-                //                    NSLog(@"%d %@ %@ %@", [results2 intForColumn:@"MAX_KEY_VALUE"],[results2 stringForColumn:@"day"],[results2 stringForColumn:@"start"],[results2 stringForColumn:@"end"]);
-            }
-            
-            
-            
-            
-            
-            
-            
-            
-            
-            
-            
-            
-            //        NSDateFormatter *formatter = [[NSDateFormatter alloc] init];
-            //        NSDate *now = [NSDate date];
-            //        [formatter setDateFormat:@"HH:mm"];
-            //
-            //        //        [db executeUpdate:insert,now];
-            //        //        [db executeUpdate:insert,[formatter stringFromDate:now]];
-            //        [db executeUpdate:insert,[formatter stringFromDate:now],NULL,@"2222"];
-            //
-            //        self.endTime.text = [formatter stringFromDate:now];
-            //
-            //
-            //        UIButton *button =
-            //        [UIButton buttonWithType:UIButtonTypeRoundedRect];
-            //        
-            //        [self.topButton setTitle:@"終業"
-            //                        forState:UIControlStateNormal];
-            //        
-            //        [button addTarget:self
-            //                   action:@selector(pushButton:)
-            //         forControlEvents:UIControlEventTouchUpInside];
-            //        i += 1;
-            //        while( [results next] )
-            //        {
-            //            NSLog(@"%d %d %d %d", [results intForColumn:@"id"],[results intForColumn:@"day"],[results intForColumn:@"start"],[results intForColumn:@"end"]);
-            //        }
-        }
-    [db close];
+        UIAlertView *alert = [[UIAlertView alloc]
+                              initWithTitle:@"終業確認"
+                              message:@"終業してもよろしいですか？"
+                              delegate:self
+                              cancelButtonTitle:@"キャンセル" otherButtonTitles:nil];
+        [alert addButtonWithTitle:@"OK"];
+        [alert show];
     }else{
-        NSLog(@"%@",@"はいらないよ");
+        UIAlertView *alert = [[UIAlertView alloc]
+                              initWithTitle:@"エラー"
+                              message:@"これ以上入りません"
+                              delegate:self
+                              cancelButtonTitle:@"戻ります" otherButtonTitles:nil];
+        [alert show];
     }
-
     
-
+    
+    
 }
 
+
+
+-(void)alertView:(UIAlertView*)alertView clickedButtonAtIndex:(NSInteger)buttonIndex {
+    
+    switch (buttonIndex) {
+        case 0:
+            //1番目のボタン（cancelButtonTitle）が押されたときのアクション
+            NSLog(@"1番目");
+            
+            break;
+            
+        case 1:
+            //2番目のボタンが押されたときのアクション
+            NSLog(@"2番目");
+            if(i <= 1){
+                FMDatabase* db = [self _getDB:DBFILE];
+                
+                NSString*   insert = @"INSERT INTO working (day,startTime,endTime) VALUES (?,?,?)";
+                
+                NSString*   insert2 = @"INSERT INTO working (endTime) VALUES (?)";
+                
+                NSString*   select = @"SELECT id, day ,startTime , endTime FROM working;";
+                
+                NSString*   maxSelect = @"select MAX(id) as MAX_KEY_VALUE,startTime,endTime from working;";
+                
+                [db open];
+                
+                
+                FMResultSet*    results = [db executeQuery:select];
+                
+                FMResultSet*    results2 = [db executeQuery:maxSelect];
+                
+                
+                
+                
+                
+                if(i == 0){
+                    
+                    
+                    
+                    //日付の取得
+                    NSDateFormatter *day = [[NSDateFormatter alloc] init];
+                    NSDateFormatter *time = [[NSDateFormatter alloc] init];
+                    
+                    NSDate *now = [NSDate date];
+                    [day setDateFormat:@"yyyy/MM/dd"];
+                    [time setDateFormat:@"HH:mm"];
+                    
+                    //String型に変換
+                    NSString *outputDay = [day stringFromDate:now];
+                    NSString *outputTime = [time stringFromDate:now];
+                    
+                    //DBに登録
+                    [db executeUpdate:insert,outputDay,outputTime,NULL];
+                    
+                    UIButton *button =
+                    [UIButton buttonWithType:UIButtonTypeRoundedRect];
+                    
+                    [self.topButton setTitle:@"終業"
+                                    forState:UIControlStateNormal];
+                    
+                    [button addTarget:self
+                               action:@selector(pushButton:)
+                     forControlEvents:UIControlEventTouchUpInside];
+                    i += 1;
+                    
+                    //DB取得
+                    while( [results2 next] )
+                    {
+                        self.startTime.text = [results2 stringForColumn:@"startTime"];
+                    }
+                    
+                    
+                }else{
+                    //日付の取得
+                    NSDateFormatter *day = [[NSDateFormatter alloc] init];
+                    NSDateFormatter *time = [[NSDateFormatter alloc] init];
+                    
+                    NSDate *now = [NSDate date];
+                    [day setDateFormat:@"yyyy/MM/dd"];
+                    [time setDateFormat:@"HH:mm"];
+                    
+                    //String型に変換
+                    NSString *outputDay = [day stringFromDate:now];
+                    NSString *outputTime = [time stringFromDate:now];
+                    
+                    self.endTime.text = outputTime;
+                    //        NSLog(@"%@ %@",outputDay ,outputTime);
+                    
+                    //DBに登録
+                    [db executeUpdate:insert,outputDay,NULL,outputTime];
+                    
+                    //NSLog(@"%@",[results2 stringForColumn:@"start"]);
+                    
+                    
+                    UIButton *button =
+                    [UIButton buttonWithType:UIButtonTypeRoundedRect];
+                    
+                    [self.topButton setTitle:@"始業"
+                                    forState:UIControlStateNormal];
+                    
+                    [button addTarget:self
+                               action:@selector(pushButton:)
+                     forControlEvents:UIControlEventTouchUpInside];
+                    i += 1;
+                    
+                    //DB取得
+                    while( [results2 next] )
+                    {
+                        
+                        self.endTime.text = [results2 stringForColumn:@"endTime"];
+                    }
+                    
+                    
+                    
+                }
+                [db close];
+            }else{
+                NSLog(@"%@",@"はいらないよ");
+            }
+            break;
+            
+    }
+    
+}
+
+
+
+
+- (IBAction)sideMenu:(id)sender {
+    [self toggleMenuController];
+}
+
+
+
+-(void)toggleMenuController
+{
+    isRevealed = !isRevealed;
+    
+    UIView *targetView = contentController.view;
+    
+    [UIView animateWithDuration:0.2 animations:^{
+        CGFloat originX = isRevealed ? 0 : 260;
+        CGRect frame = targetView.frame;
+        frame.origin.x = originX;
+        targetView.frame = frame;
+    } completion:^(BOOL finished){
+        //NSLog(@"%@", finished ? @"YES" : @"NO");
+    }];
+}
 @end
