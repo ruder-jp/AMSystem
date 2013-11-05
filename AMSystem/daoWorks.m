@@ -1,29 +1,27 @@
 //
-//  KinmDB.m
+//  daoWorks.m
 //  AMSystem
 //
-//  Created by ブロス on 13/10/31.
+//  Created by ブロス on 13/11/05.
 //  Copyright (c) 2013年 abcc_joko4. All rights reserved.
 //
 
-
-
-#import "KinmDB.h"
+#import "daoWorks.h"
 #import "FMDatabase.h"
 #import "FMResultSet.h"
-#import "Data.h"
+#import "Work.h"
 
 #define DB_FILE_NAME @"working.db"
 
 
 #define SQL_CREATE @"CREATE TABLE IF NOT EXISTS working (id INTEGER PRIMARY KEY AUTOINCREMENT, day TEXT,startTime TEXT ,endTime TEXT,startRest TEXT,endRest TEXT);"
-#define SQL_INSERT @"INSERT INTO working (day,startTime,endTime) VALUES (?,?,?);"
+#define SQL_INSERT @"INSERT INTO working (day,startTime,endTime,startRest,endRest) VALUES (?,?,?,?,?);"
 
 #define SQL_SELECT @"SELECT id, day ,startTime , endTime FROM working;"
 
 #define SQL_MAX_SELECT @"select MAX(id) as MAX_KEY_VALUE,startTime,endTime from working;"
 
-@interface KinmDB()
+@interface daoWorks()
 @property (nonatomic,copy)NSString* dbPath;
 
 -(FMDatabase*)getConnection;
@@ -31,7 +29,7 @@
 
 @end
 
-@implementation KinmDB
+@implementation daoWorks
 
 @synthesize dbPath;
 
@@ -49,7 +47,7 @@
     return self;
 }
 
--(Data*)insertStart:(Data*)data
+-(Work*)insertStart:(Work*)data
 {
     
     FMDatabase* db = [self getConnection];
@@ -57,7 +55,8 @@
     
     [db setShouldCacheStatements:YES];
     if([db executeUpdate:SQL_INSERT,data.day,data.startTime,data.endTime]){
-//        data. = [db lastInsertRowId];
+        //        data. = [db lastInsertRowId];
+        data.dayId = [db lastInsertRowId];
         
     }else
     {
@@ -78,14 +77,14 @@
     NSMutableArray* data = [[NSMutableArray alloc] initWithCapacity:0];
     
     while([results next]){
-        Data * data = [[Data alloc]init];
-        data.day = [results stringForColumnIndex:1];
-        data.startTime = [results stringForColumnIndex:2];
-        data.endTime = [results stringForColumnIndex:3];
-        data.startTime = [results stringForColumnIndex:4];
-        data.endRiset = [results stringForColumnIndex:5];
+        Work * work = [[Work alloc]init];
+        work.day = [results stringForColumnIndex:1];
+        work.startTime = [results stringForColumnIndex:2];
+        work.endTime = [results stringForColumnIndex:3];
+        work.startTime = [results stringForColumnIndex:4];
+        work.endRiset = [results stringForColumnIndex:5];
         
-//        [datas addObject:data];
+        //        [datas addObject:data];
     }
     
     
@@ -93,4 +92,3 @@
 
 
 @end
-
