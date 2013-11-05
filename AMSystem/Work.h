@@ -14,8 +14,8 @@
 @property (nonatomic,assign) NSString* day;
 @property (nonatomic,assign) NSString* startTime;
 @property (nonatomic,assign) NSString* endTime;
-@property (nonatomic,assign) NSString* startRiset;
-@property (nonatomic,assign) NSString* endRiset;
+@property (nonatomic,assign) NSString* startRest;
+@property (nonatomic,assign) NSString* endRest;
 
 
 

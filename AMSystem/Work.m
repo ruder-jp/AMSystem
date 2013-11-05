@@ -10,6 +10,6 @@
 
 @implementation Work
 
-@synthesize dayId,day,startTime,endTime,startRiset,endRiset;
+@synthesize dayId,day,startTime,endTime,startRest,endRest;
 
 @end

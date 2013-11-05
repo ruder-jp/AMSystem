@@ -81,8 +81,8 @@
         work.day = [results stringForColumnIndex:1];
         work.startTime = [results stringForColumnIndex:2];
         work.endTime = [results stringForColumnIndex:3];
-        work.startTime = [results stringForColumnIndex:4];
-        work.endRiset = [results stringForColumnIndex:5];
+        work.startRest = [results stringForColumnIndex:4];
+        work.endRest = [results stringForColumnIndex:5];
         
         //        [datas addObject:data];
     }
