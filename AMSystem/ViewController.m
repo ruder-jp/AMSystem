@@ -290,25 +290,25 @@ int i = 0;
 
 
 
-- (IBAction)sideMenu:(id)sender {
-    [self toggleMenuController];
-}
-
-
-
--(void)toggleMenuController
-{
-    isRevealed = !isRevealed;
-    
-    UIView *targetView = contentController.view;
-    
-    [UIView animateWithDuration:0.2 animations:^{
-        CGFloat originX = isRevealed ? 0 : 260;
-        CGRect frame = targetView.frame;
-        frame.origin.x = originX;
-        targetView.frame = frame;
-    } completion:^(BOOL finished){
-        //NSLog(@"%@", finished ? @"YES" : @"NO");
-    }];
-}
+//- (IBAction)sideMenu:(id)sender {
+//    [self toggleMenuController];
+//}
+//
+//
+//
+//-(void)toggleMenuController
+//{
+//    isRevealed = !isRevealed;
+//    
+//    UIView *targetView = contentController.view;
+//    
+//    [UIView animateWithDuration:0.2 animations:^{
+//        CGFloat originX = isRevealed ? 0 : 260;
+//        CGRect frame = targetView.frame;
+//        frame.origin.x = originX;
+//        targetView.frame = frame;
+//    } completion:^(BOOL finished){
+//        //NSLog(@"%@", finished ? @"YES" : @"NO");
+//    }];
+//}
 @end

@@ -188,7 +188,13 @@ AQABAAEAAQAB//+dkAEA//+PgAAE//+dkAEI//+dkAEMUERUAFBTVABQV1QAUFBUAAAAAAEAAAABA
                         <subviews>
                             <navigationBar contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="QOU-lS-sxg">
                                 <items>
-                                    <navigationItem title="勤怠管理システム" id="ee1-2U-hIJ"/>
+                                    <navigationItem title="勤怠管理システム" id="ee1-2U-hIJ">
+                                        <barButtonItem key="rightBarButtonItem" title="menu" id="eI2-MU-Hgy">
+                                            <connections>
+                                                <segue destination="o9v-a1-Tr3" kind="modal" id="MJx-VM-wE2"/>
+                                            </connections>
+                                        </barButtonItem>
+                                    </navigationItem>
                                 </items>
                             </navigationBar>
                             <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" text="" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="z7O-I1-C7s">
@@ -284,7 +290,70 @@ AQABAAEAAQAB//+dkAEA//+PgAAE//+dkAEI//+dkAEMUERUAFBTVABQV1QAUFBUAAAAAAEAAAABA
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="6t6-5F-qZm" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="452" y="-1075"/>
+            <point key="canvasLocation" x="24" y="-1075"/>
+        </scene>
+        <!--View Controller-->
+        <scene sceneID="RaN-oF-xvB">
+            <objects>
+                <viewController id="o9v-a1-Tr3" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="Hpc-wp-K0T">
+                        <rect key="frame" x="0.0" y="20" width="320" height="460"/>
+                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                        <subviews>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="6P1-oa-qaA">
+                                <fontDescription key="fontDescription" type="boldSystem" pointSize="15"/>
+                                <state key="normal" title="HELP">
+                                    <color key="titleColor" red="0.19607843459999999" green="0.30980393290000002" blue="0.52156865600000002" alpha="1" colorSpace="calibratedRGB"/>
+                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <state key="highlighted">
+                                    <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <connections>
+                                    <segue destination="Pbw-gD-DZC" kind="modal" id="RB8-tb-gYw"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="6yp-ny-65e">
+                                <fontDescription key="fontDescription" type="boldSystem" pointSize="15"/>
+                                <state key="normal" title="勤務時間設定">
+                                    <color key="titleColor" red="0.19607843459999999" green="0.30980393290000002" blue="0.52156865600000002" alpha="1" colorSpace="calibratedRGB"/>
+                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <state key="highlighted">
+                                    <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <connections>
+                                    <segue destination="2" kind="modal" id="iNF-Pi-AxB"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="hlm-VA-krI">
+                                <fontDescription key="fontDescription" type="boldSystem" pointSize="15"/>
+                                <state key="normal" title="勤務表">
+                                    <color key="titleColor" red="0.19607843459999999" green="0.30980393290000002" blue="0.52156865600000002" alpha="1" colorSpace="calibratedRGB"/>
+                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <state key="highlighted">
+                                    <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <connections>
+                                    <segue destination="fLJ-lx-2vs" kind="modal" id="m8V-7c-zcj"/>
+                                </connections>
+                            </button>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="hlm-VA-krI" firstAttribute="top" secondItem="Hpc-wp-K0T" secondAttribute="top" constant="219" id="OvL-xQ-VbB"/>
+                            <constraint firstItem="6P1-oa-qaA" firstAttribute="leading" secondItem="6yp-ny-65e" secondAttribute="leading" type="default" id="SKz-2f-mlZ"/>
+                            <constraint firstItem="6yp-ny-65e" firstAttribute="centerX" secondItem="Hpc-wp-K0T" secondAttribute="centerX" type="default" id="Wwo-2r-ZJI"/>
+                            <constraint firstItem="hlm-VA-krI" firstAttribute="leading" secondItem="6yp-ny-65e" secondAttribute="leading" type="default" id="ayu-OE-se1"/>
+                            <constraint firstItem="6P1-oa-qaA" firstAttribute="top" secondItem="Hpc-wp-K0T" secondAttribute="top" constant="88" id="oPr-0w-IGn"/>
+                            <constraint firstItem="6yp-ny-65e" firstAttribute="top" secondItem="Hpc-wp-K0T" secondAttribute="top" constant="157" id="sWT-TI-HEz"/>
+                        </constraints>
+                    </view>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="z3c-tQ-peL" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="475" y="-1067"/>
         </scene>
         <!--View Controller-->
         <scene sceneID="XNs-Sj-XTx">
@@ -296,9 +365,7 @@ AQABAAEAAQAB//+dkAEA//+PgAAE//+dkAEI//+dkAEMUERUAFBTVABQV1QAUFBUAAAAAAEAAAABA
                         <subviews>
                             <navigationBar contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="92A-NY-T53">
                                 <items>
-                                    <navigationItem title="勤怠管理システム" id="vQ4-IE-uxL">
-                                        <barButtonItem key="rightBarButtonItem" title="メニュー" id="6bJ-O9-lVd"/>
-                                    </navigationItem>
+                                    <navigationItem title="勤怠管理システム" id="vQ4-IE-uxL"/>
                                 </items>
                             </navigationBar>
                             <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" text="始業する時" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="28z-uC-2XC">
@@ -390,33 +457,74 @@ AQABAAEAAQAB//+dkAEA//+PgAAE//+dkAEI//+dkAEMUERUAFBTVABQV1QAUFBUAAAAAAEAAAABA
             </objects>
             <point key="canvasLocation" x="892" y="-1075"/>
         </scene>
-        <!--View Controller-->
-        <scene sceneID="q1S-Bu-Ld1">
+        <!--Kinmu View Controller-->
+        <scene sceneID="pwf-X5-1vA">
             <objects>
-                <viewController id="clL-Av-gFp" sceneMemberID="viewController">
-                    <view key="view" contentMode="scaleToFill" id="Wxu-eo-D69">
+                <tableViewController id="hK6-4P-bB6" customClass="KinmuViewController" sceneMemberID="viewController">
+                    <tableView key="view" opaque="NO" clipsSubviews="YES" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="grouped" separatorStyle="singleLineEtched" rowHeight="44" sectionHeaderHeight="10" sectionFooterHeight="10" id="o6l-8D-FwY">
+                        <rect key="frame" x="0.0" y="64" width="320" height="416"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" cocoaTouchSystemColor="groupTableViewBackgroundColor"/>
+                        <prototypes>
+                            <tableViewCell contentMode="scaleToFill" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" id="GJf-Q5-dR7">
+                                <rect key="frame" x="0.0" y="46" width="320" height="46"/>
+                                <autoresizingMask key="autoresizingMask"/>
+                                <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
+                                    <rect key="frame" x="10" y="1" width="300" height="43"/>
+                                    <autoresizingMask key="autoresizingMask"/>
+                                    <subviews>
+                                        <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" text="Label" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="tvB-vg-FwX">
+                                            <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                            <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                            <color key="highlightedColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                        </label>
+                                        <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" text="Label" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="JX3-7v-wDT">
+                                            <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                            <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                            <color key="highlightedColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                        </label>
+                                        <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" text="Label" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="gaJ-mR-j8X">
+                                            <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                            <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                            <color key="highlightedColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                        </label>
+                                    </subviews>
+                                    <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                                </view>
+                                <constraints>
+                                    <constraint firstItem="JX3-7v-wDT" firstAttribute="baseline" secondItem="tvB-vg-FwX" secondAttribute="baseline" type="default" id="3BF-PP-W5z"/>
+                                    <constraint firstItem="gaJ-mR-j8X" firstAttribute="baseline" secondItem="JX3-7v-wDT" secondAttribute="baseline" type="default" id="Exk-kb-rP8"/>
+                                    <constraint firstAttribute="trailing" secondItem="gaJ-mR-j8X" secondAttribute="trailing" constant="30" id="a5Z-xY-Rvt"/>
+                                    <constraint firstItem="tvB-vg-FwX" firstAttribute="leading" secondItem="GJf-Q5-dR7" secondAttribute="leading" constant="30" id="eeO-f5-LRt"/>
+                                    <constraint firstItem="JX3-7v-wDT" firstAttribute="centerX" secondItem="GJf-Q5-dR7" secondAttribute="centerX" type="default" id="tgL-y8-SKH"/>
+                                    <constraint firstItem="tvB-vg-FwX" firstAttribute="top" secondItem="GJf-Q5-dR7" secondAttribute="top" constant="12" id="vB2-bG-4EV"/>
+                                </constraints>
+                            </tableViewCell>
+                        </prototypes>
+                        <connections>
+                            <outlet property="dataSource" destination="hK6-4P-bB6" id="Ibf-Vy-oDk"/>
+                            <outlet property="delegate" destination="hK6-4P-bB6" id="oXU-eQ-T4V"/>
+                        </connections>
+                    </tableView>
+                    <navigationItem key="navigationItem" id="20J-qr-3Ec"/>
+                </tableViewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="OD4-AE-wW8" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1432" y="-416"/>
+        </scene>
+        <!--Kinmu View Controller-->
+        <scene sceneID="R5C-65-vLH">
+            <objects>
+                <viewController id="iPa-Dg-4nu" customClass="KinmuViewController" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="rVO-9f-boA">
                         <rect key="frame" x="0.0" y="20" width="320" height="460"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                        <subviews>
-                            <navigationBar contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="VCm-4f-Voo">
-                                <items>
-                                    <navigationItem title="勤務表" id="sbv-iv-5PI">
-                                        <barButtonItem key="rightBarButtonItem" title="メニュー" id="Ane-xy-tkE"/>
-                                    </navigationItem>
-                                </items>
-                            </navigationBar>
-                        </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
-                        <constraints>
-                            <constraint firstItem="VCm-4f-Voo" firstAttribute="leading" secondItem="Wxu-eo-D69" secondAttribute="leading" type="default" id="2fx-ym-egy"/>
-                            <constraint firstItem="VCm-4f-Voo" firstAttribute="top" secondItem="Wxu-eo-D69" secondAttribute="top" type="default" id="huF-ca-k2W"/>
-                            <constraint firstItem="VCm-4f-Voo" firstAttribute="trailing" secondItem="Wxu-eo-D69" secondAttribute="trailing" type="default" id="uuA-PF-vMR"/>
-                        </constraints>
                     </view>
                 </viewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="dfF-dt-lLN" userLabel="First Responder" sceneMemberID="firstResponder"/>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="J25-3e-b5y" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="892" y="-255"/>
+            <point key="canvasLocation" x="118" y="-342"/>
         </scene>
         <!--View Controller-->
         <scene sceneID="X4m-Co-Uf8">
@@ -505,7 +613,25 @@ AQABAAEAAQAB//+dkAEA//+PgAAE//+dkAEI//+dkAEMUERUAFBTVABQV1QAUFBUAAAAAAEAAAABA
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Deq-Ug-E0M" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1317" y="-255"/>
+            <point key="canvasLocation" x="2369" y="-255"/>
+        </scene>
+        <!--Navigation Controller-->
+        <scene sceneID="aqy-bE-ync">
+            <objects>
+                <navigationController id="fLJ-lx-2vs" sceneMemberID="viewController">
+                    <toolbarItems/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="Niy-PQ-8bD">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <nil name="viewControllers"/>
+                    <connections>
+                        <segue destination="hK6-4P-bB6" kind="relationship" relationship="rootViewController" id="xyz-sp-t3f"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="BKT-p7-uNv" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="906" y="-416"/>
         </scene>
     </scenes>
     <classes>
@@ -526,6 +652,9 @@ AQABAAEAAQAB//+dkAEA//+PgAAE//+dkAEI//+dkAEMUERUAFBTVABQV1QAUFBUAAAAAAEAAAABA
                 <relationship kind="outlet" name="toolBar" candidateClass="UIToolbar"/>
             </relationships>
         </class>
+        <class className="KinmuViewController" superclassName="UITableViewController">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/KinmuViewController.h"/>
+        </class>
         <class className="NSLayoutConstraint" superclassName="NSObject">
             <source key="sourceIdentifier" type="project" relativePath="./Classes/NSLayoutConstraint.h"/>
         </class>
@@ -533,7 +662,6 @@ AQABAAEAAQAB//+dkAEA//+PgAAE//+dkAEI//+dkAEMUERUAFBTVABQV1QAUFBUAAAAAAEAAAABA
             <source key="sourceIdentifier" type="project" relativePath="./Classes/ViewController.h"/>
             <relationships>
                 <relationship kind="action" name="bushButton:"/>
-                <relationship kind="action" name="sideMenu:"/>
                 <relationship kind="outlet" name="dayLavel" candidateClass="UILabel"/>
                 <relationship kind="outlet" name="endTime" candidateClass="UILabel"/>
                 <relationship kind="outlet" name="startTime" candidateClass="UILabel"/>

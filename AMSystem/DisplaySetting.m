@@ -38,12 +38,15 @@
 - (void)viewDidAppear:(BOOL)animated
 {
     [super viewDidAppear:animated];
+    
+    
     CGRect datePickerFrame = self.myDatePicker.frame;
     CGRect toolBarFrame = self.toolBar.frame;
     toolBarFrame.origin.y = self.view.frame.size.height;
     datePickerFrame.origin.y = self.view.frame.size.height + self.toolBar.frame.size.height;
     self.myDatePicker.frame = datePickerFrame;
     self.toolBar.frame = toolBarFrame;
+    
 }
 
 
