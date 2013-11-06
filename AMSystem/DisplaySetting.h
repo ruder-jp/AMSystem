@@ -8,6 +8,7 @@
 
 #import <UIKit/UIKit.h>
 
+
 @interface DisplaySetting : UIViewController
 
 //テキストフィールド
@@ -39,6 +40,9 @@
 
 //完了ボタンをタップしたときダイアログを表示する
 - (IBAction)confirmButton:(id)sender;
+
+
+
 
 
 @end

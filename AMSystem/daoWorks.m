@@ -16,6 +16,7 @@
 
 #define SQL_CREATE @"CREATE TABLE IF NOT EXISTS working (id INTEGER PRIMARY KEY AUTOINCREMENT, day TEXT,startTime TEXT ,endTime TEXT,startRest TEXT,endRest TEXT);"
 #define SQL_INSERT @"INSERT INTO working (day,startTime,endTime,startRest,endRest) VALUES (?,?,?,?,?);"
+#define SQL_UPDATE @"UPDATE working SET startTime = ?, endTime = ?, startRest = ?, endRest = ? WHERE id = ?;"
 
 #define SQL_SELECT @"SELECT id, day ,startTime , endTime FROM working;"
 
@@ -77,7 +78,8 @@
     NSMutableArray* data = [[NSMutableArray alloc] initWithCapacity:0];
     
     while([results next]){
-        Work * work = [[Work alloc]init];
+        Work* work = [[Work alloc]init];
+        work.dayId = [results intForColumnIndex:0];
         work.day = [results stringForColumnIndex:1];
         work.startTime = [results stringForColumnIndex:2];
         work.endTime = [results stringForColumnIndex:3];
@@ -88,6 +90,49 @@
     }
     
     
+}
+
+/**
+ * 書籍を更新します。
+ */
+- (BOOL)update:(Work *)work
+{
+	FMDatabase* db = [self getConnection];
+	[db open];
+	
+	BOOL isSucceeded = [db executeUpdate:SQL_UPDATE, work.startTime, work.endTime, work.startRest, work.endRest, [NSNumber numberWithInteger:work.dayId]];
+	
+	[db close];
+	
+	return isSucceeded;
+}
+
+#pragma mark - Private methods
+
+/**
+ * データベースを取得します。
+ *
+ * @return データベース。
+ */
+- (FMDatabase *)getConnection
+{
+	if( self.dbPath == nil )
+	{
+		self.dbPath =  [daoWorks getDbFilePath];
+	}
+	
+	return [FMDatabase databaseWithPath:self.dbPath];
+}
+
+/**
+ * データベース ファイルのパスを取得します。
+ */
++ (NSString*)getDbFilePath
+{
+	NSArray*  paths = NSSearchPathForDirectoriesInDomains( NSDocumentDirectory, NSUserDomainMask, YES );
+	NSString* dir   = [paths objectAtIndex:0];
+	
+	return [dir stringByAppendingPathComponent:DB_FILE_NAME];
 }
 
 

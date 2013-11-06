@@ -7,12 +7,21 @@
 //
 
 #import "DisplaySetting.h"
+#import "daoWorks.h"
+#import "Work.h"
 
 @interface DisplaySetting ()
+@property (nonatomic, retain) daoWorks*            daoWorks; //! 勤務設定を管理するオブジェクト
+
+
+@property (nonatomic, retain) Work*
+work;     //! 編集対象となる書籍
 
 @end
 
 @implementation DisplaySetting
+
+@synthesize work;
 
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
 {
@@ -27,7 +36,25 @@
 {
     [super viewDidLoad];
 	// Do any additional setup after loading the view.
+    
+    self.daoWorks = [[daoWorks alloc] init];
+	self.work    = [[Work alloc] init];
+
 }
+
+/**
+ * View が破棄される時に発生します。
+ */
+- (void)viewDidUnload
+{
+    
+	self.daoWorks = nil;
+	self.work    = nil;
+    
+	[super viewDidUnload];
+}
+
+
 
 - (void)didReceiveMemoryWarning
 {
@@ -40,12 +67,14 @@
     [super viewDidAppear:animated];
     
     
-    CGRect datePickerFrame = self.myDatePicker.frame;
-    CGRect toolBarFrame = self.toolBar.frame;
-    toolBarFrame.origin.y = self.view.frame.size.height;
-    datePickerFrame.origin.y = self.view.frame.size.height + self.toolBar.frame.size.height;
-    self.myDatePicker.frame = datePickerFrame;
-    self.toolBar.frame = toolBarFrame;
+    
+//    CGRect datePickerFrame = self.myDatePicker.frame;
+//    CGRect toolBarFrame = self.toolBar.frame;
+//    toolBarFrame.origin.y = self.view.frame.size.height;
+//    datePickerFrame.origin.y = self.view.frame.size.height + self.toolBar.frame.size.height;
+//    self.myDatePicker.frame = datePickerFrame;
+//    self.toolBar.frame = toolBarFrame;
+    
     
 }
 
@@ -128,6 +157,8 @@
 
 }
 
+
+
 //完了ボタンを押して表示させるアラートビューの詳細
 -(void)alertView:(UIAlertView*)alertView
 clickedButtonAtIndex:(NSInteger)buttonIndex {
@@ -140,7 +171,15 @@ clickedButtonAtIndex:(NSInteger)buttonIndex {
         case 1:
             //OKボタンがタップされたときの処理
             //NSString*  insert = @"INSERT INTO kinmu (day,start,end) VALUES (?,?,?)";
-            
+        {
+            Work* newWork = [[Work alloc] init];
+            newWork.dayId     = 0;
+            newWork.startTime = self.startTime.text;
+            newWork.endTime   = self.endTime.text;
+            newWork.startRest = self.startRest.text;
+            newWork.endRest   = self.endRest.text;
+            [self.daoWorks update:newWork];
+        }
             break;
     }
 

@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="2.0" toolsVersion="3084" systemVersion="11G63b" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" initialViewController="NlP-6q-PMY">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="2.0" toolsVersion="3084" systemVersion="11G63" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" initialViewController="NlP-6q-PMY">
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="2083"/>
     </dependencies>
@@ -130,7 +130,7 @@ AQABAAEAAQAB//+dkAEA//+PgAAE//+dkAEI//+dkAEMUERUAFBTVABQV1QAUFBUAAAAAAEAAAABA
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                         <constraints>
-                            <constraint firstItem="mzI-bJ-xiG" firstAttribute="top" secondItem="3" secondAttribute="top" constant="197" id="2Ck-OV-gks"/>
+                            <constraint firstItem="mzI-bJ-xiG" firstAttribute="top" secondItem="3" secondAttribute="top" constant="197" id="6V6-IA-t7k"/>
                             <constraint firstItem="QpV-Yo-7L8" firstAttribute="centerX" secondItem="3kF-GK-Uqt" secondAttribute="centerX" type="default" id="AkZ-kH-RRc"/>
                             <constraint firstItem="7e2-rs-f9J" firstAttribute="leading" secondItem="3" secondAttribute="leading" type="default" id="EDQ-MF-29B"/>
                             <constraint firstItem="QLl-pb-5wQ" firstAttribute="trailing" secondItem="mzI-bJ-xiG" secondAttribute="trailing" type="default" id="EyI-tL-Wkx"/>
@@ -695,6 +695,50 @@ AQABAAEAAQAB//+dkAEA//+PgAAE//+dkAEI//+dkAEMUERUAFBTVABQV1QAUFBUAAAAAAEAAAABA
             <point key="canvasLocation" x="906" y="-416"/>
         </scene>
     </scenes>
+    <classes>
+        <class className="DisplaySetting" superclassName="UIViewController">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/DisplaySetting.h"/>
+            <relationships>
+                <relationship kind="action" name="buttonClicked:"/>
+                <relationship kind="action" name="changeDatePicker:"/>
+                <relationship kind="action" name="confirmButton:"/>
+                <relationship kind="action" name="datePickerDone:" candidateClass="UIBarButtonItem"/>
+                <relationship kind="action" name="textFieldClicked:" candidateClass="UITextField"/>
+                <relationship kind="outlet" name="cancelPicker" candidateClass="UIBarButtonItem"/>
+                <relationship kind="outlet" name="donePicker" candidateClass="UIBarButtonItem"/>
+                <relationship kind="outlet" name="endRest" candidateClass="UITextField"/>
+                <relationship kind="outlet" name="endTime" candidateClass="UITextField"/>
+                <relationship kind="outlet" name="myDatePicker" candidateClass="UIDatePicker"/>
+                <relationship kind="outlet" name="startRest" candidateClass="UITextField"/>
+                <relationship kind="outlet" name="startTime" candidateClass="UITextField"/>
+                <relationship kind="outlet" name="toolBar" candidateClass="UIToolbar"/>
+            </relationships>
+        </class>
+        <class className="KinmuViewController" superclassName="UITableViewController">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/KinmuViewController.h"/>
+        </class>
+        <class className="NSLayoutConstraint" superclassName="NSObject">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/NSLayoutConstraint.h"/>
+        </class>
+        <class className="TestInsertViewController" superclassName="UIViewController">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/TestInsertViewController.h"/>
+            <relationships>
+                <relationship kind="action" name="insertButton:"/>
+                <relationship kind="action" name="selectButton:"/>
+            </relationships>
+        </class>
+        <class className="ViewController" superclassName="UIViewController">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/ViewController.h"/>
+            <relationships>
+                <relationship kind="action" name="bushButton:"/>
+                <relationship kind="outlet" name="dayLavel" candidateClass="UILabel"/>
+                <relationship kind="outlet" name="endTime" candidateClass="UILabel"/>
+                <relationship kind="outlet" name="startTime" candidateClass="UILabel"/>
+                <relationship kind="outlet" name="timeLavel" candidateClass="UILabel"/>
+                <relationship kind="outlet" name="topButton" candidateClass="UIButton"/>
+            </relationships>
+        </class>
+    </classes>
     <simulatedMetricsContainer key="defaultSimulatedMetrics">
         <simulatedStatusBarMetrics key="statusBar"/>
         <simulatedOrientationMetrics key="orientation"/>
