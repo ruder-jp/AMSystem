@@ -18,9 +18,10 @@
 #define SQL_INSERT @"INSERT INTO working (day,startTime,endTime,startRest,endRest) VALUES (?,?,?,?,?);"
 #define SQL_UPDATE @"UPDATE working SET startTime = ?, endTime = ?, startRest = ?, endRest = ? WHERE id = ?;"
 
-#define SQL_SELECT @"SELECT id, day ,startTime , endTime FROM working;"
+#define SQL_SELECT @"SELECT id, day ,startTime , endTime , startRest , endRest FROM working;"
 
-#define SQL_MAX_SELECT @"select MAX(id) as MAX_KEY_VALUE,startTime,endTime from working;"
+
+
 
 @interface daoWorks()
 @property (nonatomic,copy)NSString* dbPath;
@@ -43,21 +44,21 @@
         [db open];
         [db executeUpdate:SQL_CREATE];
         [db close];
-        
     }
     return self;
 }
 
 -(Work*)insertStart:(Work*)data
 {
-    
     FMDatabase* db = [self getConnection];
     [db open];
     
     [db setShouldCacheStatements:YES];
-    if([db executeUpdate:SQL_INSERT,data.day,data.startTime,data.endTime]){
+    if([db executeUpdate:SQL_INSERT,data.day,data.startTime,data.endTime,data.startRest,data.endRest]){
         //        data. = [db lastInsertRowId];
+        
         data.dayId = [db lastInsertRowId];
+        NSLog(@"insert 成功");
         
     }else
     {
@@ -74,9 +75,10 @@
     [db open];
     
     FMResultSet* results = [db executeQuery:SQL_SELECT];
-    
-    NSMutableArray* data = [[NSMutableArray alloc] initWithCapacity:0];
-    
+
+
+    NSMutableArray* datas = [[NSMutableArray alloc] initWithCapacity:0];
+
     while([results next]){
         Work* work = [[Work alloc]init];
         work.dayId = [results intForColumnIndex:0];
@@ -85,11 +87,25 @@
         work.endTime = [results stringForColumnIndex:3];
         work.startRest = [results stringForColumnIndex:4];
         work.endRest = [results stringForColumnIndex:5];
+    
+        [datas addObject:work];
         
-        //        [datas addObject:data];
+        NSLog(@"%@",datas);
+        
+//        NSLog(@"%i",[results intForColumnIndex:0]);
+//        NSLog(@"%@",[results stringForColumnIndex:1]);
+//        NSLog(@"%@",[results stringForColumnIndex:2]);
+//        NSLog(@"%@",[results stringForColumnIndex:3]);
+//        NSLog(@"%@",[results stringForColumnIndex:4]);
+//        
+//        NSLog(@"%@",[results stringForColumnIndex:5]);
+        
     }
+    NSLog(@"%@",@"select成功？");
     
     
+    [db close];
+    return datas;
 }
 
 /**

@@ -37,6 +37,10 @@
 @property (weak, nonatomic) IBOutlet UILabel *timeLavel;
 //サイドメニュー
 
+//Helpページ用の戻るボタン
+- (IBAction)backButton:(id)sender;
+
+- (IBAction)helpBackButton:(id)sender;
 
 
 //勤務表

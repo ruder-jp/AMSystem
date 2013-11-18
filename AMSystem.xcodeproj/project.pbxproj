@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		1BD159A81807C2CF00093AFA /* DisplaySetting.m in Sources */ = {isa = PBXBuildFile; fileRef = 1BD159A71807C2CF00093AFA /* DisplaySetting.m */; };
+		2365E3471837AC7900FF1EF9 /* TopViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 2365E3461837AC7900FF1EF9 /* TopViewController.m */; };
 		2381B55018066CE00044048A /* FMDatabase.m in Sources */ = {isa = PBXBuildFile; fileRef = 2381B54718066CE00044048A /* FMDatabase.m */; };
 		2381B55118066CE00044048A /* FMDatabaseAdditions.m in Sources */ = {isa = PBXBuildFile; fileRef = 2381B54918066CE00044048A /* FMDatabaseAdditions.m */; };
 		2381B55218066CE00044048A /* FMDatabasePool.m in Sources */ = {isa = PBXBuildFile; fileRef = 2381B54B18066CE00044048A /* FMDatabasePool.m */; };
@@ -49,6 +50,8 @@
 /* Begin PBXFileReference section */
 		1BD159A61807C2CF00093AFA /* DisplaySetting.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DisplaySetting.h; sourceTree = "<group>"; };
 		1BD159A71807C2CF00093AFA /* DisplaySetting.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DisplaySetting.m; sourceTree = "<group>"; };
+		2365E3451837AC7900FF1EF9 /* TopViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TopViewController.h; sourceTree = "<group>"; };
+		2365E3461837AC7900FF1EF9 /* TopViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TopViewController.m; sourceTree = "<group>"; };
 		2381B54618066CE00044048A /* FMDatabase.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FMDatabase.h; sourceTree = "<group>"; };
 		2381B54718066CE00044048A /* FMDatabase.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FMDatabase.m; sourceTree = "<group>"; };
 		2381B54818066CE00044048A /* FMDatabaseAdditions.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FMDatabaseAdditions.h; sourceTree = "<group>"; };
@@ -117,6 +120,31 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		2365E3441837AC3800FF1EF9 /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				43D4D39A1781C4140008BF14 /* MainStoryboard.storyboard */,
+			);
+			name = Views;
+			sourceTree = "<group>";
+		};
+		2365E3481839C57100FF1EF9 /* Controller */ = {
+			isa = PBXGroup;
+			children = (
+				43D4D39D1781C4140008BF14 /* ViewController.h */,
+				43D4D39E1781C4140008BF14 /* ViewController.m */,
+				1BD159A61807C2CF00093AFA /* DisplaySetting.h */,
+				1BD159A71807C2CF00093AFA /* DisplaySetting.m */,
+				23C12F7F18237E380021239D /* KinmuViewController.h */,
+				23C12F8018237E380021239D /* KinmuViewController.m */,
+				23D1F9281828A1AF001BABE9 /* TestInsertViewController.h */,
+				23D1F9291828A1AF001BABE9 /* TestInsertViewController.m */,
+				2365E3451837AC7900FF1EF9 /* TopViewController.h */,
+				2365E3461837AC7900FF1EF9 /* TopViewController.m */,
+			);
+			name = Controller;
+			sourceTree = "<group>";
+		};
 		2381B54518066CE00044048A /* FMDB */ = {
 			isa = PBXGroup;
 			children = (
@@ -179,20 +207,13 @@
 		43D4D3881781C4140008BF14 /* AMSystem */ = {
 			isa = PBXGroup;
 			children = (
+				2365E3481839C57100FF1EF9 /* Controller */,
+				2365E3441837AC3800FF1EF9 /* Views */,
 				23D1F92B1828C4AD001BABE9 /* Models */,
 				2381B54518066CE00044048A /* FMDB */,
 				43D4D3911781C4140008BF14 /* AppDelegate.h */,
 				43D4D3921781C4140008BF14 /* AppDelegate.m */,
-				43D4D39A1781C4140008BF14 /* MainStoryboard.storyboard */,
-				43D4D39D1781C4140008BF14 /* ViewController.h */,
-				43D4D39E1781C4140008BF14 /* ViewController.m */,
-				1BD159A61807C2CF00093AFA /* DisplaySetting.h */,
-				1BD159A71807C2CF00093AFA /* DisplaySetting.m */,
 				43D4D3891781C4140008BF14 /* Supporting Files */,
-				23C12F7F18237E380021239D /* KinmuViewController.h */,
-				23C12F8018237E380021239D /* KinmuViewController.m */,
-				23D1F9281828A1AF001BABE9 /* TestInsertViewController.h */,
-				23D1F9291828A1AF001BABE9 /* TestInsertViewController.m */,
 			);
 			path = AMSystem;
 			sourceTree = "<group>";
@@ -353,6 +374,7 @@
 				23D1F92A1828A1AF001BABE9 /* TestInsertViewController.m in Sources */,
 				23D1F92E1828C51B001BABE9 /* daoWorks.m in Sources */,
 				23D1F9311828C569001BABE9 /* Work.m in Sources */,
+				2365E3471837AC7900FF1EF9 /* TopViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

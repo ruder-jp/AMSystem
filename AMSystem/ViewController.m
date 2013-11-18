@@ -311,4 +311,13 @@ int i = 0;
 //        //NSLog(@"%@", finished ? @"YES" : @"NO");
 //    }];
 //}
+
+- (IBAction)backButton:(id)sender {
+    [self dismissModalViewControllerAnimated:YES];
+    
+}
+
+- (IBAction)helpBackButton:(id)sender {
+    [self dismissModalViewControllerAnimated:YES];
+}
 @end

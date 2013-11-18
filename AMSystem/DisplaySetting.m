@@ -157,6 +157,9 @@ work;     //! 編集対象となる書籍
 
 }
 
+- (IBAction)settingBackButton:(id)sender {
+}
+
 
 
 //完了ボタンを押して表示させるアラートビューの詳細

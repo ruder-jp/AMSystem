@@ -7,8 +7,16 @@
 //
 
 #import "KinmuViewController.h"
+#import "daoWorks.h"
 
 @interface KinmuViewController ()
+{
+    NSInteger* daysnum;
+    int days;
+}
+@property(nonatomic,retain)daoWorks* daoWorks;
+@property(nonatomic,retain)Work* work;
+
 
 @end
 
@@ -21,17 +29,20 @@
         // Custom initialization
     }
     return self;
+    
 }
 
 - (void)viewDidLoad
 {
     [super viewDidLoad];
-
+    
     // Uncomment the following line to preserve selection between presentations.
     // self.clearsSelectionOnViewWillAppear = NO;
- 
+    
     // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
     // self.navigationItem.rightBarButtonItem = self.editButtonItem;
+    
+    
 }
 
 - (void)didReceiveMemoryWarning
@@ -44,25 +55,130 @@
 
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView
 {
-
+    
     // Return the number of sections.
     return 1;
 }
 
-- (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
+-(NSString*)tableView:(UITableView *)tableView titleForHeaderInSection:(NSInteger)section
 {
-    // Return the number of rows in the section.
-    return 12;
+    return @"日付　　　 始業　　　 終業";
+    
+    
 }
 
+- (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
+{
+    
+    //今月の日数を取得
+    
+    NSDate *now = [NSDate date];
+    
+    /* NSCalendarを取得する */
+    
+    NSCalendar *calendar = [[NSCalendar alloc] initWithCalendarIdentifier: NSGregorianCalendar];;
+    
+    NSInteger daysOfThisMonth =[ calendar rangeOfUnit:NSDayCalendarUnit inUnit:NSMonthCalendarUnit forDate:now ].length;
+    
+    daysnum = daysOfThisMonth;
+    
+    return daysOfThisMonth;
+    
+}
+
+
+/*
+ セルの内容を返す
+ まだ途中セルに日付を出力しようとしたら４筒増加する
+ 
+ 
+ */
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    static NSString *CellIdentifier = @"Cell";
-    UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier forIndexPath:indexPath];
+    UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"Cell"];
     
-    // Configure the cell...
+    if (cell == nil) {
+        cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:@"Cell"];
+        
+        // cell.textLabel.text = [NSString stringWithFormat:@"%i",days];
+        
+    }
+    NSArray* testArray =  [self.daoWorks datas];
+    
+    NSLog(@"%@",testArray);
+//    cell.textLabel.text = testArray;
+    
+//    if(indexPath.row == 0) {
+//        cell.textLabel.text = @"1";
+//        
+//    } else if(indexPath.row == 1){
+//        cell.textLabel.text = @"2";
+//        
+//    } else if(indexPath.row == 2){
+//        cell.textLabel.text = @"3";
+//    } else if(indexPath.row == 3){
+//        cell.textLabel.text = @"4";
+//    } else if(indexPath.row == 4){
+//        cell.textLabel.text = @"5";
+//    } else if(indexPath.row == 5){
+//        cell.textLabel.text = @"6";
+//    } else if(indexPath.row == 6){
+//        cell.textLabel.text = @"7";
+//    } else if(indexPath.row == 7){
+//        cell.textLabel.text = @"8";
+//    } else if(indexPath.row == 8){
+//        cell.textLabel.text = @"9";
+//    } else if(indexPath.row == 9){
+//        cell.textLabel.text = @"10";
+//    } else if(indexPath.row == 10){
+//        cell.textLabel.text = @"11";
+//    } else if(indexPath.row == 11){
+//        cell.textLabel.text = @"12";
+//    } else if(indexPath.row == 12){
+//        cell.textLabel.text = @"13";
+//    } else if(indexPath.row == 13){
+//        cell.textLabel.text = @"14";
+//    } else if(indexPath.row == 14){
+//        cell.textLabel.text = @"15";
+//    } else if(indexPath.row == 15){
+//        cell.textLabel.text = @"16";
+//    } else if(indexPath.row == 16){
+//        cell.textLabel.text = @"17";
+//    } else if(indexPath.row == 17){
+//        cell.textLabel.text = @"18";
+//    } else if(indexPath.row == 18){
+//        cell.textLabel.text = @"19";
+//    } else if(indexPath.row == 19){
+//        cell.textLabel.text = @"20";
+//    } else if(indexPath.row == 20){
+//        cell.textLabel.text = @"21";
+//    } else if(indexPath.row == 21){
+//        cell.textLabel.text = @"22";
+//    } else if(indexPath.row == 22){
+//        cell.textLabel.text = @"23";
+//    } else if(indexPath.row == 23){
+//        cell.textLabel.text = @"24";
+//    } else if(indexPath.row == 24){
+//        cell.textLabel.text = @"25";
+//    } else if(indexPath.row == 25){
+//        cell.textLabel.text = @"26";
+//    } else if(indexPath.row == 26){
+//        cell.textLabel.text = @"27";
+//    } else if(indexPath.row == 27){
+//        cell.textLabel.text = @"28";
+//    } else if(indexPath.row == 28){
+//        cell.textLabel.text = @"29";
+//    } else if(indexPath.row == 29){
+//        cell.textLabel.text = @"30";
+//    } else {
+//        cell.textLabel.text = @"31";
+//    }
+    //        NSLog(@"days = %i" , days);
+    //    days += 1;
+    //    NSLog(@"days = %i" , days);
     
     return cell;
+    
 }
 
 /*
@@ -117,4 +233,7 @@
      */
 }
 
+- (IBAction)kinmuBackButton:(id)sender {
+    [self dismissModalViewControllerAnimated:YES];
+}
 @end

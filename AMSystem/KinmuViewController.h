@@ -9,5 +9,7 @@
 #import <UIKit/UIKit.h>
 
 @interface KinmuViewController : UITableViewController
+- (IBAction)kinmuBackButton:(id)sender;
+
 
 @end
