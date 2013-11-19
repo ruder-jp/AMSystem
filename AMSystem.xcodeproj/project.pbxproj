@@ -9,6 +9,9 @@
 /* Begin PBXBuildFile section */
 		1BD159A81807C2CF00093AFA /* DisplaySetting.m in Sources */ = {isa = PBXBuildFile; fileRef = 1BD159A71807C2CF00093AFA /* DisplaySetting.m */; };
 		2365E3471837AC7900FF1EF9 /* TopViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 2365E3461837AC7900FF1EF9 /* TopViewController.m */; };
+		2365E34E183B0AE500FF1EF9 /* Works.m in Sources */ = {isa = PBXBuildFile; fileRef = 2365E34D183B0AE500FF1EF9 /* Works.m */; };
+		2365E351183B0AF800FF1EF9 /* Times.m in Sources */ = {isa = PBXBuildFile; fileRef = 2365E350183B0AF800FF1EF9 /* Times.m */; };
+		2365E354183B0B1200FF1EF9 /* Rests.m in Sources */ = {isa = PBXBuildFile; fileRef = 2365E353183B0B1200FF1EF9 /* Rests.m */; };
 		2381B55018066CE00044048A /* FMDatabase.m in Sources */ = {isa = PBXBuildFile; fileRef = 2381B54718066CE00044048A /* FMDatabase.m */; };
 		2381B55118066CE00044048A /* FMDatabaseAdditions.m in Sources */ = {isa = PBXBuildFile; fileRef = 2381B54918066CE00044048A /* FMDatabaseAdditions.m */; };
 		2381B55218066CE00044048A /* FMDatabasePool.m in Sources */ = {isa = PBXBuildFile; fileRef = 2381B54B18066CE00044048A /* FMDatabasePool.m */; };
@@ -17,7 +20,6 @@
 		23C12F8118237E380021239D /* KinmuViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 23C12F8018237E380021239D /* KinmuViewController.m */; };
 		23D1F92A1828A1AF001BABE9 /* TestInsertViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 23D1F9291828A1AF001BABE9 /* TestInsertViewController.m */; };
 		23D1F92E1828C51B001BABE9 /* daoWorks.m in Sources */ = {isa = PBXBuildFile; fileRef = 23D1F92D1828C51B001BABE9 /* daoWorks.m */; };
-		23D1F9311828C569001BABE9 /* Work.m in Sources */ = {isa = PBXBuildFile; fileRef = 23D1F9301828C569001BABE9 /* Work.m */; };
 		23F7790617E8282E005CF677 /* libsqlite3.0.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 23F7790517E8282E005CF677 /* libsqlite3.0.dylib */; };
 		43D4D3831781C4140008BF14 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 43D4D3821781C4140008BF14 /* UIKit.framework */; };
 		43D4D3851781C4140008BF14 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 43D4D3841781C4140008BF14 /* Foundation.framework */; };
@@ -52,6 +54,12 @@
 		1BD159A71807C2CF00093AFA /* DisplaySetting.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DisplaySetting.m; sourceTree = "<group>"; };
 		2365E3451837AC7900FF1EF9 /* TopViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TopViewController.h; sourceTree = "<group>"; };
 		2365E3461837AC7900FF1EF9 /* TopViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TopViewController.m; sourceTree = "<group>"; };
+		2365E34C183B0AE500FF1EF9 /* Works.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Works.h; sourceTree = "<group>"; };
+		2365E34D183B0AE500FF1EF9 /* Works.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Works.m; sourceTree = "<group>"; };
+		2365E34F183B0AF800FF1EF9 /* Times.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Times.h; sourceTree = "<group>"; };
+		2365E350183B0AF800FF1EF9 /* Times.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Times.m; sourceTree = "<group>"; };
+		2365E352183B0B1200FF1EF9 /* Rests.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Rests.h; sourceTree = "<group>"; };
+		2365E353183B0B1200FF1EF9 /* Rests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Rests.m; sourceTree = "<group>"; };
 		2381B54618066CE00044048A /* FMDatabase.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FMDatabase.h; sourceTree = "<group>"; };
 		2381B54718066CE00044048A /* FMDatabase.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FMDatabase.m; sourceTree = "<group>"; };
 		2381B54818066CE00044048A /* FMDatabaseAdditions.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FMDatabaseAdditions.h; sourceTree = "<group>"; };
@@ -68,8 +76,6 @@
 		23D1F9291828A1AF001BABE9 /* TestInsertViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TestInsertViewController.m; sourceTree = "<group>"; };
 		23D1F92C1828C51B001BABE9 /* daoWorks.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = daoWorks.h; sourceTree = "<group>"; };
 		23D1F92D1828C51B001BABE9 /* daoWorks.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = daoWorks.m; sourceTree = "<group>"; };
-		23D1F92F1828C569001BABE9 /* Work.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Work.h; sourceTree = "<group>"; };
-		23D1F9301828C569001BABE9 /* Work.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Work.m; sourceTree = "<group>"; };
 		23F7790517E8282E005CF677 /* libsqlite3.0.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libsqlite3.0.dylib; path = usr/lib/libsqlite3.0.dylib; sourceTree = SDKROOT; };
 		43D4D37F1781C4140008BF14 /* AMSystem.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = AMSystem.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		43D4D3821781C4140008BF14 /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
@@ -167,8 +173,12 @@
 			children = (
 				23D1F92C1828C51B001BABE9 /* daoWorks.h */,
 				23D1F92D1828C51B001BABE9 /* daoWorks.m */,
-				23D1F92F1828C569001BABE9 /* Work.h */,
-				23D1F9301828C569001BABE9 /* Work.m */,
+				2365E34C183B0AE500FF1EF9 /* Works.h */,
+				2365E34D183B0AE500FF1EF9 /* Works.m */,
+				2365E34F183B0AF800FF1EF9 /* Times.h */,
+				2365E350183B0AF800FF1EF9 /* Times.m */,
+				2365E352183B0B1200FF1EF9 /* Rests.h */,
+				2365E353183B0B1200FF1EF9 /* Rests.m */,
 			);
 			name = Models;
 			sourceTree = "<group>";
@@ -373,8 +383,10 @@
 				23C12F8118237E380021239D /* KinmuViewController.m in Sources */,
 				23D1F92A1828A1AF001BABE9 /* TestInsertViewController.m in Sources */,
 				23D1F92E1828C51B001BABE9 /* daoWorks.m in Sources */,
-				23D1F9311828C569001BABE9 /* Work.m in Sources */,
 				2365E3471837AC7900FF1EF9 /* TopViewController.m in Sources */,
+				2365E34E183B0AE500FF1EF9 /* Works.m in Sources */,
+				2365E351183B0AF800FF1EF9 /* Times.m in Sources */,
+				2365E354183B0B1200FF1EF9 /* Rests.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
