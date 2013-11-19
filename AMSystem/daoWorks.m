@@ -9,7 +9,7 @@
 #import "daoWorks.h"
 #import "FMDatabase.h"
 #import "FMResultSet.h"
-#import "Work.h"
+#import "Works.h"
 
 #define DB_FILE_NAME @"working.db"
 
@@ -48,16 +48,16 @@
     return self;
 }
 
--(Work*)insertStart:(Work*)data
+-(Works*)insertStart:(Works*)data
 {
     FMDatabase* db = [self getConnection];
     [db open];
     
     [db setShouldCacheStatements:YES];
-    if([db executeUpdate:SQL_INSERT,data.day,data.startTime,data.endTime,data.startRest,data.endRest]){
+    if([db executeUpdate:SQL_INSERT,data.date,data.start,data.end,data.time_id,data.rest_id]){
         //        data. = [db lastInsertRowId];
         
-        data.dayId = [db lastInsertRowId];
+        data.day_id = [db lastInsertRowId];
         NSLog(@"insert 成功");
         
     }else
@@ -80,15 +80,16 @@
     NSMutableArray* datas = [[NSMutableArray alloc] initWithCapacity:0];
 
     while([results next]){
-        Work* work = [[Work alloc]init];
-        work.dayId = [results intForColumnIndex:0];
-        work.day = [results stringForColumnIndex:1];
-        work.startTime = [results stringForColumnIndex:2];
-        work.endTime = [results stringForColumnIndex:3];
-        work.startRest = [results stringForColumnIndex:4];
-        work.endRest = [results stringForColumnIndex:5];
+        Works* works = [[Works alloc]init];
+        
+        works.day_id = [results intForColumnIndex:0];
+        works.date = [results dateForColumnIndex:1];
+        works.start = [results intForColumnIndex:2];
+        works.end = [results intForColumnIndex:3];
+        works.time_id = [results intForColumnIndex:4];
+        works.rest_id = [results intForColumnIndex:5];
     
-        [datas addObject:work];
+        [datas addObject:works];
         
         NSLog(@"%@",datas);
         
@@ -111,12 +112,12 @@
 /**
  * 書籍を更新します。
  */
-- (BOOL)update:(Work *)work
+- (BOOL)update:(Works *)works
 {
 	FMDatabase* db = [self getConnection];
 	[db open];
 	
-	BOOL isSucceeded = [db executeUpdate:SQL_UPDATE, work.startTime, work.endTime, work.startRest, work.endRest, [NSNumber numberWithInteger:work.dayId]];
+	BOOL isSucceeded = [db executeUpdate:SQL_UPDATE, works.start, works.end, works.time_id, works.rest_id, [NSNumber numberWithInteger:works.day_id]];
 	
 	[db close];
 	

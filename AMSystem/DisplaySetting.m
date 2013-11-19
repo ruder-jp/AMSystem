@@ -8,20 +8,22 @@
 
 #import "DisplaySetting.h"
 #import "daoWorks.h"
-#import "Work.h"
+#import "Times.h"
+#import "Rests.h"
+
 
 @interface DisplaySetting ()
 @property (nonatomic, retain) daoWorks*            daoWorks; //! 勤務設定を管理するオブジェクト
 
 
-@property (nonatomic, retain) Work*
-work;     //! 編集対象となる書籍
+@property (nonatomic, retain) Times*
+time;     //! 編集対象となる書籍
 
 @end
 
 @implementation DisplaySetting
 
-@synthesize work;
+@synthesize time;
 
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
 {
@@ -38,7 +40,7 @@ work;     //! 編集対象となる書籍
 	// Do any additional setup after loading the view.
     
     self.daoWorks = [[daoWorks alloc] init];
-	self.work    = [[Work alloc] init];
+	self.time    = [[Times alloc] init];
 
 }
 
@@ -49,7 +51,7 @@ work;     //! 編集対象となる書籍
 {
     
 	self.daoWorks = nil;
-	self.work    = nil;
+	self.time    = nil;
     
 	[super viewDidUnload];
 }
@@ -175,13 +177,13 @@ clickedButtonAtIndex:(NSInteger)buttonIndex {
             //OKボタンがタップされたときの処理
             //NSString*  insert = @"INSERT INTO kinmu (day,start,end) VALUES (?,?,?)";
         {
-            Work* newWork = [[Work alloc] init];
-            newWork.dayId     = 0;
-            newWork.startTime = self.startTime.text;
-            newWork.endTime   = self.endTime.text;
-            newWork.startRest = self.startRest.text;
-            newWork.endRest   = self.endRest.text;
-            [self.daoWorks update:newWork];
+            Times* newTime = [[Times alloc] init];
+            Rests* newRest = [[Rests alloc] init];
+            newTime.start = self.startTime.text;
+            newTime.end   = self.endTime.text;
+            newRest.start = self.startRest.text;
+            newRest.end   = self.endRest.text;
+            [self.daoWorks update:newTime];
         }
             break;
     }
