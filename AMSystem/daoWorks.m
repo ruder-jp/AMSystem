@@ -18,11 +18,16 @@
 #define WORKS_SQL_CREATE @"CREATE TABLE IF NOT EXISTS works (id INTEGER PRIMARY KEY AUTOINCREMENT, date DATE,start INTEGER ,end INTEGER,time_id INTEGER　 REFERENCES times(id),rest_id INTEGER REFERENCES rests(id));"
 #define TIMES_SQL_CREATE @"CREATE TABLE IF NOT EXISTS times (id INTEGER PRIMARY KEY AUTOINCREMENT, start INTEGER,end INTEGER);"
 #define RESTS_SQL_CREATE @"CREATE TABLE IF NOT EXISTS rests (id INTEGER PRIMARY KEY AUTOINCREMENT, start INTEGER,end INTEGER);"
+
 #define SQL_INSERT @"INSERT INTO working (day,startTime,endTime,startRest,endRest) VALUES (?,?,?,?,?);"
 #define SQL_UPDATE @"UPDATE working SET startTime = ?, endTime = ?, startRest = ?, endRest = ? WHERE id = ?;"
 #define SQL_SELECT @"SELECT id, day ,startTime , endTime , startRest , endRest FROM working;"
 
 
+
+#define SQL_INSERT_INIT_TIMES @"INSERT INTO times (start,end) VALUES (9:00,18:00);"
+
+#define SQL_INSERT_INIT_RESTS @"INSERT INTO rests (start,end) VALUES (12:00,13:00);"
 
 
 @interface daoWorks()
