@@ -6,10 +6,10 @@
 //  Copyright (c) 2013年 abcc_joko4. All rights reserved.
 //
 
-#import "Times.h"
+#import "Time.h"
 
-@implementation Times
+@implementation Time
 
-@synthesize times_id,start,end;
+@synthesize time_id,start,end;
 
 @end

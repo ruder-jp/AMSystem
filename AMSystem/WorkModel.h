@@ -8,13 +8,13 @@
 
 #import <Foundation/Foundation.h>
 
-@class Works;
+@class Work;
 
-@interface daoWorks : NSObject
+@interface WorkModel : NSObject
 
--(Works*)insertStart:(Works*)data;
+-(Work*)insertStart:(Work*)data;
 -(NSArray*)datas;
--(BOOL)update:(Works*)book;
+-(BOOL)update:(Work*)book;
 
 
 @end

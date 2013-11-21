@@ -6,9 +6,9 @@
 //  Copyright (c) 2013年 abcc_joko4. All rights reserved.
 //
 
-#import "Rests.h"
+#import "Rest.h"
 
-@implementation Rests
+@implementation Rest
 
 @synthesize rest_id,start,end;
 

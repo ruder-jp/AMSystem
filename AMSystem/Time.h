@@ -1,5 +1,5 @@
 //
-//  Rests.h
+//  Times.h
 //  AMSystem
 //
 //  Created by ブロス on 13/11/19.
@@ -8,9 +8,9 @@
 
 #import <Foundation/Foundation.h>
 
-@interface Rests : NSObject
+@interface Time : NSObject
 
-@property(nonatomic, assign)NSInteger rest_id;
+@property(nonatomic, assign)NSInteger time_id;
 @property(nonatomic, assign)NSInteger start;
 @property(nonatomic, assign)NSInteger end;
 

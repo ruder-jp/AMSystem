@@ -6,10 +6,10 @@
 //  Copyright (c) 2013年 abcc_joko4. All rights reserved.
 //
 
-#import "daoWorks.h"
+#import "WorkModel.h"
 #import "FMDatabase.h"
 #import "FMResultSet.h"
-#import "Works.h"
+#import "Work.h"
 
 #define DB_FILE_NAME @"works.db"
 
@@ -18,12 +18,9 @@
 #define WORKS_SQL_CREATE @"CREATE TABLE IF NOT EXISTS works (id INTEGER PRIMARY KEY AUTOINCREMENT, date DATE,start INTEGER ,end INTEGER,time_id INTEGER　 REFERENCES times(id),rest_id INTEGER REFERENCES rests(id));"
 #define TIMES_SQL_CREATE @"CREATE TABLE IF NOT EXISTS times (id INTEGER PRIMARY KEY AUTOINCREMENT, start INTEGER,end INTEGER);"
 #define RESTS_SQL_CREATE @"CREATE TABLE IF NOT EXISTS rests (id INTEGER PRIMARY KEY AUTOINCREMENT, start INTEGER,end INTEGER);"
-
 #define SQL_INSERT @"INSERT INTO working (day,startTime,endTime,startRest,endRest) VALUES (?,?,?,?,?);"
 #define SQL_UPDATE @"UPDATE working SET startTime = ?, endTime = ?, startRest = ?, endRest = ? WHERE id = ?;"
 #define SQL_SELECT @"SELECT id, day ,startTime , endTime , startRest , endRest FROM working;"
-
-
 
 #define SQL_INSERT_INIT_TIMES @"INSERT INTO times (start,end) VALUES (9:00,18:00);"
 
@@ -57,7 +54,7 @@
     return self;
 }
 
--(Works*)insertStart:(Works*)data
+-(Work*)insertStart:(Work*)data
 {
     FMDatabase* db = [self getConnection];
     [db open];
@@ -89,16 +86,16 @@
     NSMutableArray* datas = [[NSMutableArray alloc] initWithCapacity:0];
 
     while([results next]){
-        Works* works = [[Works alloc]init];
+        Work* work = [[Work alloc]init];
         
-        works.day_id = [results intForColumnIndex:0];
-        works.date = [results dateForColumnIndex:1];
-        works.start = [results intForColumnIndex:2];
-        works.end = [results intForColumnIndex:3];
-        works.time_id = [results intForColumnIndex:4];
-        works.rest_id = [results intForColumnIndex:5];
+        work.day_id = [results intForColumnIndex:0];
+        work.date = [results dateForColumnIndex:1];
+        work.start = [results intForColumnIndex:2];
+        work.end = [results intForColumnIndex:3];
+        work.time_id = [results intForColumnIndex:4];
+        work.rest_id = [results intForColumnIndex:5];
     
-        [datas addObject:works];
+        [datas addObject:work];
         
         NSLog(@"%@",datas);
         
@@ -121,12 +118,12 @@
 /**
  * 書籍を更新します。
  */
-- (BOOL)update:(Works *)works
+- (BOOL)update:(Work *)work
 {
 	FMDatabase* db = [self getConnection];
 	[db open];
 	
-	BOOL isSucceeded = [db executeUpdate:SQL_UPDATE, works.start, works.end, works.time_id, works.rest_id, [NSNumber numberWithInteger:works.day_id]];
+	BOOL isSucceeded = [db executeUpdate:SQL_UPDATE, work.start, work.end, work.time_id, work.rest_id, [NSNumber numberWithInteger:work.day_id]];
 	
 	[db close];
 	

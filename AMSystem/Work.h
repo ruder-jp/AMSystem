@@ -8,7 +8,7 @@
 
 #import <Foundation/Foundation.h>
 
-@interface Works : NSObject
+@interface Work : NSObject
 
 @property (nonatomic,assign) NSInteger day_id;
 @property (nonatomic,copy) NSDate* date;

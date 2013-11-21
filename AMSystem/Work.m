@@ -6,10 +6,11 @@
 //  Copyright (c) 2013年 abcc_joko4. All rights reserved.
 //
 
-#import "Works.h"
+#import "Work.h"
 
-@implementation Works
+@implementation Work
 
 @synthesize day_id,date,start,end,time_id,rest_id;
+
 
 @end
