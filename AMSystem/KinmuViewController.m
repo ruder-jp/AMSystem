@@ -8,14 +8,15 @@
 
 #import "KinmuViewController.h"
 #import "daoWorks.h"
+#import "Works.h"
 
 @interface KinmuViewController ()
 {
-    NSInteger* daysnum;
+    NSInteger daysnum;
     int days;
 }
 @property(nonatomic,retain)daoWorks* daoWorks;
-@property(nonatomic,retain)Work* work;
+@property(nonatomic,retain)Works* work;
 
 
 @end

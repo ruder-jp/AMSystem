@@ -8,19 +8,19 @@
 
 #import "TestInsertViewController.h"
 #import "daoWorks.h"
-#import "Work.h"
+#import "Works.h"
 
 
 @interface TestInsertViewController ()
 {
-    NSString *outputDay;
-    NSString *outputTime;
+    NSInteger outputDay;
+    NSInteger outputTime;
     
 }
 
 //@property (nonatomic,retain)KinmDB* dbKinmu;
 @property(nonatomic,retain)daoWorks* daoWorks;
-@property(nonatomic,retain)Work* work;
+@property(nonatomic,retain)Works* work;
 @end
 
 @implementation TestInsertViewController
@@ -47,13 +47,13 @@
     [day setDateFormat:@"yyyy/MM/dd"];
     [time setDateFormat:@"HH:mm"];
     
-    //String型に変換
-    outputDay = [day stringFromDate:now];
-    outputTime = [time stringFromDate:now];
+    
+//    outputDay =[outputDay intForC now;
+//    outputTime = [time intFromDate:now];
     
     
     self.daoWorks = [[daoWorks alloc]init];
-    self.work = [[Work alloc]init];
+    self.work = [[Works alloc]init];
 }
 
 - (void)didReceiveMemoryWarning
@@ -64,12 +64,12 @@
 
 - (IBAction)insertButton:(id)sender {
     
-    Work * testWork = [[Work alloc]init];
-    testWork.dayId = nil;
-    testWork.startTime = outputDay;
-    testWork.endTime = outputTime;
-    testWork.startRest = nil;
-    testWork.endRest = nil;
+    Works * testWork = [[Works alloc]init];
+    testWork.date = nil;
+    testWork.start = outputDay;
+    testWork.end = outputTime;
+    testWork.time_id = nil;
+    testWork.rest_id = nil;
     [self.daoWorks insertStart:testWork];
     
     
@@ -87,7 +87,7 @@
     //    NSLog(@"%@",[self.daoWorks datas]);
 }
 
--(void)catchSelect:(Work*)days
+-(void)catchSelect:(Works*)days
 {
 
       

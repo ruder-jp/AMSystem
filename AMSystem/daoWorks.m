@@ -11,13 +11,15 @@
 #import "FMResultSet.h"
 #import "Works.h"
 
-#define DB_FILE_NAME @"working.db"
+#define DB_FILE_NAME @"works.db"
 
 
-#define SQL_CREATE @"CREATE TABLE IF NOT EXISTS working (id INTEGER PRIMARY KEY AUTOINCREMENT, day TEXT,startTime TEXT ,endTime TEXT,startRest TEXT,endRest TEXT);"
+#define FORIGN_KEY_OPEN @"PRAGMA foreign_keys=ON;"
+#define WORKS_SQL_CREATE @"CREATE TABLE IF NOT EXISTS works (id INTEGER PRIMARY KEY AUTOINCREMENT, date DATE,start INTEGER ,end INTEGER,time_id INTEGER　 REFERENCES times(id),rest_id INTEGER REFERENCES rests(id));"
+#define TIMES_SQL_CREATE @"CREATE TABLE IF NOT EXISTS times (id INTEGER PRIMARY KEY AUTOINCREMENT, start INTEGER,end INTEGER);"
+#define RESTS_SQL_CREATE @"CREATE TABLE IF NOT EXISTS rests (id INTEGER PRIMARY KEY AUTOINCREMENT, start INTEGER,end INTEGER);"
 #define SQL_INSERT @"INSERT INTO working (day,startTime,endTime,startRest,endRest) VALUES (?,?,?,?,?);"
 #define SQL_UPDATE @"UPDATE working SET startTime = ?, endTime = ?, startRest = ?, endRest = ? WHERE id = ?;"
-
 #define SQL_SELECT @"SELECT id, day ,startTime , endTime , startRest , endRest FROM working;"
 
 
@@ -42,7 +44,9 @@
     {
         FMDatabase* db = [self getConnection];
         [db open];
-        [db executeUpdate:SQL_CREATE];
+        [db executeUpdate:WORKS_SQL_CREATE];
+        [db executeUpdate:TIMES_SQL_CREATE];
+        [db executeUpdate:RESTS_SQL_CREATE];
         [db close];
     }
     return self;
