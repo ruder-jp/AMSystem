@@ -8,9 +8,24 @@
 
 #import "Work.h"
 
+
+
 @implementation Work
 
 @synthesize day_id,date,start,end,time_id,rest_id;
+
+-(id)init
+{
+    if(self = [super init]){
+        self.day_id = 0;
+        self.date = nil;
+        self.start = 0;
+        self.end = 0;
+        self.time_id = 0;
+        self.rest_id = 0;
+    }
+    return self;
+}
 
 
 @end

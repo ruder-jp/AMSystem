@@ -7,16 +7,16 @@
 //
 
 #import "DisplaySetting.h"
-#import "daoWorks.h"
-#import "Times.h"
-#import "Rests.h"
+#import "WorkModel.h"
+#import "Time.h"
+#import "Rest.h"
 
 
 @interface DisplaySetting ()
-@property (nonatomic, retain) daoWorks*            daoWorks; //! 勤務設定を管理するオブジェクト
+@property (nonatomic, retain) WorkModel*            daoWorks; //! 勤務設定を管理するオブジェクト
 
 
-@property (nonatomic, retain) Times*
+@property (nonatomic, retain) Time*
 time;     //! 編集対象となる書籍
 
 @end
@@ -39,8 +39,8 @@ time;     //! 編集対象となる書籍
     [super viewDidLoad];
 	// Do any additional setup after loading the view.
     
-    self.daoWorks = [[daoWorks alloc] init];
-	self.time    = [[Times alloc] init];
+    self.daoWorks = [[WorkModel alloc] init];
+	self.time    = [[Time alloc] init];
 
 }
 
@@ -177,8 +177,8 @@ clickedButtonAtIndex:(NSInteger)buttonIndex {
             //OKボタンがタップされたときの処理
             //NSString*  insert = @"INSERT INTO kinmu (day,start,end) VALUES (?,?,?)";
         {
-            Times* newTime = [[Times alloc] init];
-            Rests* newRest = [[Rests alloc] init];
+            Time* newTime = [[Time alloc] init];
+            Rest* newRest = [[Rest alloc] init];
             newTime.start = self.startTime.text;
             newTime.end   = self.endTime.text;
             newRest.start = self.startRest.text;

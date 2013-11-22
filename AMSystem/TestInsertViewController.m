@@ -7,8 +7,8 @@
 //
 
 #import "TestInsertViewController.h"
-#import "daoWorks.h"
-#import "Works.h"
+#import "WorkModel.h"
+#import "Work.h"
 
 
 @interface TestInsertViewController ()
@@ -19,8 +19,8 @@
 }
 
 //@property (nonatomic,retain)KinmDB* dbKinmu;
-@property(nonatomic,retain)daoWorks* daoWorks;
-@property(nonatomic,retain)Works* work;
+@property(nonatomic,retain)WorkModel* daoWorks;
+@property(nonatomic,retain)Work* work;
 @end
 
 @implementation TestInsertViewController
@@ -52,8 +52,8 @@
 //    outputTime = [time intFromDate:now];
     
     
-    self.daoWorks = [[daoWorks alloc]init];
-    self.work = [[Works alloc]init];
+    self.daoWorks = [[WorkModel alloc]init];
+    self.work = [[Work alloc]init];
 }
 
 - (void)didReceiveMemoryWarning
@@ -64,7 +64,7 @@
 
 - (IBAction)insertButton:(id)sender {
     
-    Works * testWork = [[Works alloc]init];
+    Work * testWork = [[Work alloc]init];
     testWork.date = nil;
     testWork.start = outputDay;
     testWork.end = outputTime;
@@ -89,7 +89,7 @@
     //    NSLog(@"%@",[self.daoWorks datas]);
 }
 
--(void)catchSelect:(Works*)days
+-(void)catchSelect:(Work*)days
 {
 
       
