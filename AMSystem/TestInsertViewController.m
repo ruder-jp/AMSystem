@@ -13,13 +13,12 @@
 
 @interface TestInsertViewController ()
 {
-    NSInteger outputDay;
-    NSInteger outputTime;
-    
+    NSString* outputDay;
+    NSString* outputTime;
 }
 
 //@property (nonatomic,retain)KinmDB* dbKinmu;
-@property(nonatomic,retain)WorkModel* daoWorks;
+@property(nonatomic,retain)WorkModel* worksModel;
 @property(nonatomic,retain)Work* work;
 @end
 
@@ -42,35 +41,29 @@
     
     NSDateFormatter *day = [[NSDateFormatter alloc] init];
     NSDateFormatter *time = [[NSDateFormatter alloc] init];
-    
     NSDate *now = [NSDate date];
-    [day setDateFormat:@"yyyy/MM/dd"];
+    [day setDateFormat:@"yyyy-MM-dd"];
     [time setDateFormat:@"HH:mm"];
-    
-    
-//    outputDay =[outputDay intForC now;
-//    outputTime = [time intFromDate:now];
-    
-    
-    self.daoWorks = [[WorkModel alloc]init];
+    outputTime = [time stringFromDate:now];
+    outputDay = [day stringFromDate:now];
+    self.worksModel = [[WorkModel alloc]init];
     self.work = [[Work alloc]init];
 }
 
 - (void)didReceiveMemoryWarning
 {
     [super didReceiveMemoryWarning];
-    // Dispose of any resources that can be recreated.
 }
 
 - (IBAction)insertButton:(id)sender {
     
     Work * testWork = [[Work alloc]init];
-    testWork.date = nil;
-    testWork.start = outputDay;
-    testWork.end = outputTime;
-    testWork.time_id = nil;
-    testWork.rest_id = nil;
-    [self.daoWorks insertStart:testWork];
+    testWork.date = outputDay;
+    testWork.start = outputTime;
+    testWork.end = nil;
+    testWork.time_id = 0;
+    testWork.rest_id = 0;
+    [self.worksModel insertStart:testWork];
     
     
     NSLog(@"insert");
@@ -79,7 +72,7 @@
 - (IBAction)selectButton:(id)sender {
     
     NSLog(@"select");
-    [self.daoWorks datas];
+    [self.worksModel datas];
     
     
     
@@ -87,6 +80,12 @@
     
     
     //    NSLog(@"%@",[self.daoWorks datas]);
+}
+
+- (IBAction)updateButton:(id)sender {
+    Work* update = [[Work alloc]init];
+    update.end = outputTime;
+    [self.worksModel updateEnd:update];
 }
 
 -(void)catchSelect:(Work*)days

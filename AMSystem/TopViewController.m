@@ -18,6 +18,7 @@
 
 @interface TopViewController ()
 
+
 @end
 
 @implementation TopViewController
@@ -103,6 +104,7 @@
             NSLog(@"%@",@"2番目");
             //データベース利用
             if(self.view.tag == START){
+                
                 [self.topButton setTitle:@"終業"forState:UIControlStateNormal];
                 self.view.tag = END;
             }else if(self.view.tag == END){

@@ -14,7 +14,7 @@
 
 -(Work*)insertStart:(Work*)data;
 -(NSArray*)datas;
--(BOOL)update:(Work*)book;
-
+-(BOOL)update:(Work*)work;
+-(BOOL)updateEnd:(Work *)work;
 
 @end
