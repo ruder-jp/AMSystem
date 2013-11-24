@@ -9,16 +9,21 @@
 #import "TopViewController.h"
 #import "FMDatabase.h"
 #import "FMDatabaseAdditions.h"
+#import "WorkModel.h"
+#import "Work.h"
 
 #define START 0
 #define END 1
 #define ERROR 2
 
-
-
 @interface TopViewController ()
+{
+    NSString* insertTime;
+    NSString* insertDay;
+}
 
-
+@property(nonatomic,retain)WorkModel* worksModel;
+@property(nonatomic,retain)Work* work;
 @end
 
 @implementation TopViewController
@@ -41,6 +46,8 @@
                                    userInfo:nil
                                     repeats:YES];
     [self.topButton setTitle:@"始業"forState:UIControlStateNormal];
+    self.worksModel = [[WorkModel alloc]init];
+    self.work = [[Work alloc]init];
 }
 
 //初期化処理
@@ -50,10 +57,16 @@
 -(void)driveClock:(NSTimer *)timer
 {
     NSDate *todayDate = [NSDate date];
+    NSDateFormatter *insertDayFomatter = [[NSDateFormatter alloc]init];
+    NSDateFormatter *insertTimeFomatter = [[NSDateFormatter alloc]init];
     NSDateFormatter *timesOutputFomatter = [[NSDateFormatter alloc]init];
     NSDateFormatter *daysOutputFomatter = [[NSDateFormatter alloc]init];
+    [insertDayFomatter setDateFormat:@"yyyy-MM-dd"];
+    [insertTimeFomatter setDateFormat:@"HH:mm"];
     [timesOutputFomatter setDateFormat:@"HH:mm:ss"];
     [daysOutputFomatter setDateFormat:@"MM月dd日"];
+    insertDay = [insertDayFomatter stringFromDate:todayDate];
+    insertTime = [insertTimeFomatter stringFromDate:todayDate];
     NSString *strNow =[timesOutputFomatter stringFromDate:todayDate];
     NSString *daysStr = [daysOutputFomatter stringFromDate:todayDate];
     _timeLavel.text = strNow;
@@ -96,7 +109,7 @@
 
 -(void)alertView:(UIAlertView*)alertView clickedButtonAtIndex:(NSInteger)buttonIndex
 {
-    switch(buttonIndex){
+       switch(buttonIndex){
         case 0:
             NSLog(@"%@",@"1番目");
             break;
@@ -104,17 +117,37 @@
             NSLog(@"%@",@"2番目");
             //データベース利用
             if(self.view.tag == START){
-                
+                [self insert];
+                _startLavel.text = insertTime;
                 [self.topButton setTitle:@"終業"forState:UIControlStateNormal];
                 self.view.tag = END;
             }else if(self.view.tag == END){
+                [self update];
+                _endLavel.text = insertTime;
                 [self.topButton setTitle:@"始業"forState:UIControlStateNormal];
-                
                 self.view.tag = ERROR;
             }else{
                 NSLog(@"%@",@"もう入りません");
             }
             break;
     }
+}
+
+-(void)insert
+{
+    Work* useWork =[[Work alloc]init];
+    useWork.date = insertDay;
+    useWork.start = insertTime;
+    useWork.end = nil;
+    useWork.time_id = 0;
+    useWork.rest_id = 0;
+    [self.worksModel insertStart:useWork];
+}
+
+-(void)update
+{
+    Work* update = [[Work alloc]init];
+    update.end = insertTime;
+    [self.worksModel updateEnd:update];
 }
 @end

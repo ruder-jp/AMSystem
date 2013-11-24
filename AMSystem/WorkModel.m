@@ -20,7 +20,7 @@
 #define TIMES_SQL_CREATE @"CREATE TABLE IF NOT EXISTS times (id INTEGER PRIMARY KEY AUTOINCREMENT, start INTEGER,end IINTEGER);"
 #define RESTS_SQL_CREATE @"CREATE TABLE IF NOT EXISTS rests (id INTEGER PRIMARY KEY AUTOINCREMENT, start INTEGER,end INTEGER);"
 #define SQL_INSERT @"INSERT INTO works (date,start,end,time_id,rest_id) VALUES (?,?,?,?,?);"
-#define SQL_START @"INSERT INTO works(date,start) VALUES(?,?);"
+#define SQL_START @"INSERT INTO works(date,start,end,time_id,rest_id) VALUES(?,?,?,?,?);"
 #define SQL_END @"UPDATE  works SET  end = ? WHERE id = ?;"
 #define SQL_UPDATE @"UPDATE works SET start = ?, end = ?, rest_id = ?, time_id = ? WHERE id = ?;"
 #define SQL_SELECT @"SELECT id, day ,start , end , rest_id , time_id FROM works;"
@@ -66,7 +66,7 @@
     [db open];
     
     [db setShouldCacheStatements:YES];
-    if([db executeUpdate:SQL_START,data.date,data.start]){
+    if([db executeUpdate:SQL_START,data.date,data.start,data.end,data.time_id,data.rest_id]){
         data.day_id = [db lastInsertRowId];
     }else
     {
