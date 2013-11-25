@@ -13,6 +13,8 @@
 
 @interface TestInsertViewController ()
 {
+    NSString* passTime;
+    NSString* passDay;
     NSString* outputDay;
     NSString* outputTime;
 }
@@ -46,9 +48,25 @@
     [time setDateFormat:@"HH:mm"];
     outputTime = [time stringFromDate:now];
     outputDay = [day stringFromDate:now];
+    
+//    passTime = [self combiString:outputTime];
+//    passDay = [self combiString:outputDay];
+//    
     self.worksModel = [[WorkModel alloc]init];
     self.work = [[Work alloc]init];
 }
+
+////文字列結合
+//-(NSString*)combiString:(NSString*)item
+//{
+//    NSString* front = @"julianday(\"";
+//    NSString* back = @"\")";
+//    NSString* first = [front stringByAppendingString:item];
+//    NSString* second = [first stringByAppendingString:back];
+//    
+//    NSLog(@"%@",second);
+//    return second;
+//}
 
 - (void)didReceiveMemoryWarning
 {

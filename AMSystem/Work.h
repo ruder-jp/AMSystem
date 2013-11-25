@@ -11,9 +11,9 @@
 @interface Work : NSObject
 
 @property (nonatomic,assign) NSInteger day_id;
-@property (nonatomic,assign) NSDate* date;
-@property (nonatomic,assign) NSDate* start;
-@property (nonatomic,assign) NSDate* end;
+@property (nonatomic,assign) NSString* date;
+@property (nonatomic,assign) NSString* start;
+@property (nonatomic,assign) NSString* end;
 @property (nonatomic,assign) NSInteger time_id;
 @property (nonatomic,assign) NSInteger rest_id;
 
