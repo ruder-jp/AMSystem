@@ -23,7 +23,7 @@
 #define SQL_START @"INSERT INTO works(date,start,end,time_id,rest_id) VALUES(?,?,?,?,?);"
 #define SQL_END @"UPDATE  works SET  end = ? WHERE id = ?;"
 #define SQL_UPDATE @"UPDATE works SET start = ?, end = ?, rest_id = ?, time_id = ? WHERE id = ?;"
-#define SQL_SELECT @"SELECT id, day ,start , end , rest_id , time_id FROM works;"
+#define SQL_SELECT @"SELECT id, date ,start , end , rest_id , time_id FROM works;"
 
 #define SQL_INSERT_INIT_TIMES @"INSERT INTO times (start,end) VALUES (9:00,18:00);"
 
@@ -96,8 +96,6 @@
     [db open];
     
     FMResultSet* results = [db executeQuery:SQL_SELECT];
-    
-    
     NSMutableArray* datas = [[NSMutableArray alloc] initWithCapacity:0];
     
     while([results next]){
@@ -115,14 +113,15 @@
         NSLog(@"%@",datas);
         
         NSLog(@"%i",[results intForColumnIndex:0]);
-        NSLog(@"%@",[results stringForColumnIndex:1]);
-        NSLog(@"%@",[results stringForColumnIndex:2]);
-        NSLog(@"%@",[results stringForColumnIndex:3]);
-        NSLog(@"%@",[results stringForColumnIndex:4]);
-        NSLog(@"%@",[results stringForColumnIndex:5]);
-        
+        NSLog(@"%@",[results dateForColumnIndex:1]);
+        NSLog(@"%@",[results dateForColumnIndex:2]);
+        NSLog(@"%@",[results dateForColumnIndex:3]);
+        NSLog(@"%i",[results intForColumnIndex:4]);
+        NSLog(@"%i",[results intForColumnIndex:5]);
+
+    NSLog(@"%@",@"select成功");
     }
-    NSLog(@"%@",@"select成功？");
+    
     
     
     [db close];

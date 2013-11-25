@@ -74,12 +74,6 @@
     NSLog(@"select");
     [self.worksModel datas];
     
-    
-    
-//    NSMutableArray* testArray = [self.datas = ]
-    
-    
-    //    NSLog(@"%@",[self.daoWorks datas]);
 }
 
 - (IBAction)updateButton:(id)sender {
@@ -87,6 +81,7 @@
     update.end = outputTime;
     [self.worksModel updateEnd:update];
 }
+
 
 -(void)catchSelect:(Work*)days
 {
