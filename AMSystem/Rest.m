@@ -16,8 +16,8 @@
 {
     if(self = [super init]){
         self.rest_id = 0;
-        self.start = 0;
-        self.end = 0;
+        self.start = @"";
+        self.end = @"";
     }
     return self;
 }

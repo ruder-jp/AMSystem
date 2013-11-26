@@ -11,13 +11,7 @@
 #import "FMResultSet.h"
 #import "Time.h"
 
-#define DB_FILE_NAME @"works.db"
 
-#define TIMES_SQL_CREATE @"CREATE TABLE IF NOT EXISTS times (id INTEGER PRIMARY KEY AUTOINCREMENT, start REAL DEFAULT 10,end REAL DEFAULT 10);"
-
-#define SQL_INSERT_INIT_TIMES @"INSERT INTO times (start,end) VALUES (julianday(¥"?¥"),julianday(¥"?¥"));"
-
-#define SQL_UPDATE_TIMES @"UPDATE times SET start = ?, end = ?,WHERE id = ?;"
 
 @interface TimeModel()
 @property (nonatomic,copy)NSString* dbPath;
@@ -43,7 +37,7 @@
 {
     FMDatabase* db = [self getConnection];
     [db open];
-    [db executeUpdate:TIMES_SQL_CREATE];
+    [db executeUpdate:@"CREATE TABLE IF NOT EXISTS times (id INTEGER PRIMARY KEY AUTOINCREMENT, start REAL,end REAL);"];
     [db close];
 }
 
@@ -75,37 +69,36 @@
 }
 
 /**
- * 勤務設定を更新します。
+ * 勤務設定時間を更新する
  */
 - (BOOL)update:(Time *)time
 {
 	FMDatabase* db = [self getConnection];
 	[db open];
 	
-	BOOL isSucceeded = [db executeUpdate:SQL_UPDATE_TIMES, time.start, time.end, [NSNumber numberWithInteger:time.time_id]];
+	BOOL isSucceeded = [db executeUpdate:@"UPDATE times SET start = ?, end = ?,WHERE id = ?;", time.start, time.end, [NSNumber numberWithInteger:time.time_id]];
 	
 	[db close];
 	
 	return isSucceeded;
 }
 
-//時間設定を参照する
+//勤務設定時間を参照する
 - (Time*)setting
 {
     FMDatabase* db = [self getConnection];
 	[db open];
     
-    FMResultSet*    results = [db executeQuery:SQL_SELECT];
-    //FMResultSet*    results = [db executeQuery:SQL_SELECT_SETTING_DISPLAY];
+    FMResultSet*    results = [db executeQuery:@"SELECT id, strftime('%H:%M',start) , strftime('%H:%M',end) FROM times;"];
     
-    NSMutableArray* times = [[NSMutableArray alloc] initWithCapacity:0];
+    //NSMutableArray* times = [[NSMutableArray alloc] initWithCapacity:0];
     
     [results next];
     Time* time = [[Time alloc] init];
     time.time_id = [results intForColumnIndex:0];
-    time.start = [results realForColumnIndex:1];
-    time.end = [results realForColumnIndex:2];
-    //[works addObject:work];
+    time.start = [results stringForColumnIndex:1];
+    time.end = [results stringForColumnIndex:2];
+    //[times addObject:time];
     
     
     [db close];
@@ -122,7 +115,7 @@
 	NSArray*  paths = NSSearchPathForDirectoriesInDomains( NSDocumentDirectory, NSUserDomainMask, YES );
 	NSString* dir   = [paths objectAtIndex:0];
 	
-	return [dir stringByAppendingPathComponent:DB_FILE_NAME];
+	return [dir stringByAppendingPathComponent:@"works.db"];
 }
 
 @end
