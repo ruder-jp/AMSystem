@@ -89,6 +89,31 @@
 	return isSucceeded;
 }
 
+//時間設定を参照する
+- (Time*)setting
+{
+    FMDatabase* db = [self getConnection];
+	[db open];
+    
+    FMResultSet*    results = [db executeQuery:SQL_SELECT];
+    //FMResultSet*    results = [db executeQuery:SQL_SELECT_SETTING_DISPLAY];
+    
+    NSMutableArray* times = [[NSMutableArray alloc] initWithCapacity:0];
+    
+    [results next];
+    Time* time = [[Time alloc] init];
+    time.time_id = [results intForColumnIndex:0];
+    time.start = [results realForColumnIndex:1];
+    time.end = [results realForColumnIndex:2];
+    //[works addObject:work];
+    
+    
+    [db close];
+    
+    //NSLog(results.endTime);
+    return time;
+}
+
 /**
  * データベース ファイルのパスを取得します。
  */

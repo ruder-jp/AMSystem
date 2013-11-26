@@ -48,6 +48,11 @@ rest;     //! 編集対象となる書籍
     self.restModel = [[RestModel alloc] init];
 	self.time    = [[Time alloc] init];
     
+    Time* setObject = [self.timeModel setting];
+    
+    self.startTime.text = setObject.start;
+    self.endTime.text = setObject.end;
+    
     
 }
 
