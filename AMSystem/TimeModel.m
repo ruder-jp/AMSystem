@@ -13,9 +13,9 @@
 
 #define DB_FILE_NAME @"works.db"
 
-#define TIMES_SQL_CREATE @"CREATE TABLE IF NOT EXISTS times (id INTEGER PRIMARY KEY AUTOINCREMENT, start INTEGER,end INTEGER);"
+#define TIMES_SQL_CREATE @"CREATE TABLE IF NOT EXISTS times (id INTEGER PRIMARY KEY AUTOINCREMENT, start REAL DEFAULT 10,end REAL DEFAULT 10);"
 
-#define SQL_INSERT_INIT_TIMES @"INSERT INTO times (start,end) VALUES (9:00,18:00);"
+#define SQL_INSERT_INIT_TIMES @"INSERT INTO times (start,end) VALUES (julianday(¥"?¥"),julianday(¥"?¥"));"
 
 #define SQL_UPDATE_TIMES @"UPDATE times SET start = ?, end = ?,WHERE id = ?;"
 
@@ -34,6 +34,7 @@
     if(self = [super init])
     {
         [self createSql];
+        [self initTimes];
     }
     return self;
 }
@@ -45,6 +46,18 @@
     [db executeUpdate:TIMES_SQL_CREATE];
     [db close];
 }
+
+
+-(void)initTimes
+{
+    FMDatabase* db = [self getConnection];
+    [db open];
+    [db executeUpdate:@"INSERT INTO times (start,end) VALUES (julianday('09:00:00'), julianday('18:00:00'));"];
+    [db close];
+}
+
+
+
 
 /**
  * データベースを取得します。
@@ -62,7 +75,7 @@
 }
 
 /**
- * 書籍を更新します。
+ * 勤務設定を更新します。
  */
 - (BOOL)update:(Time *)time
 {

@@ -12,4 +12,14 @@
 
 @synthesize rest_id,start,end;
 
+-(id)init
+{
+    if(self = [super init]){
+        self.rest_id = 0;
+        self.start = 0;
+        self.end = 0;
+    }
+    return self;
+}
+
 @end
