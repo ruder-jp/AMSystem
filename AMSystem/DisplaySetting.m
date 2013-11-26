@@ -7,17 +7,22 @@
 //
 
 #import "DisplaySetting.h"
-#import "WorkModel.h"
+#import "TimeModel.h"
+#import "RestModel.h"
 #import "Time.h"
 #import "Rest.h"
 
 
 @interface DisplaySetting ()
-@property (nonatomic, retain) WorkModel*            daoWorks; //! 勤務設定を管理するオブジェクト
+@property (nonatomic, retain) TimeModel*            timeModel; //! 勤務設定を管理するオブジェクト
+@property (nonatomic, retain) RestModel*            restModel; //! 勤務設定を管理するオブジェクト
 
 
 @property (nonatomic, retain) Time*
 time;     //! 編集対象となる書籍
+
+@property (nonatomic, retain) Rest*
+rest;     //! 編集対象となる書籍
 
 @end
 
@@ -39,9 +44,11 @@ time;     //! 編集対象となる書籍
     [super viewDidLoad];
 	// Do any additional setup after loading the view.
     
-    self.daoWorks = [[WorkModel alloc] init];
+    self.timeModel = [[TimeModel alloc] init];
+    self.restModel = [[RestModel alloc] init];
 	self.time    = [[Time alloc] init];
-
+    
+    
 }
 
 /**
@@ -50,7 +57,8 @@ time;     //! 編集対象となる書籍
 - (void)viewDidUnload
 {
     
-	self.daoWorks = nil;
+	self.timeModel = nil;
+    self.restModel = nil;
 	self.time    = nil;
     
 	[super viewDidUnload];
@@ -70,12 +78,12 @@ time;     //! 編集対象となる書籍
     
     
     
-//    CGRect datePickerFrame = self.myDatePicker.frame;
-//    CGRect toolBarFrame = self.toolBar.frame;
-//    toolBarFrame.origin.y = self.view.frame.size.height;
-//    datePickerFrame.origin.y = self.view.frame.size.height + self.toolBar.frame.size.height;
-//    self.myDatePicker.frame = datePickerFrame;
-//    self.toolBar.frame = toolBarFrame;
+    //    CGRect datePickerFrame = self.myDatePicker.frame;
+    //    CGRect toolBarFrame = self.toolBar.frame;
+    //    toolBarFrame.origin.y = self.view.frame.size.height;
+    //    datePickerFrame.origin.y = self.view.frame.size.height + self.toolBar.frame.size.height;
+    //    self.myDatePicker.frame = datePickerFrame;
+    //    self.toolBar.frame = toolBarFrame;
     
     
 }
@@ -90,7 +98,7 @@ time;     //! 編集対象となる書籍
                      animations:^{
                          _toolBar.frame = toolBarFrame;
                      }];
-
+    
     //DatePickerを引っ込める
     CGRect datePickerFrame = self.myDatePicker.frame;
     datePickerFrame.origin.y = self.view.frame.size.height + self.toolBar.frame.size.height;
@@ -101,7 +109,7 @@ time;     //! 編集対象となる書籍
                      animations:^{
                          _myDatePicker.frame = datePickerFrame;
                      }];
-
+    
 }
 
 //テキストフィールドをタップしたときの処理
@@ -156,7 +164,7 @@ time;     //! 編集対象となる書籍
     [alert addButtonWithTitle:@"キャンセル"];
     [alert addButtonWithTitle:@"OK"];
     [alert show];
-
+    
 }
 
 - (IBAction)settingBackButton:(id)sender {
@@ -179,16 +187,16 @@ clickedButtonAtIndex:(NSInteger)buttonIndex {
         {
             Time* newTime = [[Time alloc] init];
             Rest* newRest = [[Rest alloc] init];
+            //newTime.start = self.startTime.text;
             newTime.start = self.startTime.text;
             newTime.end   = self.endTime.text;
             newRest.start = self.startRest.text;
             newRest.end   = self.endRest.text;
-            [self.daoWorks update:newTime];
+            //[self.timeModel update:newTime];
+            //[self.restModel update:newRest];
         }
             break;
     }
-
+    
 }
-
-
 @end
