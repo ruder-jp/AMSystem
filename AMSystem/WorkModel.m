@@ -14,22 +14,7 @@
 
 #define DB_FILE_NAME @"works.db"
 
-
 #define FORIGN_KEY_OPEN @"PRAGMA foreign_keys=ON;"
-#define WORKS_SQL_CREATE @"CREATE TABLE IF NOT EXISTS works (id INTEGER PRIMARY KEY AUTOINCREMENT, date REAL,start REAL ,end REAL,time_id INTEGER REFERENCES times(id),rest_id INTEGER REFERENCES rests(id));"
-#define TIMES_SQL_CREATE @"CREATE TABLE IF NOT EXISTS times (id INTEGER PRIMARY KEY AUTOINCREMENT, start REAL,end REAL);"
-#define RESTS_SQL_CREATE @"CREATE TABLE IF NOT EXISTS rests (id INTEGER PRIMARY KEY AUTOINCREMENT, start REAL,end REAL);"
-#define SQL_INSERT @"INSERT INTO works (date,start,end,time_id,rest_id) VALUES (julianday(\"?\"),julianday(\"?\"),?,?,?);"
-//#define SQL_START @"INSERT INTO works(date,start,end,time_id,rest_id) VALUES(?,?,?,?,?);"
-#define SQL_END @"UPDATE  works SET  end = ? WHERE id = ?;"
-#define SQL_UPDATE @"UPDATE works SET start = ?, end = ?, rest_id = ?, time_id = ? WHERE id = ?;"
-#define SQL_SELECT @"SELECT id, datetime(date) ,datetime(start) , datetime(end) , rest_id , time_id FROM works;"
-
-
-#define SQL_INSERT_INIT_TIMES @"INSERT INTO times (start,end) VALUES (9:00,18:00);"
-
-#define SQL_INSERT_INIT_RESTS @"INSERT INTO rests (start,end) VALUES (12:00,13:00);"
-
 
 @interface WorkModel()
 @property (nonatomic,copy)NSString* dbPath;
@@ -52,11 +37,15 @@
 
 -(void)createSql
 {
+    NSString *createWorks = [[NSString alloc]initWithFormat:@"CREATE TABLE IF NOT EXISTS works (id INTEGER PRIMARY KEY AUTOINCREMENT, date REAL,start REAL ,end REAL,time_id INTEGER REFERENCES times(id),rest_id INTEGER REFERENCES rests(id));"];
+    NSString *createTimes = [[NSString alloc]initWithFormat:@"CREATE TABLE IF NOT EXISTS times (id INTEGER PRIMARY KEY AUTOINCREMENT, start REAL,end REAL);"];
+    NSString *createRests = [[NSString alloc]initWithFormat:@"CREATE TABLE IF NOT EXISTS rests (id INTEGER PRIMARY KEY AUTOINCREMENT, start REAL,end REAL);"];
+    
     FMDatabase* db = [self getConnection];
     [db open];
-    [db executeUpdate:WORKS_SQL_CREATE];
-    [db executeUpdate:TIMES_SQL_CREATE];
-    [db executeUpdate:RESTS_SQL_CREATE];
+    [db executeUpdate:createWorks];
+    [db executeUpdate:createTimes];
+    [db executeUpdate:createRests];
     [db close];
 }
 
@@ -97,8 +86,8 @@
 {
     FMDatabase* db = [self getConnection];
     [db open];
-    
-    FMResultSet* results = [db executeQuery:SQL_SELECT];
+    NSString* sql = [[NSString alloc]initWithFormat:@"SELECT id, datetime(date) ,datetime(start) , datetime(end) , rest_id , time_id FROM works;"];
+    FMResultSet* results = [db executeQuery:sql];
     NSMutableArray* datas = [[NSMutableArray alloc] initWithCapacity:0];
     
     while([results next]){
@@ -129,19 +118,6 @@
     
     [db close];
     return datas;
-}
-
-
-- (BOOL)update:(Work *)work
-{
-	FMDatabase* db = [self getConnection];
-	[db open];
-	
-	BOOL isSucceeded = [db executeUpdate:SQL_UPDATE, work.start, work.end, work.time_id, work.rest_id, [NSNumber numberWithInteger:work.day_id]];
-	
-	[db close];
-	
-	return isSucceeded;
 }
 
 /**

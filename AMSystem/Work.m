@@ -18,9 +18,9 @@
 {
     if(self = [super init]){
         self.day_id = 0;
-        self.date  = @"";
-        self.start = @"";
-        self.end = @"";
+        self.date  = nil;
+        self.start = nil;
+        self.end = nil;
         self.time_id = 0;
         self.rest_id = 0;
     }
