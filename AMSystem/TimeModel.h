@@ -8,6 +8,12 @@
 
 #import <Foundation/Foundation.h>
 
+@class Time;
+
 @interface TimeModel : NSObject
+
+- (BOOL)update:(Time *)time;
+
+- (Time*)setting;
 
 @end

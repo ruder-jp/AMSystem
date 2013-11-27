@@ -12,4 +12,14 @@
 
 @synthesize time_id,start,end;
 
+-(id)init
+{
+    if(self = [super init]){
+        self.time_id = 0;
+        self.start = @"";
+        self.end = @"";
+    }
+    return self;
+}
+
 @end

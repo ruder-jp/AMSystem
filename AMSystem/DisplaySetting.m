@@ -28,7 +28,7 @@ rest;     //! 編集対象となる書籍
 
 @implementation DisplaySetting
 
-@synthesize time;
+@synthesize time,rest;
 
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
 {
@@ -47,6 +47,15 @@ rest;     //! 編集対象となる書籍
     self.timeModel = [[TimeModel alloc] init];
     self.restModel = [[RestModel alloc] init];
 	self.time    = [[Time alloc] init];
+    
+    Time* timeObject = [self.timeModel setting];
+    Rest* restObject = [self.restModel setting];
+    
+    self.startTime.text = timeObject.start;
+    self.endTime.text = timeObject.end;
+    self.startRest.text = restObject.start;
+    self.endRest.text = restObject.end;
+    
     
     
 }
@@ -185,15 +194,15 @@ clickedButtonAtIndex:(NSInteger)buttonIndex {
             //OKボタンがタップされたときの処理
             //NSString*  insert = @"INSERT INTO kinmu (day,start,end) VALUES (?,?,?)";
         {
-            Time* newTime = [[Time alloc] init];
-            Rest* newRest = [[Rest alloc] init];
+            //Time* newTime = [[Time alloc] init];
+            //Rest* newRest = [[Rest alloc] init];
             //newTime.start = self.startTime.text;
-            newTime.start = self.startTime.text;
-            newTime.end   = self.endTime.text;
-            newRest.start = self.startRest.text;
-            newRest.end   = self.endRest.text;
-            //[self.timeModel update:newTime];
-            //[self.restModel update:newRest];
+            time.start = self.startTime.text;
+            time.end   = self.endTime.text;
+            rest.start = self.startRest.text;
+            rest.end   = self.endRest.text;
+            [self.timeModel update:time];
+            [self.restModel update:rest];
         }
             break;
     }

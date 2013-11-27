@@ -11,7 +11,7 @@
 @interface Rest : NSObject
 
 @property(nonatomic, assign)NSInteger rest_id;
-@property(nonatomic, assign)NSInteger start;
-@property(nonatomic, assign)NSInteger end;
+@property(nonatomic, assign)NSString* start;
+@property(nonatomic, assign)NSString* end;
 
 @end

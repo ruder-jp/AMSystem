@@ -11,13 +11,6 @@
 #import "FMResultSet.h"
 #import "Rest.h"
 
-#define DB_FILE_NAME @"works.db"
-
-#define RESTS_SQL_CREATE @"CREATE TABLE IF NOT EXISTS rests (id INTEGER PRIMARY KEY AUTOINCREMENT, start INTEGER,end INTEGER);"
-
-#define SQL_INSERT_INIT_RESTS @"INSERT INTO rests (start,end) VALUES (12:00,13:00);"
-
-#define SQL_UPDATE_RESTS @"UPDATE rests SET start = ?, end = ?,WHERE id = ?;"
 
 
 @interface RestModel()
@@ -35,6 +28,7 @@
     if(self = [super init])
     {
         [self createSql];
+        [self initRests];
     }
     return self;
 }
@@ -43,7 +37,17 @@
 {
     FMDatabase* db = [self getConnection];
     [db open];
-    [db executeUpdate:RESTS_SQL_CREATE];
+    [db executeUpdate:@"CREATE TABLE IF NOT EXISTS rests (id INTEGER PRIMARY KEY AUTOINCREMENT, start REAL,end REAL);"];
+    [db close];
+}
+
+-(void)initRests
+{
+    FMDatabase* db = [self getConnection];
+    [db open];
+    [db executeUpdate:@"INSERT INTO rests (start,end) VALUES (julianday('12:00:00'), julianday('13:00:00'));"];
+    
+    
     [db close];
 }
 
@@ -63,18 +67,42 @@
 }
 
 /**
- * 書籍を更新します。
+ * 休憩設定時間を更新する
  */
 - (BOOL)update:(Rest *)rest
 {
 	FMDatabase* db = [self getConnection];
 	[db open];
 	
-	BOOL isSucceeded = [db executeUpdate:SQL_UPDATE_RESTS, rest.start, rest.end, [NSNumber numberWithInteger:rest.rest_id]];
+	BOOL isSucceeded = [db executeUpdate:@"UPDATE rests SET start = ?, end = ?,WHERE id = ?;", rest.start, rest.end, [NSNumber numberWithInteger:rest.rest_id]];
 	
 	[db close];
 	
 	return isSucceeded;
+}
+
+//休憩設定時間を参照する
+- (Rest*)setting
+{
+    FMDatabase* db = [self getConnection];
+	[db open];
+    
+    FMResultSet*    results = [db executeQuery:@"SELECT id, strftime('%H:%M',start) , strftime('%H:%M',end) FROM rests;"];
+    
+    //NSMutableArray* times = [[NSMutableArray alloc] initWithCapacity:0];
+    
+    [results next];
+    Rest* rest = [[Rest alloc] init];
+    rest.rest_id = [results intForColumnIndex:0];
+    rest.start = [results stringForColumnIndex:1];
+    rest.end = [results stringForColumnIndex:2];
+    //[rests addObject:rest];
+    
+    
+    [db close];
+    
+    //NSLog(results.endTime);
+    return rest;
 }
 
 /**
@@ -85,7 +113,7 @@
 	NSArray*  paths = NSSearchPathForDirectoriesInDomains( NSDocumentDirectory, NSUserDomainMask, YES );
 	NSString* dir   = [paths objectAtIndex:0];
 	
-	return [dir stringByAppendingPathComponent:DB_FILE_NAME];
+	return [dir stringByAppendingPathComponent:@"works.db"];
 }
 
 @end

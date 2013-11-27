@@ -8,6 +8,11 @@
 
 #import <Foundation/Foundation.h>
 
+@class Rest;
+
 @interface RestModel : NSObject
 
+- (BOOL)update:(Rest *)rest;
+
+- (Rest*)setting;
 @end
