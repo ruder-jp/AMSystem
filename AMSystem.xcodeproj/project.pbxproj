@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		1BD159A81807C2CF00093AFA /* DisplaySetting.m in Sources */ = {isa = PBXBuildFile; fileRef = 1BD159A71807C2CF00093AFA /* DisplaySetting.m */; };
+		2363BCE1184473FA002F71FA /* TableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 2363BCE0184473FA002F71FA /* TableViewController.m */; };
 		2365E3471837AC7900FF1EF9 /* TopViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 2365E3461837AC7900FF1EF9 /* TopViewController.m */; };
 		2365E34E183B0AE500FF1EF9 /* Work.m in Sources */ = {isa = PBXBuildFile; fileRef = 2365E34D183B0AE500FF1EF9 /* Work.m */; };
 		2365E351183B0AF800FF1EF9 /* Time.m in Sources */ = {isa = PBXBuildFile; fileRef = 2365E350183B0AF800FF1EF9 /* Time.m */; };
@@ -54,6 +55,8 @@
 /* Begin PBXFileReference section */
 		1BD159A61807C2CF00093AFA /* DisplaySetting.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DisplaySetting.h; sourceTree = "<group>"; };
 		1BD159A71807C2CF00093AFA /* DisplaySetting.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DisplaySetting.m; sourceTree = "<group>"; };
+		2363BCDF184473FA002F71FA /* TableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TableViewController.h; sourceTree = "<group>"; };
+		2363BCE0184473FA002F71FA /* TableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TableViewController.m; sourceTree = "<group>"; };
 		2365E3451837AC7900FF1EF9 /* TopViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TopViewController.h; sourceTree = "<group>"; };
 		2365E3461837AC7900FF1EF9 /* TopViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TopViewController.m; sourceTree = "<group>"; };
 		2365E34C183B0AE500FF1EF9 /* Work.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Work.h; sourceTree = "<group>"; };
@@ -153,6 +156,8 @@
 				23D1F9291828A1AF001BABE9 /* TestInsertViewController.m */,
 				2365E3451837AC7900FF1EF9 /* TopViewController.h */,
 				2365E3461837AC7900FF1EF9 /* TopViewController.m */,
+				2363BCDF184473FA002F71FA /* TableViewController.h */,
+				2363BCE0184473FA002F71FA /* TableViewController.m */,
 			);
 			name = Controller;
 			sourceTree = "<group>";
@@ -399,6 +404,7 @@
 				236855EF183DE9FD00A4E156 /* TimeModel.m in Sources */,
 				236855F2183DEA1400A4E156 /* RestModel.m in Sources */,
 				236855F5183DF92800A4E156 /* WorkModel.m in Sources */,
+				2363BCE1184473FA002F71FA /* TableViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

@@ -15,7 +15,7 @@
     NSInteger daysnum;
     int days;
 }
-@property(nonatomic,retain)WorkModel* daoWorks;
+@property(nonatomic,retain)WorkModel* worksModel;
 @property(nonatomic,retain)Work* work;
 
 
@@ -36,14 +36,6 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
-    
-    // Uncomment the following line to preserve selection between presentations.
-    // self.clearsSelectionOnViewWillAppear = NO;
-    
-    // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
-    // self.navigationItem.rightBarButtonItem = self.editButtonItem;
-    
-    
 }
 
 - (void)didReceiveMemoryWarning
@@ -51,8 +43,6 @@
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
 }
-
-#pragma mark - Table view data source
 
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView
 {
@@ -69,28 +59,19 @@
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
-    
     //今月の日数を取得
-    
     NSDate *now = [NSDate date];
-    
     /* NSCalendarを取得する */
-    
     NSCalendar *calendar = [[NSCalendar alloc] initWithCalendarIdentifier: NSGregorianCalendar];;
-    
     NSInteger daysOfThisMonth =[ calendar rangeOfUnit:NSDayCalendarUnit inUnit:NSMonthCalendarUnit forDate:now ].length;
-    
     daysnum = daysOfThisMonth;
-    
     return daysOfThisMonth;
-    
 }
 
 
 /*
  セルの内容を返す
  まだ途中セルに日付を出力しようとしたら４筒増加する
- 
  
  */
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
@@ -99,12 +80,11 @@
     
     if (cell == nil) {
         cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:@"Cell"];
-        
-        // cell.textLabel.text = [NSString stringWithFormat:@"%i",days];
-        
     }
-    NSArray* testArray =  [self.daoWorks datas];
     
+    NSArray* testArray =  [self.worksModel datas];
+    
+    cell.textLabel.text = [NSString stringWithFormat:@"%i",days];
     NSLog(@"%@",testArray);
 //    cell.textLabel.text = testArray;
     
