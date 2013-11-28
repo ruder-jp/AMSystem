@@ -28,7 +28,7 @@
     if(self = [super init])
     {
         [self createSql];
-        [self initRests];
+        //[self initRests];
     }
     return self;
 }

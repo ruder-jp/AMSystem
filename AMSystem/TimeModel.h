@@ -16,4 +16,7 @@
 
 - (Time*)setting;
 
+- (BOOL)noteJudgment;
+
+-(Time*)insert:(Time *)time;
 @end

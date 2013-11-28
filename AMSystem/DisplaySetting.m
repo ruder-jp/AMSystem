@@ -14,15 +14,15 @@
 
 
 @interface DisplaySetting ()
-@property (nonatomic, retain) TimeModel*            timeModel; //! 勤務設定を管理するオブジェクト
-@property (nonatomic, retain) RestModel*            restModel; //! 勤務設定を管理するオブジェクト
+@property (nonatomic, retain) TimeModel*            timeModel; //! 勤務時間設定を管理するオブジェクト
+@property (nonatomic, retain) RestModel*            restModel; //! 休憩時間設定を管理するオブジェクト
 
 
 @property (nonatomic, retain) Time*
-time;     //! 編集対象となる書籍
+time;     //! 編集対象となる勤務時間
 
 @property (nonatomic, retain) Rest*
-rest;     //! 編集対象となる書籍
+rest;     //! 編集対象となる休憩時間
 
 @end
 
@@ -46,7 +46,6 @@ rest;     //! 編集対象となる書籍
     
     self.timeModel = [[TimeModel alloc] init];
     self.restModel = [[RestModel alloc] init];
-	self.time    = [[Time alloc] init];
     
     Time* timeObject = [self.timeModel setting];
     Rest* restObject = [self.restModel setting];
@@ -68,7 +67,6 @@ rest;     //! 編集対象となる書籍
     
 	self.timeModel = nil;
     self.restModel = nil;
-	self.time    = nil;
     
 	[super viewDidUnload];
 }
@@ -176,8 +174,7 @@ rest;     //! 編集対象となる書籍
     
 }
 
-- (IBAction)settingBackButton:(id)sender {
-}
+
 
 
 
@@ -193,16 +190,31 @@ clickedButtonAtIndex:(NSInteger)buttonIndex {
         case 1:
             //OKボタンがタップされたときの処理
             //NSString*  insert = @"INSERT INTO kinmu (day,start,end) VALUES (?,?,?)";
+            
+            //[_timeModel noteJudgment];
+
+            
         {
-            //Time* newTime = [[Time alloc] init];
-            //Rest* newRest = [[Rest alloc] init];
+                        //NSLog(@"%i",boo);
+            Time* newTime = [[Time alloc] init];
+            Rest* newRest = [[Rest alloc] init];
             //newTime.start = self.startTime.text;
-            time.start = self.startTime.text;
-            time.end   = self.endTime.text;
-            rest.start = self.startRest.text;
-            rest.end   = self.endRest.text;
-            [self.timeModel update:time];
-            [self.restModel update:rest];
+            newTime.start = self.startTime.text;
+            newTime.end   = self.endTime.text;
+            newRest.start = self.startRest.text;
+            newRest.end   = self.endRest.text;
+            if([_timeModel noteJudgment]){
+                [_timeModel insert:newTime];
+                NSLog(@"しん");
+            }else{
+                
+                //NSLog(@"%@",newTime.start);
+                [_timeModel update:newTime];
+                [_restModel update:newRest];
+                NSLog(@"ぎ");
+            }
+            
+            
         }
             break;
     }
