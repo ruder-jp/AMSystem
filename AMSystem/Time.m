@@ -15,7 +15,7 @@
 -(id)init
 {
     if(self = [super init]){
-        self.time_id = 0;
+        self.time_id = 1;
         self.start = @"";
         self.end = @"";
     }

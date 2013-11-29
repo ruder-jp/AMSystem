@@ -27,8 +27,8 @@
 {
     if(self = [super init])
     {
-        [self createSql];
-        [self initTimes];
+        //[self createSql];
+        //[self insertTimes];
     }
     return self;
 }
@@ -37,18 +37,12 @@
 {
     FMDatabase* db = [self getConnection];
     [db open];
-    [db executeUpdate:@"CREATE TABLE IF NOT EXISTS times (id INTEGER PRIMARY KEY AUTOINCREMENT, start REAL,end REAL);"];
+    [db executeUpdate:@"CREATE TABLE IF NOT EXISTS times (id INTEGER PRIMARY KEY AUTOINCREMENT, start REAL ,end REAL);"];
     [db close];
 }
 
 
--(void)initTimes
-{
-    FMDatabase* db = [self getConnection];
-    [db open];
-    [db executeUpdate:@"INSERT INTO times (start,end) VALUES (julianday('09:00:00'), julianday('18:00:00'));"];
-    [db close];
-}
+
 
 
 
@@ -68,15 +62,39 @@
 	return [FMDatabase databaseWithPath:self.dbPath];
 }
 
+-(Time* )insert:(Time *)time
+{
+    FMDatabase* db = [self getConnection];
+    
+    NSString* sql =[[NSString alloc]initWithFormat:@"INSERT INTO times (start,end) VALUES (julianday('%@'),julianday('%@'))",time.start,time.end];
+    
+    [db open];
+    
+    [db setShouldCacheStatements:YES];
+	if([db executeUpdate:sql]){
+		time.time_id = [db lastInsertRowId];
+	}
+	else
+	{
+		time = nil;
+	}
+
+    [db close];
+    return time;
+}
+
 /**
  * 勤務設定時間を更新する
  */
 - (BOOL)update:(Time *)time
 {
 	FMDatabase* db = [self getConnection];
+    
 	[db open];
-	
-	BOOL isSucceeded = [db executeUpdate:@"UPDATE times SET start = ?, end = ?,WHERE id = ?;", time.start, time.end, [NSNumber numberWithInteger:time.time_id]];
+    
+    NSString *sql = [[NSString alloc]initWithFormat:@"UPDATE times SET start = julianday('%@'), end = julianday('%@')WHERE id = %@;", time.start, time.end,[NSNumber numberWithInteger:time.time_id]];
+    
+	BOOL isSucceeded = [db executeUpdate:sql];
 	
 	[db close];
 	
@@ -101,10 +119,30 @@
     //[times addObject:time];
     
     
+    
     [db close];
     
     //NSLog(results.endTime);
+    
+    NSLog(@"%@",time);
     return time;
+}
+
+- (BOOL)noteJudgment
+{
+    FMDatabase* db = [self getConnection];
+    
+	[db open];
+    
+    FMResultSet* results = [db executeQuery:@"SELECT * FROM times;"];
+    [results next];
+    Time* time = [[Time alloc] init];
+    time.start = [results stringForColumnIndex:1];
+    if(time.start == nil){
+        return YES;
+    }
+    [db close];
+    return NO;
 }
 
 /**
@@ -117,5 +155,6 @@
 	
 	return [dir stringByAppendingPathComponent:@"works.db"];
 }
+
 
 @end

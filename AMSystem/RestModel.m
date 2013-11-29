@@ -27,8 +27,7 @@
 {
     if(self = [super init])
     {
-        [self createSql];
-        [self initRests];
+        //[self createSql];
     }
     return self;
 }
@@ -64,6 +63,27 @@
 	}
 	
 	return [FMDatabase databaseWithPath:self.dbPath];
+}
+
+-(Rest* )insert:(Rest *)rest
+{
+    FMDatabase* db = [self getConnection];
+    
+    NSString* sql =[[NSString alloc]initWithFormat:@"INSERT INTO rests (start,end) VALUES (julianday('%@'),julianday('%@'))",rest.start,rest.end];
+    
+    [db open];
+    
+    [db setShouldCacheStatements:YES];
+	if([db executeUpdate:sql]){
+		rest.rest_id = [db lastInsertRowId];
+	}
+	else
+	{
+		rest = nil;
+	}
+    
+    [db close];
+    return rest;
 }
 
 /**
