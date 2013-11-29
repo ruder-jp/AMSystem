@@ -81,6 +81,47 @@
 	return isSucceeded;
 }
 
+//勤務設定時間を参照する
+//- (Work*)datas
+//{
+//    FMDatabase* db = [self getConnection];
+//	[db open];
+//    
+//    NSString* sql = [[NSString alloc]initWithFormat:@"SELECT id, datetime(date) ,datetime(start) , datetime(end) , rest_id , time_id FROM works;"];
+//    FMResultSet* results = [db executeQuery:sql];
+//    Work* work = [[Work alloc] init];
+//    work.day_id = [results intForColumnIndex:0];
+//    work.date = [results stringForColumnIndex:1];
+//    work.start = [results stringForColumnIndex:2];
+//    work.end = [results stringForColumnIndex:3];
+//    work.time_id = [results intForColumnIndex:4];
+//    work.rest_id = [results intForColumnIndex:5];
+//    //[times addObject:time];
+//    [db close];
+//    
+//    //NSLog(results.endTime);
+//    return work;
+//}
+
+-(NSArray*)tests
+{
+    NSArray *ary1 = [NSArray arrayWithObjects:
+                     @"Snoopy", @"Spike", @"Olaf", nil];
+    NSArray *ary2 = [NSArray arrayWithObjects:
+                     @"Marbles", @"Belle", @"Andy", nil];
+    
+    NSArray *result = [ary1 arrayByAddingObjectsFromArray:ary2];
+    NSLog(@"%@", result);
+    
+    
+    // 配列と配列を結合する(NSMutableArray)
+    NSMutableArray *mAry1 = [NSMutableArray arrayWithArray:ary1];
+    NSMutableArray *mAry2 = [NSMutableArray arrayWithArray:ary2];
+    
+    [mAry1 addObjectsFromArray:mAry2];
+    NSLog(@"%@", mAry1);
+    return mAry1;
+}
 
 -(NSArray*)datas
 {
@@ -101,17 +142,19 @@
         work.rest_id = [results intForColumnIndex:5];
         
         [datas addObject:work];
+        Work* tmp = datas[0];
         
-        NSLog(@"%@",datas);
+        NSLog(@"%@", tmp.start);
         
-        NSLog(@"%i",[results intForColumnIndex:0]);
-        NSLog(@"%@",[results stringForColumnIndex:1]);
-        NSLog(@"%@",[results stringForColumnIndex:2]);
-        NSLog(@"%@",[results stringForColumnIndex:3]);
-        NSLog(@"%i",[results intForColumnIndex:4]);
-        NSLog(@"%i",[results intForColumnIndex:5]);
-
-    NSLog(@"%@",@"select成功");
+       
+        
+//        NSLog(@"%i",[results intForColumnIndex:0]);
+//        NSLog(@"%@",[results stringForColumnIndex:1]);
+//        NSLog(@"%@",[results stringForColumnIndex:2]);
+//        NSLog(@"%@",[results stringForColumnIndex:3]);
+//        NSLog(@"%i",[results intForColumnIndex:4]);
+//        NSLog(@"%i",[results intForColumnIndex:5]);
+//        NSLog(@"%@",[datas objectAtIndex:1]);
     }
     
     

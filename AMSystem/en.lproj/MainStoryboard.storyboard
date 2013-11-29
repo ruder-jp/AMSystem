@@ -15,7 +15,11 @@
                             <navigationBar contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="HLp-g1-a0k">
                                 <items>
                                     <navigationItem title="勤務時間設定" id="gzk-ju-VhY">
-                                        <barButtonItem key="leftBarButtonItem" title="戻る" id="kvI-Gr-SbO"/>
+                                        <barButtonItem key="leftBarButtonItem" title="戻る" id="kvI-Gr-SbO">
+                                            <connections>
+                                                <action selector="backButton:" destination="2" id="fOp-2U-Jz2"/>
+                                            </connections>
+                                        </barButtonItem>
                                         <barButtonItem key="rightBarButtonItem" title="完了" id="G2i-UO-dwt">
                                             <connections>
                                                 <action selector="confirmButton:" destination="2" id="Ad3-uK-FPm"/>

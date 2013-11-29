@@ -119,9 +119,12 @@
     //[times addObject:time];
     
     
+    
     [db close];
     
     //NSLog(results.endTime);
+    
+    NSLog(@"%@",time);
     return time;
 }
 

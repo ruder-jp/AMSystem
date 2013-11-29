@@ -14,6 +14,7 @@
 
 -(Work*)insertStart:(Work*)data;
 -(NSArray*)datas;
+-(NSArray*)tests;
 -(BOOL)update:(Work*)work;
 -(BOOL)updateEnd:(Work *)work;
 

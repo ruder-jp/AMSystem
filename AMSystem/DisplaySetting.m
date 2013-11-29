@@ -44,16 +44,7 @@ rest;     //! 編集対象となる休憩時間
     [super viewDidLoad];
 	// Do any additional setup after loading the view.
     
-    self.timeModel = [[TimeModel alloc] init];
-    self.restModel = [[RestModel alloc] init];
     
-    Time* timeObject = [self.timeModel setting];
-    Rest* restObject = [self.restModel setting];
-    
-    self.startTime.text = timeObject.start;
-    self.endTime.text = timeObject.end;
-    self.startRest.text = restObject.start;
-    self.endRest.text = restObject.end;
     
     
     
@@ -83,7 +74,16 @@ rest;     //! 編集対象となる休憩時間
 {
     [super viewDidAppear:animated];
     
+    self.timeModel = [[TimeModel alloc] init];
+    self.restModel = [[RestModel alloc] init];
     
+    Time* timeObject = [self.timeModel setting];
+    Rest* restObject = [self.restModel setting];
+    
+    self.startTime.text = timeObject.start;
+    self.endTime.text = timeObject.end;
+    self.startRest.text = restObject.start;
+    self.endRest.text = restObject.end;
     
         CGRect datePickerFrame = self.myDatePicker.frame;
         CGRect toolBarFrame = self.toolBar.frame;
@@ -173,6 +173,11 @@ rest;     //! 編集対象となる休憩時間
     [alert show];
     
 }
+
+- (IBAction)backButton:(id)sender {
+     [self dismissModalViewControllerAnimated:YES];
+}
+
 
 
 

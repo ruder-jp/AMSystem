@@ -90,8 +90,10 @@
 - (IBAction)selectButton:(id)sender {
     
     NSLog(@"select");
-    [self.worksModel datas];
-    
+    NSArray* array = [self.worksModel datas];
+//    NSArray* array2 = [self.worksModel tests];
+//    NSLog(@"%@",array2);
+//    NSLog(@"%@",array);
 }
 
 - (IBAction)updateButton:(id)sender {
