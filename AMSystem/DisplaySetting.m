@@ -85,12 +85,12 @@ rest;     //! 編集対象となる休憩時間
     
     
     
-    //    CGRect datePickerFrame = self.myDatePicker.frame;
-    //    CGRect toolBarFrame = self.toolBar.frame;
-    //    toolBarFrame.origin.y = self.view.frame.size.height;
-    //    datePickerFrame.origin.y = self.view.frame.size.height + self.toolBar.frame.size.height;
-    //    self.myDatePicker.frame = datePickerFrame;
-    //    self.toolBar.frame = toolBarFrame;
+        CGRect datePickerFrame = self.myDatePicker.frame;
+        CGRect toolBarFrame = self.toolBar.frame;
+        toolBarFrame.origin.y = self.view.frame.size.height;
+        datePickerFrame.origin.y = self.view.frame.size.height + self.toolBar.frame.size.height;
+        self.myDatePicker.frame = datePickerFrame;
+        self.toolBar.frame = toolBarFrame;
     
     
 }
@@ -205,13 +205,10 @@ clickedButtonAtIndex:(NSInteger)buttonIndex {
             newRest.end   = self.endRest.text;
             if([_timeModel noteJudgment]){
                 [_timeModel insert:newTime];
-                NSLog(@"しん");
+                [_restModel insert:newRest];
             }else{
-                
-                //NSLog(@"%@",newTime.start);
                 [_timeModel update:newTime];
                 [_restModel update:newRest];
-                NSLog(@"ぎ");
             }
             
             

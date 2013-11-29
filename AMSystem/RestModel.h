@@ -12,6 +12,8 @@
 
 @interface RestModel : NSObject
 
+-(Rest* )insert:(Rest *)rest;
+
 - (BOOL)update:(Rest *)rest;
 
 - (Rest*)setting;

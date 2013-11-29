@@ -27,7 +27,7 @@
 {
     if(self = [super init])
     {
-        [self createSql];
+        //[self createSql];
         //[self insertTimes];
     }
     return self;
@@ -66,7 +66,7 @@
 {
     FMDatabase* db = [self getConnection];
     
-    NSString* sql =[[NSString alloc]initWithFormat:@"INSERT INTO times (start,end) VALUES (julianday('%@'),julianday('%@');",time.start,time.end];
+    NSString* sql =[[NSString alloc]initWithFormat:@"INSERT INTO times (start,end) VALUES (julianday('%@'),julianday('%@'))",time.start,time.end];
     
     [db open];
     
@@ -78,8 +78,7 @@
 	{
 		time = nil;
 	}
-    //BOOL isSucceeded = [db executeUpdate:sql];
-    //[db executeUpdate:sql];
+
     [db close];
     return time;
 }
@@ -136,7 +135,6 @@
     [results next];
     Time* time = [[Time alloc] init];
     time.start = [results stringForColumnIndex:1];
-    NSLog(@"%@",time.start);
     if(time.start == nil){
         return YES;
     }
