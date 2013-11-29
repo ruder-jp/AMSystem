@@ -143,6 +143,7 @@
         
         [datas addObject:work];
         Work* tmp = datas[0];
+        
         NSLog(@"%@", tmp.start);
         
        
