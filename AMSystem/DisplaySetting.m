@@ -84,6 +84,7 @@ rest;     //! 編集対象となる休憩時間
     self.endTime.text = timeObject.end;
     self.startRest.text = restObject.start;
     self.endRest.text = restObject.end;
+    //NSLog(@"viewDidAppear");
     
         CGRect datePickerFrame = self.myDatePicker.frame;
         CGRect toolBarFrame = self.toolBar.frame;
@@ -94,7 +95,6 @@ rest;     //! 編集対象となる休憩時間
     
     
 }
-
 
 - (IBAction)datePickerDone:(UIBarButtonItem *)sender {
     //ツールバーを引っ込める
@@ -146,6 +146,15 @@ rest;     //! 編集対象となる休憩時間
                      animations:^{
                          _myDatePicker.frame = datePickerFrame;
                      }];
+    
+    //テキストフィールドに設定している時間をデートピッカーの初期時間に設定する
+    NSDate *convertDate;
+    
+    NSDateFormatter *dateFormatter = [[NSDateFormatter alloc]init];
+    [dateFormatter setDateFormat:@"HH:mm"];
+    convertDate = [dateFormatter dateFromString:_whichText.text];
+    _myDatePicker.date = convertDate;
+    
 }
 
 //デートピッカーの値が変更されたときの処理
@@ -156,7 +165,7 @@ rest;     //! 編集対象となる休憩時間
     NSDateFormatter *df = [[NSDateFormatter alloc] init];
     df.dateFormat = @"HH:mm";
     //指定した日付形式で日付を表示する
-    _whichText.text = [df stringFromDate:self.myDatePicker.date];
+    _whichText.text = [df stringFromDate:_myDatePicker.date];
     
     
 }

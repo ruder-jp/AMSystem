@@ -118,13 +118,8 @@
     time.end = [results stringForColumnIndex:2];
     //[times addObject:time];
     
-    
-    
     [db close];
     
-    //NSLog(results.endTime);
-    
-    NSLog(@"%@",time);
     return time;
 }
 
