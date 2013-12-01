@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="2.0" toolsVersion="3084" systemVersion="11G63b" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" initialViewController="NlP-6q-PMY">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="2.0" toolsVersion="3084" systemVersion="11G63" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" initialViewController="2">
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="2083"/>
     </dependencies>
@@ -59,58 +59,12 @@
                                     <action selector="textFieldClicked:" destination="2" eventType="editingDidBegin" id="qIw-hH-6Qc"/>
                                 </connections>
                             </textField>
-                            <datePicker contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" datePickerMode="time" minuteInterval="5" translatesAutoresizingMaskIntoConstraints="NO" id="JKE-6f-Eth">
-                                <constraints>
-                                    <constraint firstAttribute="height" constant="216" id="4ZD-WH-KpR"/>
-                                </constraints>
-                                <date key="date" timeIntervalSinceReferenceDate="403160641.84118199">
-                                    <!--2013-10-11 05:04:01 +0000-->
-                                </date>
-                                <timeZone key="timeZone" name="America/Los_Angeles">
-                                    <data key="data">
-VFppZgAAAAAAAAAAAAAAAAAAAAAAAAAEAAAABAAAAAAAAAC5AAAABAAAABCepkign7sVkKCGKqChmveQ
-y4kaoNIj9HDSYSYQ1v50INiArZDa/tGg28CQENzes6DdqayQ3r6VoN+JjpDgnneg4WlwkOJ+WaDjSVKQ
-5F47oOUpNJDmR1gg5xJREOgnOiDo8jMQ6gccIOrSFRDr5v4g7LH3EO3G4CDukdkQ76/8oPBxuxDxj96g
-8n/BkPNvwKD0X6OQ9U+ioPY/hZD3L4Sg+CiiEPkPZqD6CIQQ+viDIPvoZhD82GUg/chIEP64RyD/qCoQ
-AJgpIAGIDBACeAsgA3EokARhJ6AFUQqQBkEJoAcw7JAHjUOgCRDOkAmtvyAK8LCQC+CvoAzZzRANwJGg
-DrmvEA+priAQmZEQEYmQIBJ5cxATaXIgFFlVEBVJVCAWOTcQFyk2IBgiU5AZCRggGgI1kBryNKAb4heQ
-HNIWoB3B+ZAesfigH6HbkCB2KyAhgb2QIlYNICNq2hAkNe8gJUq8ECYV0SAnKp4QJ/7toCkKgBAp3s+g
-KupiECu+saAs036QLZ6ToC6zYJAvfnWgMJNCkDFnkiAycySQM0d0IDRTBpA1J1YgNjLokDcHOCA4HAUQ
-OOcaIDn75xA6xvwgO9vJEDywGKA9u6sQPo/6oD+bjRBAb9ygQYSpkEJPvqBDZIuQRC+goEVEbZBF89Mg
-Ry2KEEfTtSBJDWwQSbOXIErtThBLnLOgTNZqkE18laBOtkyQT1x3oFCWLpBRPFmgUnYQkFMcO6BUVfKQ
-VPwdoFY11JBW5TogWB7xEFjFHCBZ/tMQWqT+IFvetRBchOAgXb6XEF5kwiBfnnkQYE3eoGGHlZBiLcCg
-Y2d3kGQNoqBlR1mQZe2EoGcnO5BnzWagaQcdkGmtSKBq5v+Qa5ZlIGzQHBBtdkcgbq/+EG9WKSBwj+AQ
-cTYLIHJvwhBzFe0gdE+kEHT/CaB2OMCQdt7roHgYopB4vs2gefiEkHqer6B72GaQfH6RoH24SJB+XnOg
-f5gqkAABAAECAwEAAQABAAEAAQABAAEAAQABAAEAAQABAAEAAQABAAEAAQABAAEAAQABAAEAAQABAAEA
-AQABAAEAAQABAAEAAQABAAEAAQABAAEAAQABAAEAAQABAAEAAQABAAEAAQABAAEAAQABAAEAAQABAAEA
-AQABAAEAAQABAAEAAQABAAEAAQABAAEAAQABAAEAAQABAAEAAQABAAEAAQABAAEAAQABAAEAAQABAAEA
-AQABAAEAAQAB//+dkAEA//+PgAAE//+dkAEI//+dkAEMUERUAFBTVABQV1QAUFBUAAAAAAEAAAABA
-</data>
-                                </timeZone>
-                                <connections>
-                                    <action selector="changeDatePicker:" destination="2" eventType="valueChanged" id="tuF-VL-NX2"/>
-                                </connections>
-                            </datePicker>
-                            <toolbar opaque="NO" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="7e2-rs-f9J">
-                                <items>
-                                    <barButtonItem title="Cancel" id="wc5-zb-noy"/>
-                                    <barButtonItem style="plain" systemItem="flexibleSpace" id="Fwo-pt-7mm"/>
-                                    <barButtonItem title="Done" id="vvf-EV-mFp">
-                                        <connections>
-                                            <action selector="datePickerDone:" destination="2" id="nlh-xR-Jbh"/>
-                                        </connections>
-                                    </barButtonItem>
-                                </items>
-                            </toolbar>
                             <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="KDo-XY-QGr">
                                 <constraints>
                                     <constraint firstAttribute="width" constant="142" id="4v3-9Z-hQ2"/>
                                 </constraints>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits"/>
-                                <connections>
-                                    <action selector="textFieldClicked:" destination="2" eventType="editingDidBegin" id="0aI-Pm-JIS"/>
-                                </connections>
                             </textField>
                             <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" text="始業" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="hgB-kM-gSC">
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
@@ -137,31 +91,26 @@ AQABAAEAAQAB//+dkAEA//+PgAAE//+dkAEI//+dkAEMUERUAFBTVABQV1QAUFBUAAAAAAEAAAABA
                         <constraints>
                             <constraint firstItem="mzI-bJ-xiG" firstAttribute="top" secondItem="3" secondAttribute="top" constant="197" id="6V6-IA-t7k"/>
                             <constraint firstItem="QpV-Yo-7L8" firstAttribute="centerX" secondItem="3kF-GK-Uqt" secondAttribute="centerX" type="default" id="AkZ-kH-RRc"/>
-                            <constraint firstItem="7e2-rs-f9J" firstAttribute="leading" secondItem="3" secondAttribute="leading" type="default" id="EDQ-MF-29B"/>
                             <constraint firstItem="QLl-pb-5wQ" firstAttribute="trailing" secondItem="mzI-bJ-xiG" secondAttribute="trailing" type="default" id="EyI-tL-Wkx"/>
                             <constraint firstItem="KDo-XY-QGr" firstAttribute="trailing" secondItem="Dyp-Ry-3yr" secondAttribute="trailing" type="default" id="Gyp-yl-QSd"/>
                             <constraint firstItem="HLp-g1-a0k" firstAttribute="trailing" secondItem="3" secondAttribute="trailing" type="default" id="HMU-he-idE"/>
                             <constraint firstItem="QLl-pb-5wQ" firstAttribute="top" secondItem="mzI-bJ-xiG" secondAttribute="bottom" constant="8" symbolic="YES" type="default" id="Hv5-1Z-3OM"/>
                             <constraint firstItem="Dyp-Ry-3yr" firstAttribute="top" secondItem="KDo-XY-QGr" secondAttribute="bottom" constant="8" symbolic="YES" type="default" id="Hzd-vF-wPy"/>
                             <constraint firstItem="nBF-vq-Odk" firstAttribute="top" secondItem="3" secondAttribute="top" constant="50" id="IcN-Vs-YLV"/>
-                            <constraint firstItem="JKE-6f-Eth" firstAttribute="leading" secondItem="3" secondAttribute="leading" type="default" id="IhR-tg-D7D"/>
                             <constraint firstItem="KDo-XY-QGr" firstAttribute="top" secondItem="nBF-vq-Odk" secondAttribute="bottom" constant="8" symbolic="YES" type="default" id="Md2-Jv-Hrr"/>
                             <constraint firstItem="MGg-dI-DGy" firstAttribute="top" secondItem="mzI-bJ-xiG" secondAttribute="bottom" constant="8" symbolic="YES" type="default" id="NG4-Vz-Kx7"/>
                             <constraint firstItem="HLp-g1-a0k" firstAttribute="top" secondItem="3" secondAttribute="top" type="default" id="P7b-iK-WY5"/>
                             <constraint firstItem="KDo-XY-QGr" firstAttribute="leading" secondItem="3" secondAttribute="leading" constant="128" id="PW6-Zj-u57"/>
                             <constraint firstItem="HLp-g1-a0k" firstAttribute="leading" secondItem="3" secondAttribute="leading" type="default" id="Pzh-lo-NlV"/>
                             <constraint firstItem="QLl-pb-5wQ" firstAttribute="leading" secondItem="mzI-bJ-xiG" secondAttribute="leading" type="default" id="Szh-cl-LOb"/>
-                            <constraint firstItem="7e2-rs-f9J" firstAttribute="trailing" secondItem="3" secondAttribute="trailing" type="default" id="TUj-Y6-A9A"/>
                             <constraint firstItem="3kF-GK-Uqt" firstAttribute="top" secondItem="3" secondAttribute="top" constant="201" id="URZ-zQ-KOq"/>
                             <constraint firstItem="MGg-dI-DGy" firstAttribute="leading" secondItem="3kF-GK-Uqt" secondAttribute="leading" type="default" id="UWX-zo-ybz"/>
-                            <constraint firstItem="JKE-6f-Eth" firstAttribute="top" secondItem="3" secondAttribute="top" constant="306" id="Uo9-3O-27a"/>
                             <constraint firstItem="Dyp-Ry-3yr" firstAttribute="leading" secondItem="KDo-XY-QGr" secondAttribute="leading" type="default" id="VCm-rg-ShB"/>
                             <constraint firstItem="nBF-vq-Odk" firstAttribute="leading" secondItem="GIz-gn-yJI" secondAttribute="leading" type="default" id="VKG-6X-2vn"/>
                             <constraint firstItem="nBF-vq-Odk" firstAttribute="leading" secondItem="3" secondAttribute="leading" constant="27" id="Ywf-L7-KVJ"/>
                             <constraint firstItem="QpV-Yo-7L8" firstAttribute="leading" secondItem="hgB-kM-gSC" secondAttribute="leading" type="default" id="bYz-aD-agv"/>
                             <constraint firstItem="GIz-gn-yJI" firstAttribute="trailing" secondItem="3kF-GK-Uqt" secondAttribute="trailing" type="default" id="cou-QJ-XUD"/>
                             <constraint firstItem="GIz-gn-yJI" firstAttribute="top" secondItem="3" secondAttribute="top" constant="165" id="eL9-w6-YXb"/>
-                            <constraint firstItem="7e2-rs-f9J" firstAttribute="bottom" secondItem="JKE-6f-Eth" secondAttribute="top" type="default" id="hEZ-Dc-fs3"/>
                             <constraint firstItem="QpV-Yo-7L8" firstAttribute="top" secondItem="3" secondAttribute="top" constant="121" id="hTX-jM-8Ok"/>
                             <constraint firstItem="hgB-kM-gSC" firstAttribute="baseline" secondItem="KDo-XY-QGr" secondAttribute="baseline" type="default" id="i6s-22-F7E"/>
                             <constraint firstItem="mzI-bJ-xiG" firstAttribute="leading" secondItem="Dyp-Ry-3yr" secondAttribute="leading" type="default" id="oql-Q4-V5J"/>
@@ -169,14 +118,10 @@ AQABAAEAAQAB//+dkAEA//+PgAAE//+dkAEI//+dkAEMUERUAFBTVABQV1QAUFBUAAAAAAEAAAABA
                         </constraints>
                     </view>
                     <connections>
-                        <outlet property="cancelPicker" destination="wc5-zb-noy" id="Psv-82-vSi"/>
-                        <outlet property="donePicker" destination="vvf-EV-mFp" id="Lek-ux-4am"/>
                         <outlet property="endRest" destination="QLl-pb-5wQ" id="z9k-Wx-l2M"/>
                         <outlet property="endTime" destination="Dyp-Ry-3yr" id="Wy6-XK-nxe"/>
-                        <outlet property="myDatePicker" destination="JKE-6f-Eth" id="4oQ-TL-oPk"/>
                         <outlet property="startRest" destination="mzI-bJ-xiG" id="hkr-fZ-XyW"/>
                         <outlet property="startTime" destination="KDo-XY-QGr" id="iDX-kj-gsw"/>
-                        <outlet property="toolBar" destination="7e2-rs-f9J" id="nnc-ZF-oAW"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="4" sceneMemberID="firstResponder"/>
@@ -779,6 +724,74 @@ AQABAAEAAQAB//+dkAEA//+PgAAE//+dkAEI//+dkAEMUERUAFBTVABQV1QAUFBUAAAAAAEAAAABA
             <point key="canvasLocation" x="118" y="-342"/>
         </scene>
     </scenes>
+    <classes>
+        <class className="DisplaySetting" superclassName="UIViewController">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/DisplaySetting.h"/>
+            <relationships>
+                <relationship kind="action" name="backButton:"/>
+                <relationship kind="action" name="changeDatePicker:"/>
+                <relationship kind="action" name="confirmButton:"/>
+                <relationship kind="action" name="datePickerDone:" candidateClass="UIBarButtonItem"/>
+                <relationship kind="action" name="textFieldClicked:" candidateClass="UITextField"/>
+                <relationship kind="outlet" name="cancelPicker" candidateClass="UIBarButtonItem"/>
+                <relationship kind="outlet" name="donePicker" candidateClass="UIBarButtonItem"/>
+                <relationship kind="outlet" name="endRest" candidateClass="UITextField"/>
+                <relationship kind="outlet" name="endTime" candidateClass="UITextField"/>
+                <relationship kind="outlet" name="myDatePicker" candidateClass="UIDatePicker"/>
+                <relationship kind="outlet" name="startRest" candidateClass="UITextField"/>
+                <relationship kind="outlet" name="startTime" candidateClass="UITextField"/>
+                <relationship kind="outlet" name="toolBar" candidateClass="UIToolbar"/>
+            </relationships>
+        </class>
+        <class className="KinmuViewController" superclassName="UITableViewController">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/KinmuViewController.h"/>
+            <relationships>
+                <relationship kind="action" name="kinmuBackButton:"/>
+            </relationships>
+        </class>
+        <class className="NSLayoutConstraint" superclassName="NSObject">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/NSLayoutConstraint.h"/>
+        </class>
+        <class className="TableViewController" superclassName="UICollectionViewController">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/TableViewController.h"/>
+        </class>
+        <class className="TestInsertViewController" superclassName="UIViewController">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/TestInsertViewController.h"/>
+            <relationships>
+                <relationship kind="action" name="insertButton:"/>
+                <relationship kind="action" name="selectButton:"/>
+                <relationship kind="action" name="testBackButton:"/>
+                <relationship kind="action" name="updateButton:"/>
+            </relationships>
+        </class>
+        <class className="TopViewController" superclassName="UIViewController">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/TopViewController.h"/>
+            <relationships>
+                <relationship kind="action" name="pushButton:"/>
+                <relationship kind="outlet" name="dayLavel" candidateClass="UILabel"/>
+                <relationship kind="outlet" name="endLavel" candidateClass="UILabel"/>
+                <relationship kind="outlet" name="startLavel" candidateClass="UILabel"/>
+                <relationship kind="outlet" name="timeLavel" candidateClass="UILabel"/>
+                <relationship kind="outlet" name="topButton" candidateClass="UIButton"/>
+            </relationships>
+        </class>
+        <class className="UICollectionViewController" superclassName="UIViewController">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/UICollectionViewController.h"/>
+        </class>
+        <class className="ViewController" superclassName="UIViewController">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/ViewController.h"/>
+            <relationships>
+                <relationship kind="action" name="backButton:"/>
+                <relationship kind="action" name="bushButton:"/>
+                <relationship kind="action" name="helpBackButton:"/>
+                <relationship kind="outlet" name="dayLavel" candidateClass="UILabel"/>
+                <relationship kind="outlet" name="endTime" candidateClass="UILabel"/>
+                <relationship kind="outlet" name="startTime" candidateClass="UILabel"/>
+                <relationship kind="outlet" name="timeLavel" candidateClass="UILabel"/>
+                <relationship kind="outlet" name="topButton" candidateClass="UIButton"/>
+            </relationships>
+        </class>
+    </classes>
     <simulatedMetricsContainer key="defaultSimulatedMetrics">
         <simulatedStatusBarMetrics key="statusBar"/>
         <simulatedOrientationMetrics key="orientation"/>

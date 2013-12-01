@@ -29,6 +29,11 @@ rest;     //! 編集対象となる休憩時間
 @implementation DisplaySetting
 
 @synthesize time,rest;
+@synthesize startTime = _startTime;
+@synthesize endTime = _endTime;
+@synthesize startRest = _startRest;
+@synthesize endRest = _endRest;
+
 
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
 {
@@ -44,6 +49,28 @@ rest;     //! 編集対象となる休憩時間
     [super viewDidLoad];
 	// Do any additional setup after loading the view.
     
+    picker = [[UIDatePicker alloc] init];
+    picker.datePickerMode = UIDatePickerModeTime;
+    picker.frame = CGRectMake(0, 450, 320, 216);
+    [picker addTarget:self
+                   action:@selector(datePicker_ValueChanged:)
+         forControlEvents:UIControlEventValueChanged];
+    //picker.showsSelectionIndicator = YES;
+    //picker.delegate = self;
+    //picker.dataSource = self;
+    [self.view addSubview:picker];
+    
+//    toolbar = [[UIToolbar alloc] init];
+//    toolbar.frame = CGRectMake(0, 500, 320, 216);
+//    [self.view addSubview:toolbar];
+    
+    
+    
+    
+    _startTime.delegate = self;
+    _endTime.delegate = self;
+    _startRest.delegate = self;
+    _endRest.delegate = self;
     
     
     
@@ -86,15 +113,42 @@ rest;     //! 編集対象となる休憩時間
     self.endRest.text = restObject.end;
     //NSLog(@"viewDidAppear");
     
-        CGRect datePickerFrame = self.myDatePicker.frame;
-        CGRect toolBarFrame = self.toolBar.frame;
-        toolBarFrame.origin.y = self.view.frame.size.height;
-        datePickerFrame.origin.y = self.view.frame.size.height + self.toolBar.frame.size.height;
-        self.myDatePicker.frame = datePickerFrame;
-        self.toolBar.frame = toolBarFrame;
+//        CGRect datePickerFrame = self.myDatePicker.frame;
+//        CGRect toolBarFrame = self.toolBar.frame;
+//        toolBarFrame.origin.y = self.view.frame.size.height;
+//        datePickerFrame.origin.y = self.view.frame.size.height + self.toolBar.frame.size.height;
+//        self.myDatePicker.frame = datePickerFrame;
+//        self.toolBar.frame = toolBarFrame;
     
     
 }
+
+- (void)showPicker {
+	//ピッカーが下から出るアニメーション
+	[UIView beginAnimations:nil context:NULL];
+	[UIView setAnimationDuration:0.2];
+	[UIView setAnimationDelegate:self];
+	picker.frame = CGRectMake(0, self.view.frame.size.height - picker.frame.size.height, 320, 216);
+
+    
+    //toolbar.frame = CGRectMake(0,220, 320, 40);
+	[UIView commitAnimations];
+    
+	
+	
+}
+
+- (void)hidePicker {
+	//ピッカーを下に隠すアニメーション
+	[UIView beginAnimations:nil context:NULL];
+	[UIView setAnimationDuration:0.2];
+	[UIView setAnimationDelegate:self];
+	picker.frame = CGRectMake(0, 420, 320, 216);
+	[UIView commitAnimations];
+}
+
+
+
 
 - (IBAction)datePickerDone:(UIBarButtonItem *)sender {
     //ツールバーを引っ込める
@@ -122,38 +176,38 @@ rest;     //! 編集対象となる休憩時間
 //テキストフィールドをタップしたときの処理
 - (IBAction)textFieldClicked:(UITextField *)sender {
     
-    //どのテキストフィールドがタップしたのか検出する
-    _whichText = sender;
-    
-    //テキストフィールドをタップしたときキーボードを非表示にする
-    [sender resignFirstResponder];
-    
-    //ツールバーをにょわっと表示させる
-    CGRect toolBarFrame = self.toolBar.frame;
-    toolBarFrame.origin.y = self.view.frame.size.height - _toolBar.frame.size.height;
-    
-    //myDatePickerをにょわっと表示させる
-    CGRect datePickerFrame = self.myDatePicker.frame;
-    datePickerFrame.origin.y
-    = self.view.frame.size.height - _myDatePicker.frame.size.height;
-    
-    [UIView animateWithDuration:1.0
-                     animations:^{
-                         _toolBar.frame = datePickerFrame;
-                     }];
-    
-    [UIView animateWithDuration:1.0
-                     animations:^{
-                         _myDatePicker.frame = datePickerFrame;
-                     }];
-    
-    //テキストフィールドに設定している時間をデートピッカーの初期時間に設定する
-    NSDate *convertDate;
-    
-    NSDateFormatter *dateFormatter = [[NSDateFormatter alloc]init];
-    [dateFormatter setDateFormat:@"HH:mm"];
-    convertDate = [dateFormatter dateFromString:_whichText.text];
-    _myDatePicker.date = convertDate;
+//    //どのテキストフィールドがタップしたのか検出する
+//    _whichText = sender;
+//    
+//    //テキストフィールドをタップしたときキーボードを非表示にする
+//    //[sender resignFirstResponder];
+//    
+//    //ツールバーをにょわっと表示させる
+//    CGRect toolBarFrame = self.toolBar.frame;
+//    toolBarFrame.origin.y = self.view.frame.size.height - _toolBar.frame.size.height;
+//    
+//    //myDatePickerをにょわっと表示させる
+//    CGRect datePickerFrame = _myDatePicker.frame;
+//    datePickerFrame.origin.y
+//    = self.view.frame.size.height - _myDatePicker.frame.size.height;
+//    
+//    [UIView animateWithDuration:1.0
+//                     animations:^{
+//                         _toolBar.frame = datePickerFrame;
+//                     }];
+//    
+//    [UIView animateWithDuration:1.0
+//                     animations:^{
+//                         _myDatePicker.frame = datePickerFrame;
+//                     }];
+//    
+//    //テキストフィールドに設定している時間をデートピッカーの初期時間に設定する
+//    NSDate *convertDate;
+//    
+//    NSDateFormatter *dateFormatter = [[NSDateFormatter alloc]init];
+//    [dateFormatter setDateFormat:@"HH:mm"];
+//    convertDate = [dateFormatter dateFromString:_whichText.text];
+//    _myDatePicker.date = convertDate;
     
 }
 
@@ -229,6 +283,35 @@ clickedButtonAtIndex:(NSInteger)buttonIndex {
         }
             break;
     }
+
+}
+
+- (BOOL)textFieldShouldBeginEditing:(UITextField *)textField {
+    //テキストフィールドの編集を始めるときに、ピッカーを呼び出す。
+    _whichText = textField;
+    [self showPicker];
     
+    //キーボードは表示させない
+    return NO;
+}
+
+
+/**
+ * 日付ピッカーの値が変更されたとき
+ */
+- (void)datePicker_ValueChanged:(id)sender
+{
+    UIDatePicker *datePicker = sender;
+    
+    
+    //時間をテキストフィールドに表示する
+    NSDateFormatter *df = [[NSDateFormatter alloc] init];
+    df.dateFormat = @"HH:mm";
+    
+    //指定した日付形式で日付を表示する
+    _whichText.text = [df stringFromDate:picker.date];
+    
+    // ログに日付を表示
+    NSLog(@"%@", [df stringFromDate:datePicker.date]);
 }
 @end

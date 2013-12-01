@@ -9,7 +9,12 @@
 #import <UIKit/UIKit.h>
 
 
-@interface DisplaySetting : UIViewController
+@interface DisplaySetting : UIViewController <UITextFieldDelegate>
+{
+    UIDatePicker *picker;
+    
+    //UIToolbar *toolbar;
+}
 
 //テキストフィールド
 @property (weak, nonatomic) IBOutlet UITextField *startTime;
