@@ -42,11 +42,11 @@
 //デートピッカーの値が変更されたとき
 - (IBAction)changeDatePicker:(id)sender;
 
-//- (IBAction)hidePickerRecognized:(id)sender;
 
 //完了ボタンをタップしたときダイアログを表示する
 - (IBAction)confirmButton:(id)sender;
 
+- (IBAction)hidePickerRecognized:(id)sender;
 
 - (IBAction)backButton:(id)sender;
 

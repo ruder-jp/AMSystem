@@ -60,7 +60,7 @@ rest;     //! 編集対象となる休憩時間
     //picker.dataSource = self;
     [self.view addSubview:picker];
     
-//    toolbar = [[UIToolbar alloc] init];
+//    toolbar = [[UIToolƒbar alloc] init];
 //    toolbar.frame = CGRectMake(0, 500, 320, 216);
 //    [self.view addSubview:toolbar];
     
@@ -225,10 +225,6 @@ rest;     //! 編集対象となる休憩時間
     
 }
 
-//- (IBAction)hidePickerRecognized:(id)sender {
-//    [self hidePicker];
-//    NSLog(@"タップされました");
-//}
 
 
 //完了ボタンの処理
@@ -241,6 +237,10 @@ rest;     //! 編集対象となる休憩時間
     [alert addButtonWithTitle:@"OK"];
     [alert show];
     
+}
+
+- (IBAction)hidePickerRecognized:(id)sender {
+    [self hidePicker];
 }
 
 - (IBAction)backButton:(id)sender {
