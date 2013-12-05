@@ -25,8 +25,7 @@
 //どのテキストがタップしたか検出する変数
 @property (weak, nonatomic) UITextField *whichText;
 
-//テキストフィールドをタップしたとき
-- (IBAction)textFieldClicked:(UITextField *)sender;
+
 
 
 

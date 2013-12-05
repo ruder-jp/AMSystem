@@ -174,43 +174,7 @@ rest;     //! 編集対象となる休憩時間
     
 }
 
-//テキストフィールドをタップしたときの処理
-- (IBAction)textFieldClicked:(UITextField *)sender {
-    
-//    //どのテキストフィールドがタップしたのか検出する
-//    _whichText = sender;
-//    
-//    //テキストフィールドをタップしたときキーボードを非表示にする
-//    //[sender resignFirstResponder];
-//    
-//    //ツールバーをにょわっと表示させる
-//    CGRect toolBarFrame = self.toolBar.frame;
-//    toolBarFrame.origin.y = self.view.frame.size.height - _toolBar.frame.size.height;
-//    
-//    //myDatePickerをにょわっと表示させる
-//    CGRect datePickerFrame = _myDatePicker.frame;
-//    datePickerFrame.origin.y
-//    = self.view.frame.size.height - _myDatePicker.frame.size.height;
-//    
-//    [UIView animateWithDuration:1.0
-//                     animations:^{
-//                         _toolBar.frame = datePickerFrame;
-//                     }];
-//    
-//    [UIView animateWithDuration:1.0
-//                     animations:^{
-//                         _myDatePicker.frame = datePickerFrame;
-//                     }];
-//    
-//    //テキストフィールドに設定している時間をデートピッカーの初期時間に設定する
-//    NSDate *convertDate;
-//    
-//    NSDateFormatter *dateFormatter = [[NSDateFormatter alloc]init];
-//    [dateFormatter setDateFormat:@"HH:mm"];
-//    convertDate = [dateFormatter dateFromString:_whichText.text];
-//    _myDatePicker.date = convertDate;
-    
-}
+
 
 //デートピッカーの値が変更されたときの処理
 //※最終的にはDoneをタップしたときこの処理を行いたい
@@ -301,8 +265,10 @@ clickedButtonAtIndex:(NSInteger)buttonIndex {
     
     NSDateFormatter *dateFormatter = [[NSDateFormatter alloc]init];
     [dateFormatter setDateFormat:@"HH:mm"];
+    //nullは許されてない
     convertDate = [dateFormatter dateFromString:_whichText.text];
-    picker.date = convertDate;
+    NSLog(@"%@",convertDate);
+    //picker.date = convertDate;
     
     [self showPicker];
     
