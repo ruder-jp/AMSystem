@@ -7,9 +7,11 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "AlterationViewController.h"
 
 @interface KinmuViewController : UITableViewController
 - (IBAction)kinmuBackButton:(id)sender;
+
 
 
 @end

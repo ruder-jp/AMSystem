@@ -13,8 +13,9 @@
 @interface WorkModel : NSObject
 
 -(Work*)insertStart:(Work*)data;
--(NSArray*)datas;
+-(NSArray*)datas:(NSString*)daysNumber;
 -(NSArray*)tests;
+-(NSArray*)monthDate;
 -(BOOL)update:(Work*)work;
 -(BOOL)updateEnd:(Work *)work;
 

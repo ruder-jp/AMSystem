@@ -21,8 +21,10 @@
 		2381B55218066CE00044048A /* FMDatabasePool.m in Sources */ = {isa = PBXBuildFile; fileRef = 2381B54B18066CE00044048A /* FMDatabasePool.m */; };
 		2381B55318066CE00044048A /* FMDatabaseQueue.m in Sources */ = {isa = PBXBuildFile; fileRef = 2381B54D18066CE00044048A /* FMDatabaseQueue.m */; };
 		2381B55418066CE00044048A /* FMResultSet.m in Sources */ = {isa = PBXBuildFile; fileRef = 2381B54F18066CE00044048A /* FMResultSet.m */; };
+		239C4C63185078DA00C85F3E /* AlterationViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 239C4C62185078DA00C85F3E /* AlterationViewController.m */; };
 		23C12F8118237E380021239D /* KinmuViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 23C12F8018237E380021239D /* KinmuViewController.m */; };
 		23D1F92A1828A1AF001BABE9 /* TestInsertViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 23D1F9291828A1AF001BABE9 /* TestInsertViewController.m */; };
+		23D9E98A184ED08F005A1B93 /* MenuViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 23D9E989184ED08E005A1B93 /* MenuViewController.m */; };
 		23F7790617E8282E005CF677 /* libsqlite3.0.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 23F7790517E8282E005CF677 /* libsqlite3.0.dylib */; };
 		43D4D3831781C4140008BF14 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 43D4D3821781C4140008BF14 /* UIKit.framework */; };
 		43D4D3851781C4140008BF14 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 43D4D3841781C4140008BF14 /* Foundation.framework */; };
@@ -81,10 +83,14 @@
 		2381B54D18066CE00044048A /* FMDatabaseQueue.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FMDatabaseQueue.m; sourceTree = "<group>"; };
 		2381B54E18066CE00044048A /* FMResultSet.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FMResultSet.h; sourceTree = "<group>"; };
 		2381B54F18066CE00044048A /* FMResultSet.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FMResultSet.m; sourceTree = "<group>"; };
+		239C4C61185078DA00C85F3E /* AlterationViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AlterationViewController.h; sourceTree = "<group>"; };
+		239C4C62185078DA00C85F3E /* AlterationViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AlterationViewController.m; sourceTree = "<group>"; };
 		23C12F7F18237E380021239D /* KinmuViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = KinmuViewController.h; sourceTree = "<group>"; };
 		23C12F8018237E380021239D /* KinmuViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = KinmuViewController.m; sourceTree = "<group>"; };
 		23D1F9281828A1AF001BABE9 /* TestInsertViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TestInsertViewController.h; sourceTree = "<group>"; };
 		23D1F9291828A1AF001BABE9 /* TestInsertViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TestInsertViewController.m; sourceTree = "<group>"; };
+		23D9E988184ED08E005A1B93 /* MenuViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MenuViewController.h; sourceTree = "<group>"; };
+		23D9E989184ED08E005A1B93 /* MenuViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MenuViewController.m; sourceTree = "<group>"; };
 		23F7790517E8282E005CF677 /* libsqlite3.0.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libsqlite3.0.dylib; path = usr/lib/libsqlite3.0.dylib; sourceTree = SDKROOT; };
 		43D4D37F1781C4140008BF14 /* AMSystem.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = AMSystem.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		43D4D3821781C4140008BF14 /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
@@ -158,6 +164,10 @@
 				2365E3461837AC7900FF1EF9 /* TopViewController.m */,
 				2363BCDF184473FA002F71FA /* TableViewController.h */,
 				2363BCE0184473FA002F71FA /* TableViewController.m */,
+				23D9E988184ED08E005A1B93 /* MenuViewController.h */,
+				23D9E989184ED08E005A1B93 /* MenuViewController.m */,
+				239C4C61185078DA00C85F3E /* AlterationViewController.h */,
+				239C4C62185078DA00C85F3E /* AlterationViewController.m */,
 			);
 			name = Controller;
 			sourceTree = "<group>";
@@ -405,6 +415,8 @@
 				236855F2183DEA1400A4E156 /* RestModel.m in Sources */,
 				236855F5183DF92800A4E156 /* WorkModel.m in Sources */,
 				2363BCE1184473FA002F71FA /* TableViewController.m in Sources */,
+				23D9E98A184ED08F005A1B93 /* MenuViewController.m in Sources */,
+				239C4C63185078DA00C85F3E /* AlterationViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -513,10 +525,15 @@
 		43D4D3B81781C4150008BF14 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				CODE_SIGN_IDENTITY = "iPhone Developer: Satoru Kanadomi (VTZKR6NWBU)";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer: Satoru Kanadomi (VTZKR6NWBU)";
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "AMSystem/AMSystem-Prefix.pch";
 				INFOPLIST_FILE = "AMSystem/AMSystem-Info.plist";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE = "13595007-2CDA-4205-94C0-55CB3C7757DA";
+				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "13595007-2CDA-4205-94C0-55CB3C7757DA";
+				TARGETED_DEVICE_FAMILY = 1;
 				WRAPPER_EXTENSION = app;
 			};
 			name = Debug;
@@ -528,6 +545,7 @@
 				GCC_PREFIX_HEADER = "AMSystem/AMSystem-Prefix.pch";
 				INFOPLIST_FILE = "AMSystem/AMSystem-Info.plist";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				TARGETED_DEVICE_FAMILY = 1;
 				WRAPPER_EXTENSION = app;
 			};
 			name = Release;

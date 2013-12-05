@@ -40,7 +40,6 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
-    
     NSDateFormatter *day = [[NSDateFormatter alloc] init];
     NSDateFormatter *time = [[NSDateFormatter alloc] init];
     NSDate *now = [NSDate date];
@@ -83,17 +82,33 @@
     testWork.rest_id = 0;
     [self.worksModel insertStart:testWork];
     
-    
     NSLog(@"insert");
 }
 
 - (IBAction)selectButton:(id)sender {
     
+//    NSLog(@"select");
+//    NSArray* array = [self.worksModel datas];
+//    int count = [array count];
+//    for(int i=0;i < count;i++){
+//        Work* tmp = array[i];
+//        NSLog(@"%i", tmp.day_id);
+//        NSLog(@"%@", tmp.date);
+//        NSLog(@"%@", tmp.start);
+//        NSLog(@"%@", tmp.end);
+//    }
+    
     NSLog(@"select");
-    NSArray* array = [self.worksModel datas];
-//    NSArray* array2 = [self.worksModel tests];
-//    NSLog(@"%@",array2);
-//    NSLog(@"%@",array);
+
+    NSArray* array = [self.worksModel datas:@"03"];
+    int count = [array count];
+    for(int i=0;i < count;i++){
+        Work* tmp = array[i];
+        NSLog(@"%i", tmp.day_id);
+        NSLog(@"%@", tmp.date);
+        NSLog(@"%@", tmp.start);
+        NSLog(@"%@", tmp.end);
+    }
 }
 
 - (IBAction)updateButton:(id)sender {

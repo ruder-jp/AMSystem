@@ -35,6 +35,15 @@
     return self;
 }
 
+-(NSString*)passMonth
+{
+    NSDate *month = [NSDate date];
+    NSDateFormatter *monthFormatter = [[NSDateFormatter alloc] init];
+    [monthFormatter setDateFormat:@"yyyy-MM"];
+    NSString *monthStr = [monthFormatter stringFromDate:month];
+    return monthStr;
+}
+
 -(void)createSql
 {
     NSString *createWorks = [[NSString alloc]initWithFormat:@"CREATE TABLE IF NOT EXISTS works (id INTEGER PRIMARY KEY AUTOINCREMENT, date REAL,start REAL ,end REAL,time_id INTEGER REFERENCES times(id),rest_id INTEGER REFERENCES rests(id));"];
@@ -71,63 +80,23 @@
 	FMDatabase* db = [self getConnection];
     //field count
     [db open];
-    NSUInteger count = [db intForQuery:@"SELECT count(id)from works"];
-    NSString* sql =[[NSString alloc]initWithFormat:@"UPDATE  works SET  end = julianday('%@') WHERE id = %@;",work.end,[NSNumber numberWithInteger:count]];
-    NSLog(@"%@",sql);
+    NSUInteger max = [db intForQuery:@"SELECT max(id)from works"];
+    NSString* sql =[[NSString alloc]initWithFormat:@"UPDATE  works SET  end = julianday('%@') WHERE id = %@;",work.end,[NSNumber numberWithInteger:max]];
+
     BOOL isSucceeded = [db executeUpdate:sql];
 	[db close];
-    NSLog(@"%@",@"update");
-	
 	return isSucceeded;
 }
 
-//勤務設定時間を参照する
-//- (Work*)datas
-//{
-//    FMDatabase* db = [self getConnection];
-//	[db open];
-//    
-//    NSString* sql = [[NSString alloc]initWithFormat:@"SELECT id, datetime(date) ,datetime(start) , datetime(end) , rest_id , time_id FROM works;"];
-//    FMResultSet* results = [db executeQuery:sql];
-//    Work* work = [[Work alloc] init];
-//    work.day_id = [results intForColumnIndex:0];
-//    work.date = [results stringForColumnIndex:1];
-//    work.start = [results stringForColumnIndex:2];
-//    work.end = [results stringForColumnIndex:3];
-//    work.time_id = [results intForColumnIndex:4];
-//    work.rest_id = [results intForColumnIndex:5];
-//    //[times addObject:time];
-//    [db close];
-//    
-//    //NSLog(results.endTime);
-//    return work;
-//}
 
--(NSArray*)tests
-{
-    NSArray *ary1 = [NSArray arrayWithObjects:
-                     @"Snoopy", @"Spike", @"Olaf", nil];
-    NSArray *ary2 = [NSArray arrayWithObjects:
-                     @"Marbles", @"Belle", @"Andy", nil];
-    
-    NSArray *result = [ary1 arrayByAddingObjectsFromArray:ary2];
-    NSLog(@"%@", result);
-    
-    
-    // 配列と配列を結合する(NSMutableArray)
-    NSMutableArray *mAry1 = [NSMutableArray arrayWithArray:ary1];
-    NSMutableArray *mAry2 = [NSMutableArray arrayWithArray:ary2];
-    
-    [mAry1 addObjectsFromArray:mAry2];
-    NSLog(@"%@", mAry1);
-    return mAry1;
-}
-
--(NSArray*)datas
+-(NSArray*)datas:(NSString*)daysNumber
 {
     FMDatabase* db = [self getConnection];
+    NSString* days = daysNumber;
     [db open];
-    NSString* sql = [[NSString alloc]initWithFormat:@"SELECT id, datetime(date) ,datetime(start) , datetime(end) , rest_id , time_id FROM works;"];
+    NSString* sqlBefore =@"SELECT id, strftime('%Y-%m-%d',date) ,strftime('%H:%M',start) , strftime('%H:%M',end) , rest_id , time_id FROM works";
+    NSString* sqlBack =[[NSString alloc]initWithFormat:@" where date = julianday('%@-%@');",[self passMonth],days];
+    NSString* sql =[[NSString alloc]initWithFormat:@"%@%@",sqlBefore,sqlBack];
     FMResultSet* results = [db executeQuery:sql];
     NSMutableArray* datas = [[NSMutableArray alloc] initWithCapacity:0];
     
@@ -142,27 +111,49 @@
         work.rest_id = [results intForColumnIndex:5];
         
         [datas addObject:work];
-        Work* tmp = datas[0];
-        
-        NSLog(@"%@", tmp.start);
-        
-       
-        
-//        NSLog(@"%i",[results intForColumnIndex:0]);
-//        NSLog(@"%@",[results stringForColumnIndex:1]);
-//        NSLog(@"%@",[results stringForColumnIndex:2]);
-//        NSLog(@"%@",[results stringForColumnIndex:3]);
-//        NSLog(@"%i",[results intForColumnIndex:4]);
-//        NSLog(@"%i",[results intForColumnIndex:5]);
-//        NSLog(@"%@",[datas objectAtIndex:1]);
+
+
     }
-    
-    
-    
     [db close];
     return datas;
 }
 
+
+-(NSArray*)monthDate
+{
+    FMDatabase* db = [self getConnection];
+    [db open];
+
+    
+    NSString* sqlBefore =@"SELECT id, strftime('%Y-%m-%d',date) ,strftime('%H:%M',start) , strftime('%H:%M',end) , rest_id , time_id FROM works";
+    NSString* sqlBack =[[NSString alloc]initWithFormat:@" where date BETWEEN julianday('%@-01') AND julianday('%@-31');",[self passMonth],[self passMonth]];
+    
+    NSString* sql =[[NSString alloc]initWithFormat:@"%@%@",sqlBefore,sqlBack];
+    
+    NSLog(@"%@",sql);
+    
+    FMResultSet* results = [db executeQuery:sql];
+   
+    [self passMonth];
+    
+
+    NSMutableArray* datas = [[NSMutableArray alloc] initWithCapacity:0];
+    
+    while([results next]){
+        Work* work = [[Work alloc]init];
+        
+        work.day_id = [results intForColumnIndex:0];
+        work.date = [results stringForColumnIndex:1];
+        work.start = [results stringForColumnIndex:2];
+        work.end = [results stringForColumnIndex:3];
+        work.time_id = [results intForColumnIndex:4];
+        work.rest_id = [results intForColumnIndex:5];
+        
+        [datas addObject:work];
+    }
+    [db close];
+    return datas;
+}
 /**
  * データベースを取得します。
  *
