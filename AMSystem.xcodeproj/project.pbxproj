@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		1B4F668E1850720200631939 /* SettingDisplay.m in Sources */ = {isa = PBXBuildFile; fileRef = 1B4F668D1850720200631939 /* SettingDisplay.m */; };
 		1BD159A81807C2CF00093AFA /* DisplaySetting.m in Sources */ = {isa = PBXBuildFile; fileRef = 1BD159A71807C2CF00093AFA /* DisplaySetting.m */; };
 		2363BCE1184473FA002F71FA /* TableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 2363BCE0184473FA002F71FA /* TableViewController.m */; };
 		2365E3471837AC7900FF1EF9 /* TopViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 2365E3461837AC7900FF1EF9 /* TopViewController.m */; };
@@ -53,6 +54,8 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		1B4F668C1850720200631939 /* SettingDisplay.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SettingDisplay.h; sourceTree = "<group>"; };
+		1B4F668D1850720200631939 /* SettingDisplay.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SettingDisplay.m; sourceTree = "<group>"; };
 		1BD159A61807C2CF00093AFA /* DisplaySetting.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DisplaySetting.h; sourceTree = "<group>"; };
 		1BD159A71807C2CF00093AFA /* DisplaySetting.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DisplaySetting.m; sourceTree = "<group>"; };
 		2363BCDF184473FA002F71FA /* TableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TableViewController.h; sourceTree = "<group>"; };
@@ -158,6 +161,8 @@
 				2365E3461837AC7900FF1EF9 /* TopViewController.m */,
 				2363BCDF184473FA002F71FA /* TableViewController.h */,
 				2363BCE0184473FA002F71FA /* TableViewController.m */,
+				1B4F668C1850720200631939 /* SettingDisplay.h */,
+				1B4F668D1850720200631939 /* SettingDisplay.m */,
 			);
 			name = Controller;
 			sourceTree = "<group>";
@@ -405,6 +410,7 @@
 				236855F2183DEA1400A4E156 /* RestModel.m in Sources */,
 				236855F5183DF92800A4E156 /* WorkModel.m in Sources */,
 				2363BCE1184473FA002F71FA /* TableViewController.m in Sources */,
+				1B4F668E1850720200631939 /* SettingDisplay.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
