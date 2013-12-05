@@ -279,9 +279,14 @@ clickedButtonAtIndex:(NSInteger)buttonIndex {
             newRest.end   = self.endRest.text;
             if([_timeModel noteJudgment]){
                 [_timeModel insert:newTime];
-                [_restModel insert:newRest];
+//                [_restModel insert:newRest];
             }else{
                 [_timeModel update:newTime];
+//                [_restModel update:newRest];
+            }
+            if([_restModel noteJudgment]){
+                [_restModel insert:newRest];
+            }else{
                 [_restModel update:newRest];
             }
             

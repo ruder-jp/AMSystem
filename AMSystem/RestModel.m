@@ -50,6 +50,23 @@
     [db close];
 }
 
+- (BOOL)noteJudgment
+{
+    FMDatabase* db = [self getConnection];
+    
+	[db open];
+    
+    FMResultSet* results = [db executeQuery:@"SELECT * FROM times;"];
+    [results next];
+    Rest* rest = [[Rest alloc] init];
+    rest.start = [results stringForColumnIndex:1];
+    if(rest.start == nil){
+        return YES;
+    }
+    [db close];
+    return NO;
+}
+
 /**
  * データベースを取得します。
  *

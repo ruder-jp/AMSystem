@@ -16,5 +16,7 @@
 
 - (BOOL)update:(Rest *)rest;
 
+- (BOOL)noteJudgment;
+
 - (Rest*)setting;
 @end
