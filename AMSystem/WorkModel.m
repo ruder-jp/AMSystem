@@ -42,6 +42,7 @@
     [monthFormatter setDateFormat:@"yyyy-MM"];
     NSString *monthStr = [monthFormatter stringFromDate:month];
     return monthStr;
+    
 }
 
 -(void)createSql
@@ -71,8 +72,10 @@
     {
         data = nil;
     }
+    NSLog(@"%@",[WorkModel getDbFilePath]);
     [db close];
     return data;
+    
 }
 
 - (BOOL)updateEnd:(Work *)work
@@ -109,7 +112,7 @@
         work.end = [results stringForColumnIndex:3];
         work.time_id = [results intForColumnIndex:4];
         work.rest_id = [results intForColumnIndex:5];
-        
+        NSLog(@"%@",work.date);
         [datas addObject:work];
 
 

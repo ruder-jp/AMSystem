@@ -163,8 +163,9 @@
     if(days.length < 2){
         dayNumber = [NSString stringWithFormat:@"0%@",days];
     }else{
-        dayNumber = [NSString stringWithFormat:@"%@",days];
+        dayNumber = days;
     }
+    NSLog(@"%@",dayNumber);
     NSArray* array = [self.worksModel datas:dayNumber];
     int count = [array count];
     date = date + 1;
