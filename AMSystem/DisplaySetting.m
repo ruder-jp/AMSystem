@@ -279,16 +279,17 @@ clickedButtonAtIndex:(NSInteger)buttonIndex {
             newRest.end   = self.endRest.text;
             if([_timeModel noteJudgment]){
                 [_timeModel insert:newTime];
-//                [_restModel insert:newRest];
-            }else{
-                [_timeModel update:newTime];
-//                [_restModel update:newRest];
-            }
-            if([_restModel noteJudgment]){
                 [_restModel insert:newRest];
             }else{
+                [_timeModel update:newTime];
                 [_restModel update:newRest];
             }
+            //現状timeModelでしか判定していない
+//            if([_restModel noteJudgment]){
+//                [_restModel insert:newRest];
+//            }else{
+//                [_restModel update:newRest];
+//            }
             
             
         }
@@ -307,7 +308,9 @@ clickedButtonAtIndex:(NSInteger)buttonIndex {
     NSDateFormatter *dateFormatter = [[NSDateFormatter alloc]init];
     [dateFormatter setDateFormat:@"HH:mm"];
     convertDate = [dateFormatter dateFromString:_whichText.text];
-    picker.date = convertDate;
+    if(convertDate != nil){
+        picker.date = convertDate;
+    }
     
     [self showPicker];
     

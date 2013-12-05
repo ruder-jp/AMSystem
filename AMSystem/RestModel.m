@@ -110,8 +110,12 @@
 {
 	FMDatabase* db = [self getConnection];
 	[db open];
+    
+    NSString *sql = [[NSString alloc]initWithFormat:@"UPDATE rests SET start = julianday('%@'), end = julianday('%@')WHERE id = %@;", rest.start, rest.end,[NSNumber numberWithInteger:rest.rest_id]];
+    
+	BOOL isSucceeded = [db executeUpdate:sql];
 	
-	BOOL isSucceeded = [db executeUpdate:@"UPDATE rests SET start = ?, end = ?,WHERE id = ?;", rest.start, rest.end, [NSNumber numberWithInteger:rest.rest_id]];
+//	BOOL isSucceeded = [db executeUpdate:@"UPDATE rests SET start = ?, end = ?,WHERE id = ?;", rest.start, rest.end, [NSNumber numberWithInteger:rest.rest_id]];
 	
 	[db close];
 	
