@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="2.0" toolsVersion="3084" systemVersion="11G63" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" initialViewController="2">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="2.0" toolsVersion="3084" systemVersion="11G63" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" initialViewController="NlP-6q-PMY">
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="2083"/>
     </dependencies>
@@ -88,15 +88,18 @@
                             </label>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
+                        <gestureRecognizers/>
                         <constraints>
+                            <constraint firstItem="Dyp-Ry-3yr" firstAttribute="top" secondItem="3" secondAttribute="top" constant="118" id="5aF-aP-YUr"/>
                             <constraint firstItem="mzI-bJ-xiG" firstAttribute="top" secondItem="3" secondAttribute="top" constant="197" id="6V6-IA-t7k"/>
                             <constraint firstItem="QpV-Yo-7L8" firstAttribute="centerX" secondItem="3kF-GK-Uqt" secondAttribute="centerX" type="default" id="AkZ-kH-RRc"/>
                             <constraint firstItem="QLl-pb-5wQ" firstAttribute="trailing" secondItem="mzI-bJ-xiG" secondAttribute="trailing" type="default" id="EyI-tL-Wkx"/>
                             <constraint firstItem="KDo-XY-QGr" firstAttribute="trailing" secondItem="Dyp-Ry-3yr" secondAttribute="trailing" type="default" id="Gyp-yl-QSd"/>
                             <constraint firstItem="HLp-g1-a0k" firstAttribute="trailing" secondItem="3" secondAttribute="trailing" type="default" id="HMU-he-idE"/>
+                            <constraint firstItem="Dyp-Ry-3yr" firstAttribute="baseline" secondItem="QpV-Yo-7L8" secondAttribute="baseline" type="default" id="Hli-V2-xYS"/>
                             <constraint firstItem="QLl-pb-5wQ" firstAttribute="top" secondItem="mzI-bJ-xiG" secondAttribute="bottom" constant="8" symbolic="YES" type="default" id="Hv5-1Z-3OM"/>
-                            <constraint firstItem="Dyp-Ry-3yr" firstAttribute="top" secondItem="KDo-XY-QGr" secondAttribute="bottom" constant="8" symbolic="YES" type="default" id="Hzd-vF-wPy"/>
                             <constraint firstItem="nBF-vq-Odk" firstAttribute="top" secondItem="3" secondAttribute="top" constant="50" id="IcN-Vs-YLV"/>
+                            <constraint firstItem="nBF-vq-Odk" firstAttribute="leading" secondItem="3" secondAttribute="leading" constant="27" id="Lt2-g9-iBd"/>
                             <constraint firstItem="KDo-XY-QGr" firstAttribute="top" secondItem="nBF-vq-Odk" secondAttribute="bottom" constant="8" symbolic="YES" type="default" id="Md2-Jv-Hrr"/>
                             <constraint firstItem="MGg-dI-DGy" firstAttribute="top" secondItem="mzI-bJ-xiG" secondAttribute="bottom" constant="8" symbolic="YES" type="default" id="NG4-Vz-Kx7"/>
                             <constraint firstItem="HLp-g1-a0k" firstAttribute="top" secondItem="3" secondAttribute="top" type="default" id="P7b-iK-WY5"/>
@@ -104,17 +107,15 @@
                             <constraint firstItem="HLp-g1-a0k" firstAttribute="leading" secondItem="3" secondAttribute="leading" type="default" id="Pzh-lo-NlV"/>
                             <constraint firstItem="QLl-pb-5wQ" firstAttribute="leading" secondItem="mzI-bJ-xiG" secondAttribute="leading" type="default" id="Szh-cl-LOb"/>
                             <constraint firstItem="3kF-GK-Uqt" firstAttribute="top" secondItem="3" secondAttribute="top" constant="201" id="URZ-zQ-KOq"/>
-                            <constraint firstItem="MGg-dI-DGy" firstAttribute="leading" secondItem="3kF-GK-Uqt" secondAttribute="leading" type="default" id="UWX-zo-ybz"/>
                             <constraint firstItem="Dyp-Ry-3yr" firstAttribute="leading" secondItem="KDo-XY-QGr" secondAttribute="leading" type="default" id="VCm-rg-ShB"/>
                             <constraint firstItem="nBF-vq-Odk" firstAttribute="leading" secondItem="GIz-gn-yJI" secondAttribute="leading" type="default" id="VKG-6X-2vn"/>
-                            <constraint firstItem="nBF-vq-Odk" firstAttribute="leading" secondItem="3" secondAttribute="leading" constant="27" id="Ywf-L7-KVJ"/>
                             <constraint firstItem="QpV-Yo-7L8" firstAttribute="leading" secondItem="hgB-kM-gSC" secondAttribute="leading" type="default" id="bYz-aD-agv"/>
                             <constraint firstItem="GIz-gn-yJI" firstAttribute="trailing" secondItem="3kF-GK-Uqt" secondAttribute="trailing" type="default" id="cou-QJ-XUD"/>
                             <constraint firstItem="GIz-gn-yJI" firstAttribute="top" secondItem="3" secondAttribute="top" constant="165" id="eL9-w6-YXb"/>
-                            <constraint firstItem="QpV-Yo-7L8" firstAttribute="top" secondItem="3" secondAttribute="top" constant="121" id="hTX-jM-8Ok"/>
                             <constraint firstItem="hgB-kM-gSC" firstAttribute="baseline" secondItem="KDo-XY-QGr" secondAttribute="baseline" type="default" id="i6s-22-F7E"/>
                             <constraint firstItem="mzI-bJ-xiG" firstAttribute="leading" secondItem="Dyp-Ry-3yr" secondAttribute="leading" type="default" id="oql-Q4-V5J"/>
                             <constraint firstItem="mzI-bJ-xiG" firstAttribute="trailing" secondItem="Dyp-Ry-3yr" secondAttribute="trailing" type="default" id="snY-Ze-uwR"/>
+                            <constraint firstItem="MGg-dI-DGy" firstAttribute="leading" secondItem="3kF-GK-Uqt" secondAttribute="leading" type="default" id="vII-fF-d0N"/>
                         </constraints>
                     </view>
                     <connections>
@@ -125,6 +126,11 @@
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="4" sceneMemberID="firstResponder"/>
+                <tapGestureRecognizer id="1Vd-vJ-cSV">
+                    <connections>
+                        <action selector="hidePickerRecognized:" destination="2" id="uY4-N4-BxO"/>
+                    </connections>
+                </tapGestureRecognizer>
             </objects>
             <point key="canvasLocation" x="1843" y="-1075"/>
         </scene>

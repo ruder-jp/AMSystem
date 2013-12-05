@@ -51,7 +51,7 @@ rest;     //! 編集対象となる休憩時間
     
     picker = [[UIDatePicker alloc] init];
     picker.datePickerMode = UIDatePickerModeTime;
-    picker.frame = CGRectMake(0, 450, 320, 216);
+    picker.frame = CGRectMake(0, self.view.frame.size.height, 320, 216);
     [picker addTarget:self
                    action:@selector(datePicker_ValueChanged:)
          forControlEvents:UIControlEventValueChanged];
@@ -131,7 +131,8 @@ rest;     //! 編集対象となる休憩時間
 	picker.frame = CGRectMake(0, self.view.frame.size.height - picker.frame.size.height, 320, 216);
 
     
-    //toolbar.frame = CGRectMake(0,220, 320, 40);
+    
+    
 	[UIView commitAnimations];
     
 	
@@ -143,7 +144,7 @@ rest;     //! 編集対象となる休憩時間
 	[UIView beginAnimations:nil context:NULL];
 	[UIView setAnimationDuration:0.2];
 	[UIView setAnimationDelegate:self];
-	picker.frame = CGRectMake(0, 420, 320, 216);
+	picker.frame = CGRectMake(0, self.view.frame.size.height, 320, 216);
 	[UIView commitAnimations];
 }
 
@@ -224,6 +225,11 @@ rest;     //! 編集対象となる休憩時間
     
 }
 
+//- (IBAction)hidePickerRecognized:(id)sender {
+//    [self hidePicker];
+//    NSLog(@"タップされました");
+//}
+
 
 //完了ボタンの処理
 - (IBAction)confirmButton:(id)sender {
@@ -289,7 +295,18 @@ clickedButtonAtIndex:(NSInteger)buttonIndex {
 - (BOOL)textFieldShouldBeginEditing:(UITextField *)textField {
     //テキストフィールドの編集を始めるときに、ピッカーを呼び出す。
     _whichText = textField;
+    
+    //テキストフィールドに設定している時間をデートピッカーの初期時間に設定する
+    NSDate *convertDate;
+    
+    NSDateFormatter *dateFormatter = [[NSDateFormatter alloc]init];
+    [dateFormatter setDateFormat:@"HH:mm"];
+    convertDate = [dateFormatter dateFromString:_whichText.text];
+    picker.date = convertDate;
+    
     [self showPicker];
+    
+    
     
     //キーボードは表示させない
     return NO;
@@ -311,7 +328,5 @@ clickedButtonAtIndex:(NSInteger)buttonIndex {
     //指定した日付形式で日付を表示する
     _whichText.text = [df stringFromDate:picker.date];
     
-    // ログに日付を表示
-    NSLog(@"%@", [df stringFromDate:datePicker.date]);
 }
 @end
