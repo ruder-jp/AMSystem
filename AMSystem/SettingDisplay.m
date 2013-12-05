@@ -7,8 +7,20 @@
 //
 
 #import "SettingDisplay.h"
+#import "TimeModel.h"
+#import "RestModel.h"
+#import "Time.h"
+#import "Rest.h"
 
 @interface SettingDisplay ()
+@property (nonatomic, retain) TimeModel*            timeModel; //! 勤務時間設定を管理するオブジェクト
+@property (nonatomic, retain) RestModel*            restModel; //! 休憩時間設定を管理するオブジェクト
+
+@property (nonatomic, retain) Time*
+time;     //! 編集対象となる勤務時間
+
+@property (nonatomic, retain) Rest*
+rest;     //! 編集対象となる休憩時間
 
 @end
 
@@ -17,11 +29,25 @@
     NSArray *groupNames;
     //Row用データ
     NSArray * groups;
+    NSInteger *i;
 }
+
+@synthesize time,rest;
+
 
 - (id)initWithStyle:(UITableViewStyle)style
 {
     self = [super initWithStyle:style];
+    if (self) {
+        // Custom initialization
+    }
+    return self;
+}
+
+- (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
+{
+    self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
+    i = 0;
     if (self) {
         // Custom initialization
     }
@@ -68,7 +94,9 @@
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    static NSString *CellIdentifier = @"Cell";
+    NSArray *ar = [NSArray arrayWithObjects:@"startTimeCell", @"endTimeCell", @"startRestCell", @"endRestCell", nil];
+    
+    NSString *CellIdentifier = @"startTimeCell";
     UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier forIndexPath:indexPath];
     
     NSArray *members = groups[indexPath.section];
@@ -136,6 +164,7 @@
 {
     return 44;
 }
+
 
 #pragma mark - Table view delegate
 
