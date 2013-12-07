@@ -127,6 +127,23 @@
     return rest;
 }
 
+- (BOOL)noteJudgment
+{
+    FMDatabase* db = [self getConnection];
+    
+	[db open];
+    
+    FMResultSet* results = [db executeQuery:@"SELECT id FROM rests;"];
+    [results next];
+    Rest* rest = [[Rest alloc] init];
+    rest.rest_id = [results intForColumnIndex:0];
+    if(rest.rest_id == nil){
+        return YES;
+    }
+    [db close];
+    return NO;
+}
+
 /**
  * データベース ファイルのパスを取得します。
  */

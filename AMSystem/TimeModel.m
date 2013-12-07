@@ -128,11 +128,11 @@
     
 	[db open];
     
-    FMResultSet* results = [db executeQuery:@"SELECT * FROM times;"];
+    FMResultSet* results = [db executeQuery:@"SELECT id FROM times;"];
     [results next];
     Time* time = [[Time alloc] init];
-    time.start = [results stringForColumnIndex:1];
-    if(time.start == nil){
+    time.time_id = [results intForColumnIndex:0];
+    if(time.time_id == nil){
         return YES;
     }
     [db close];

@@ -129,6 +129,9 @@ rest;     //! 編集対象となる休憩時間
 	[UIView setAnimationDuration:0.2];
 	[UIView setAnimationDelegate:self];
 	picker.frame = CGRectMake(0, self.view.frame.size.height - picker.frame.size.height, 320, 216);
+    
+    
+    
 
     
     
@@ -193,6 +196,7 @@ rest;     //! 編集対象となる休憩時間
 
 //完了ボタンの処理
 - (IBAction)confirmButton:(id)sender {
+    [self hidePicker];
     UIAlertView *alert = [[UIAlertView alloc] init];
     alert.delegate = self;
     alert.title = @"確認";
@@ -204,7 +208,7 @@ rest;     //! 編集対象となる休憩時間
 }
 
 - (IBAction)hidePickerRecognized:(id)sender {
-    [self hidePicker];
+        [self hidePicker];
 }
 
 - (IBAction)backButton:(id)sender {
@@ -223,7 +227,6 @@ clickedButtonAtIndex:(NSInteger)buttonIndex {
     switch (buttonIndex) {
         case 0:
             //キャンセルボタンがタップされたときの処理
-            NSLog(@"キャンセル！");
             break;
         case 1:
             //OKボタンがタップされたときの処理
@@ -243,9 +246,12 @@ clickedButtonAtIndex:(NSInteger)buttonIndex {
             newRest.end   = self.endRest.text;
             if([_timeModel noteJudgment]){
                 [_timeModel insert:newTime];
-                [_restModel insert:newRest];
             }else{
                 [_timeModel update:newTime];
+            }
+            if([_restModel noteJudgment]){
+                [_restModel insert:newRest];
+            }else{
                 [_restModel update:newRest];
             }
             
@@ -267,7 +273,6 @@ clickedButtonAtIndex:(NSInteger)buttonIndex {
     [dateFormatter setDateFormat:@"HH:mm"];
     //nullは許されてない
     convertDate = [dateFormatter dateFromString:_whichText.text];
-    NSLog(@"%@",convertDate);
     if(convertDate != nil){
         picker.date = convertDate;
     }
