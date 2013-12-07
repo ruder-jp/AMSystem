@@ -55,10 +55,8 @@
             Work* tmp = array[i];
             
             BOOL dateTest = [tmp.date isEqualToString:insertDay];
-            NSLog(@"bool%c",dateTest);
             if(dateTest == YES)
             {
-                NSLog(@"%@",tmp.date);
                 _startLavel.text = tmp.start;
                 _endLavel.text = tmp.end;
                 self.view.tag = ERROR;
@@ -139,10 +137,8 @@
 {
        switch(buttonIndex){
         case 0:
-            NSLog(@"%@",@"1番目");
             break;
         case 1:
-            NSLog(@"%@",@"2番目");
             //データベース利用
             if(self.view.tag == START){
                 [self insert];
@@ -154,8 +150,6 @@
                 _endLavel.text = insertTime;
                 [self.topButton setTitle:@"始業"forState:UIControlStateNormal];
                 self.view.tag = ERROR;
-            }else{
-                NSLog(@"%@",@"もう入りません");
             }
             break;
     }

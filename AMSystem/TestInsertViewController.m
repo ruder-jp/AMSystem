@@ -55,17 +55,6 @@
     self.work = [[Work alloc]init];
 }
 
-////文字列結合
-//-(NSString*)combiString:(NSString*)item
-//{
-//    NSString* front = @"julianday(\"";
-//    NSString* back = @"\")";
-//    NSString* first = [front stringByAppendingString:item];
-//    NSString* second = [first stringByAppendingString:back];
-//    
-//    NSLog(@"%@",second);
-//    return second;
-//}
 
 - (void)didReceiveMemoryWarning
 {
@@ -81,25 +70,9 @@
     testWork.time_id = 0;
     testWork.rest_id = 0;
     [self.worksModel insertStart:testWork];
-    
-    NSLog(@"insert");
 }
 
 - (IBAction)selectButton:(id)sender {
-    
-//    NSLog(@"select");
-//    NSArray* array = [self.worksModel datas];
-//    int count = [array count];
-//    for(int i=0;i < count;i++){
-//        Work* tmp = array[i];
-//        NSLog(@"%i", tmp.day_id);
-//        NSLog(@"%@", tmp.date);
-//        NSLog(@"%@", tmp.start);
-//        NSLog(@"%@", tmp.end);
-//    }
-    
-    NSLog(@"select");
-
     NSArray* array = [self.worksModel datas:@"03"];
     int count = [array count];
     for(int i=0;i < count;i++){

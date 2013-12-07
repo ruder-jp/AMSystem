@@ -31,7 +31,6 @@
     if(self = [super init])
     {
         [self createSql];
-        NSLog(@"%@",[WorkModel getDbFilePath]);
     }
     return self;
 }
@@ -73,7 +72,6 @@
     {
         data = nil;
     }
-    NSLog(@"%@",[WorkModel getDbFilePath]);
     [db close];
     return data;
     
@@ -113,7 +111,6 @@
         work.end = [results stringForColumnIndex:3];
         work.time_id = [results intForColumnIndex:4];
         work.rest_id = [results intForColumnIndex:5];
-        NSLog(@"%@",work.date);
         [datas addObject:work];
 
 
@@ -133,9 +130,6 @@
     NSString* sqlBack =[[NSString alloc]initWithFormat:@" where date BETWEEN julianday('%@-01') AND julianday('%@-31');",[self passMonth],[self passMonth]];
     
     NSString* sql =[[NSString alloc]initWithFormat:@"%@%@",sqlBefore,sqlBack];
-    
-    NSLog(@"%@",sql);
-    
     FMResultSet* results = [db executeQuery:sql];
    
     [self passMonth];

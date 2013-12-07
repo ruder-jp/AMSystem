@@ -27,9 +27,7 @@
 - (id)initWithStyle:(UITableViewStyle)style
 {
     self = [super initWithStyle:style];
-    if (self) {
-        
-    }
+    
     return self;
     
 }
@@ -165,7 +163,6 @@
     }else{
         dayNumber = days;
     }
-    NSLog(@"%@",dayNumber);
     NSArray* array = [self.worksModel datas:dayNumber];
     int count = [array count];
     date = date + 1;
@@ -174,6 +171,8 @@
         for(int i=0;i < count;i++){
             Work* tmp = array[i];
             dateText = [[NSString alloc]initWithFormat:@"%@                     %@              %@",days,tmp.start,tmp.end];
+
+
         }
     }else{
         dateText = days;
