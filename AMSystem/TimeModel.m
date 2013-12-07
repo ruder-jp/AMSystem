@@ -66,7 +66,7 @@
 {
     FMDatabase* db = [self getConnection];
     
-    NSString* sql =[[NSString alloc]initWithFormat:@"INSERT INTO times (start,end) VALUES (julianday('%@'),julianday('%@'))",time.start,time.end];
+    NSString* sql =[[NSString alloc]initWithFormat:@"INSERT INTO times (start,end) VALUES (julianday('%@'),julianday('%@'));",time.start,time.end];
     
     [db open];
     

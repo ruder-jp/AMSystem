@@ -15,9 +15,8 @@
 -(id)init
 {
     if(self = [super init]){
-        self.rest_id = 1;
-        self.start = @"";
-        self.end = @"";
+        self.start = nil;
+        self.end = nil;
     }
     return self;
 }

@@ -31,6 +31,7 @@
     if(self = [super init])
     {
         [self createSql];
+        NSLog(@"%@",[WorkModel getDbFilePath]);
     }
     return self;
 }

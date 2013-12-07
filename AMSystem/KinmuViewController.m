@@ -227,7 +227,7 @@
 {
     [tableView deselectRowAtIndexPath:indexPath animated:YES];
      AlterationViewController   *alteration = [self.storyboard instantiateViewControllerWithIdentifier:@"alteration"];
-    alteration.title = @"勤務時間設定";
+    alteration.title = @"勤務時間変更";
     [[self navigationController] pushViewController:alteration animated:YES];
     
 }

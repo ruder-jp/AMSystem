@@ -441,7 +441,7 @@
             </objects>
             <point key="canvasLocation" x="1418" y="-1075"/>
         </scene>
-        <!--Kinmu View Controller-->
+        <!--Kinmu View Controller - 勤務表-->
         <scene sceneID="pwf-X5-1vA">
             <objects>
                 <tableViewController id="hK6-4P-bB6" customClass="KinmuViewController" sceneMemberID="viewController">
@@ -465,7 +465,7 @@
                             <outlet property="delegate" destination="hK6-4P-bB6" id="oXU-eQ-T4V"/>
                         </connections>
                     </tableView>
-                    <navigationItem key="navigationItem" id="20J-qr-3Ec">
+                    <navigationItem key="navigationItem" title="勤務表" id="20J-qr-3Ec">
                         <barButtonItem key="leftBarButtonItem" title="戻る" id="ay6-qn-oun">
                             <connections>
                                 <action selector="kinmuBackButton:" destination="hK6-4P-bB6" id="CYV-JX-4yJ"/>
