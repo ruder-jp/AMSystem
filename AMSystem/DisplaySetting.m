@@ -53,16 +53,16 @@ rest;     //! 編集対象となる休憩時間
     picker.datePickerMode = UIDatePickerModeTime;
     picker.frame = CGRectMake(0, self.view.frame.size.height, 320, 216);
     [picker addTarget:self
-                   action:@selector(datePicker_ValueChanged:)
-         forControlEvents:UIControlEventValueChanged];
+               action:@selector(datePicker_ValueChanged:)
+     forControlEvents:UIControlEventValueChanged];
     //picker.showsSelectionIndicator = YES;
     //picker.delegate = self;
     //picker.dataSource = self;
     [self.view addSubview:picker];
     
-//    toolbar = [[UIToolbar alloc] init];
-//    toolbar.frame = CGRectMake(0, 500, 320, 216);
-//    [self.view addSubview:toolbar];
+    //    toolbar = [[UIToolƒbar alloc] init];
+    //    toolbar.frame = CGRectMake(0, 500, 320, 216);
+    //    [self.view addSubview:toolbar];
     
     
     
@@ -113,12 +113,12 @@ rest;     //! 編集対象となる休憩時間
     self.endRest.text = restObject.end;
     //NSLog(@"viewDidAppear");
     
-//        CGRect datePickerFrame = self.myDatePicker.frame;
-//        CGRect toolBarFrame = self.toolBar.frame;
-//        toolBarFrame.origin.y = self.view.frame.size.height;
-//        datePickerFrame.origin.y = self.view.frame.size.height + self.toolBar.frame.size.height;
-//        self.myDatePicker.frame = datePickerFrame;
-//        self.toolBar.frame = toolBarFrame;
+    //        CGRect datePickerFrame = self.myDatePicker.frame;
+    //        CGRect toolBarFrame = self.toolBar.frame;
+    //        toolBarFrame.origin.y = self.view.frame.size.height;
+    //        datePickerFrame.origin.y = self.view.frame.size.height + self.toolBar.frame.size.height;
+    //        self.myDatePicker.frame = datePickerFrame;
+    //        self.toolBar.frame = toolBarFrame;
     
     
 }
@@ -129,7 +129,10 @@ rest;     //! 編集対象となる休憩時間
 	[UIView setAnimationDuration:0.2];
 	[UIView setAnimationDelegate:self];
 	picker.frame = CGRectMake(0, self.view.frame.size.height - picker.frame.size.height, 320, 216);
-
+    
+    
+    
+    
     
     
     
@@ -174,43 +177,7 @@ rest;     //! 編集対象となる休憩時間
     
 }
 
-//テキストフィールドをタップしたときの処理
-- (IBAction)textFieldClicked:(UITextField *)sender {
-    
-//    //どのテキストフィールドがタップしたのか検出する
-//    _whichText = sender;
-//    
-//    //テキストフィールドをタップしたときキーボードを非表示にする
-//    //[sender resignFirstResponder];
-//    
-//    //ツールバーをにょわっと表示させる
-//    CGRect toolBarFrame = self.toolBar.frame;
-//    toolBarFrame.origin.y = self.view.frame.size.height - _toolBar.frame.size.height;
-//    
-//    //myDatePickerをにょわっと表示させる
-//    CGRect datePickerFrame = _myDatePicker.frame;
-//    datePickerFrame.origin.y
-//    = self.view.frame.size.height - _myDatePicker.frame.size.height;
-//    
-//    [UIView animateWithDuration:1.0
-//                     animations:^{
-//                         _toolBar.frame = datePickerFrame;
-//                     }];
-//    
-//    [UIView animateWithDuration:1.0
-//                     animations:^{
-//                         _myDatePicker.frame = datePickerFrame;
-//                     }];
-//    
-//    //テキストフィールドに設定している時間をデートピッカーの初期時間に設定する
-//    NSDate *convertDate;
-//    
-//    NSDateFormatter *dateFormatter = [[NSDateFormatter alloc]init];
-//    [dateFormatter setDateFormat:@"HH:mm"];
-//    convertDate = [dateFormatter dateFromString:_whichText.text];
-//    _myDatePicker.date = convertDate;
-    
-}
+
 
 //デートピッカーの値が変更されたときの処理
 //※最終的にはDoneをタップしたときこの処理を行いたい
@@ -225,14 +192,11 @@ rest;     //! 編集対象となる休憩時間
     
 }
 
-//- (IBAction)hidePickerRecognized:(id)sender {
-//    [self hidePicker];
-//    NSLog(@"タップされました");
-//}
 
 
 //完了ボタンの処理
 - (IBAction)confirmButton:(id)sender {
+    [self hidePicker];
     UIAlertView *alert = [[UIAlertView alloc] init];
     alert.delegate = self;
     alert.title = @"確認";
@@ -243,8 +207,12 @@ rest;     //! 編集対象となる休憩時間
     
 }
 
+- (IBAction)hidePickerRecognized:(id)sender {
+    [self hidePicker];
+}
+
 - (IBAction)backButton:(id)sender {
-     [self dismissModalViewControllerAnimated:YES];
+    [self dismissModalViewControllerAnimated:YES];
 }
 
 
@@ -259,17 +227,16 @@ clickedButtonAtIndex:(NSInteger)buttonIndex {
     switch (buttonIndex) {
         case 0:
             //キャンセルボタンがタップされたときの処理
-            NSLog(@"キャンセル！");
             break;
         case 1:
             //OKボタンがタップされたときの処理
             //NSString*  insert = @"INSERT INTO kinmu (day,start,end) VALUES (?,?,?)";
             
             //[_timeModel noteJudgment];
-
+            
             
         {
-                        //NSLog(@"%i",boo);
+            //NSLog(@"%i",boo);
             Time* newTime = [[Time alloc] init];
             Rest* newRest = [[Rest alloc] init];
             //newTime.start = self.startTime.text;
@@ -279,23 +246,20 @@ clickedButtonAtIndex:(NSInteger)buttonIndex {
             newRest.end   = self.endRest.text;
             if([_timeModel noteJudgment]){
                 [_timeModel insert:newTime];
-                [_restModel insert:newRest];
             }else{
                 [_timeModel update:newTime];
+            }
+            if([_restModel noteJudgment]){
+                [_restModel insert:newRest];
+            }else{
                 [_restModel update:newRest];
             }
-            //現状timeModelでしか判定していない
-//            if([_restModel noteJudgment]){
-//                [_restModel insert:newRest];
-//            }else{
-//                [_restModel update:newRest];
-//            }
             
             
         }
             break;
     }
-
+    
 }
 
 - (BOOL)textFieldShouldBeginEditing:(UITextField *)textField {
@@ -307,11 +271,11 @@ clickedButtonAtIndex:(NSInteger)buttonIndex {
     
     NSDateFormatter *dateFormatter = [[NSDateFormatter alloc]init];
     [dateFormatter setDateFormat:@"HH:mm"];
+    //nullは許されてない
     convertDate = [dateFormatter dateFromString:_whichText.text];
     if(convertDate != nil){
         picker.date = convertDate;
     }
-    
     [self showPicker];
     
     
@@ -326,7 +290,7 @@ clickedButtonAtIndex:(NSInteger)buttonIndex {
  */
 - (void)datePicker_ValueChanged:(id)sender
 {
-    UIDatePicker *datePicker = sender;
+    //UIDatePicker *datePicker = sender;
     
     
     //時間をテキストフィールドに表示する
