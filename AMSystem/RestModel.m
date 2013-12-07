@@ -56,11 +56,11 @@
     
 	[db open];
     
-    FMResultSet* results = [db executeQuery:@"SELECT * FROM times;"];
+    FMResultSet* results = [db executeQuery:@"SELECT id FROM times;"];
     [results next];
     Rest* rest = [[Rest alloc] init];
-    rest.start = [results stringForColumnIndex:1];
-    if(rest.start == nil){
+    rest.rest_id = [results intForColumnIndex:0];
+    if(rest.rest_id == nil){
         return YES;
     }
     [db close];
