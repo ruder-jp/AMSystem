@@ -237,17 +237,13 @@ clickedButtonAtIndex:(NSInteger)buttonIndex {
             newRest.start = self.startRest.text;
             newRest.end   = self.endRest.text;
             if([_timeModel noteJudgment]){
-                NSLog(@"たいむいんさーと");
                 [_timeModel insert:newTime];
             }else{
-                NSLog(@"たいむあっぷでーと");
                 [_timeModel update:newTime];
             }
             if([_restModel noteJudgment]){
-                NSLog(@"れすといんさーと");
                 [_restModel insert:newRest];
             }else{
-                 NSLog(@"れすとあっぷでーと");
                 [_restModel update:newRest];
             }
             

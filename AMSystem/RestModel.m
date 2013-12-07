@@ -56,7 +56,7 @@
     
 	[db open];
     
-    FMResultSet* results = [db executeQuery:@"SELECT id FROM times;"];
+    FMResultSet* results = [db executeQuery:@"SELECT id FROM rests;"];
     [results next];
     Rest* rest = [[Rest alloc] init];
     rest.rest_id = [results intForColumnIndex:0];

@@ -15,6 +15,7 @@
 -(id)init
 {
     if(self = [super init]){
+        self.time_id = 1;
         self.start = nil;
         self.end = nil;
     }
