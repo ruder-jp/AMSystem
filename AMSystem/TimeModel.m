@@ -89,7 +89,6 @@
 - (BOOL)update:(Time *)time
 {
 	FMDatabase* db = [self getConnection];
-    
 	[db open];
     
     NSString *sql = [[NSString alloc]initWithFormat:@"UPDATE times SET start = julianday('%@'), end = julianday('%@')WHERE id = %@;", time.start, time.end,[NSNumber numberWithInteger:time.time_id]];

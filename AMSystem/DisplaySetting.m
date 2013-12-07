@@ -268,8 +268,9 @@ clickedButtonAtIndex:(NSInteger)buttonIndex {
     //nullは許されてない
     convertDate = [dateFormatter dateFromString:_whichText.text];
     NSLog(@"%@",convertDate);
-    //picker.date = convertDate;
-    
+    if(convertDate != nil){
+        picker.date = convertDate;
+    }
     [self showPicker];
     
     
@@ -284,7 +285,7 @@ clickedButtonAtIndex:(NSInteger)buttonIndex {
  */
 - (void)datePicker_ValueChanged:(id)sender
 {
-    UIDatePicker *datePicker = sender;
+    //UIDatePicker *datePicker = sender;
     
     
     //時間をテキストフィールドに表示する
