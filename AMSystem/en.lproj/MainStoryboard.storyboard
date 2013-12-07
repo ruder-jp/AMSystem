@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="2.0" toolsVersion="3084" systemVersion="11G63b" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" initialViewController="NlP-6q-PMY">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="2.0" toolsVersion="3084" systemVersion="11G63" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" initialViewController="NlP-6q-PMY">
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="2083"/>
     </dependencies>
@@ -117,6 +117,11 @@
                             <constraint firstItem="mzI-bJ-xiG" firstAttribute="trailing" secondItem="Dyp-Ry-3yr" secondAttribute="trailing" type="default" id="snY-Ze-uwR"/>
                             <constraint firstItem="MGg-dI-DGy" firstAttribute="leading" secondItem="3kF-GK-Uqt" secondAttribute="leading" type="default" id="vII-fF-d0N"/>
                         </constraints>
+                        <connections>
+                            <outletCollection property="gestureRecognizers" destination="1Vd-vJ-cSV" appends="YES" id="DYe-R9-rZI"/>
+                            <outletCollection property="gestureRecognizers" destination="1Vd-vJ-cSV" appends="YES" id="Qu4-Zo-nrR"/>
+                            <outletCollection property="gestureRecognizers" destination="1Vd-vJ-cSV" appends="YES" id="VWo-fg-0oC"/>
+                        </connections>
                     </view>
                     <connections>
                         <outlet property="endRest" destination="QLl-pb-5wQ" id="z9k-Wx-l2M"/>
@@ -128,7 +133,8 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="4" sceneMemberID="firstResponder"/>
                 <tapGestureRecognizer id="1Vd-vJ-cSV">
                     <connections>
-                        <action selector="hidePickerRecognized:" destination="2" id="uY4-N4-BxO"/>
+                        <action selector="hidePickerRecognized:" destination="2" id="VeY-Hv-WFS"/>
+                        <outlet property="delegate" destination="3" id="aYX-HB-Qg5"/>
                     </connections>
                 </tapGestureRecognizer>
             </objects>
@@ -729,6 +735,7 @@
                 <relationship kind="action" name="changeDatePicker:"/>
                 <relationship kind="action" name="confirmButton:"/>
                 <relationship kind="action" name="datePickerDone:" candidateClass="UIBarButtonItem"/>
+                <relationship kind="action" name="hidePickerRecognized:"/>
                 <relationship kind="action" name="textFieldClicked:" candidateClass="UITextField"/>
                 <relationship kind="outlet" name="cancelPicker" candidateClass="UIBarButtonItem"/>
                 <relationship kind="outlet" name="donePicker" candidateClass="UIBarButtonItem"/>

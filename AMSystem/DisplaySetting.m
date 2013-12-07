@@ -111,14 +111,6 @@ rest;     //! 編集対象となる休憩時間
     self.endTime.text = timeObject.end;
     self.startRest.text = restObject.start;
     self.endRest.text = restObject.end;
-    //NSLog(@"viewDidAppear");
-    
-    //        CGRect datePickerFrame = self.myDatePicker.frame;
-    //        CGRect toolBarFrame = self.toolBar.frame;
-    //        toolBarFrame.origin.y = self.view.frame.size.height;
-    //        datePickerFrame.origin.y = self.view.frame.size.height + self.toolBar.frame.size.height;
-    //        self.myDatePicker.frame = datePickerFrame;
-    //        self.toolBar.frame = toolBarFrame;
     
     
 }
@@ -207,9 +199,9 @@ rest;     //! 編集対象となる休憩時間
     
 }
 
-- (IBAction)hidePickerRecognized:(id)sender {
-    [self hidePicker];
-}
+
+
+
 
 - (IBAction)backButton:(id)sender {
     [self dismissModalViewControllerAnimated:YES];
@@ -236,7 +228,7 @@ clickedButtonAtIndex:(NSInteger)buttonIndex {
             
             
         {
-            //NSLog(@"%i",boo);
+            
             Time* newTime = [[Time alloc] init];
             Rest* newRest = [[Rest alloc] init];
             //newTime.start = self.startTime.text;
@@ -245,13 +237,17 @@ clickedButtonAtIndex:(NSInteger)buttonIndex {
             newRest.start = self.startRest.text;
             newRest.end   = self.endRest.text;
             if([_timeModel noteJudgment]){
+                NSLog(@"たいむいんさーと");
                 [_timeModel insert:newTime];
             }else{
+                NSLog(@"たいむあっぷでーと");
                 [_timeModel update:newTime];
             }
             if([_restModel noteJudgment]){
+                NSLog(@"れすといんさーと");
                 [_restModel insert:newRest];
             }else{
+                 NSLog(@"れすとあっぷでーと");
                 [_restModel update:newRest];
             }
             
@@ -300,5 +296,8 @@ clickedButtonAtIndex:(NSInteger)buttonIndex {
     //指定した日付形式で日付を表示する
     _whichText.text = [df stringFromDate:picker.date];
     
+}
+- (IBAction)hidePickerRecognized:(id)sender {
+    [self hidePicker];
 }
 @end
