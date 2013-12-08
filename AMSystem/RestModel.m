@@ -60,7 +60,7 @@
     [results next];
     Rest* rest = [[Rest alloc] init];
     rest.rest_id = [results intForColumnIndex:0];
-    if(rest.rest_id == nil){
+    if(rest.rest_id != nil){
         return YES;
     }
     [db close];
