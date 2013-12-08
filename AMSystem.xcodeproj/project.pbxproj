@@ -7,7 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		1BB69C81185433C800D9EF16 /* SettingDisplay.m in Sources */ = {isa = PBXBuildFile; fileRef = 1BB69C80185433C800D9EF16 /* SettingDisplay.m */; };
+		1BB69CB618548D2200D9EF16 /* SettingDisplay.m in Sources */ = {isa = PBXBuildFile; fileRef = 1BB69CB518548D2200D9EF16 /* SettingDisplay.m */; };
 		1BD159A81807C2CF00093AFA /* DisplaySetting.m in Sources */ = {isa = PBXBuildFile; fileRef = 1BD159A71807C2CF00093AFA /* DisplaySetting.m */; };
 		2363BCE1184473FA002F71FA /* TableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 2363BCE0184473FA002F71FA /* TableViewController.m */; };
 		2365E3471837AC7900FF1EF9 /* TopViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 2365E3461837AC7900FF1EF9 /* TopViewController.m */; };
@@ -56,8 +56,8 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
-		1BB69C7F185433C800D9EF16 /* SettingDisplay.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SettingDisplay.h; sourceTree = "<group>"; };
-		1BB69C80185433C800D9EF16 /* SettingDisplay.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SettingDisplay.m; sourceTree = "<group>"; };
+		1BB69CB418548D2200D9EF16 /* SettingDisplay.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SettingDisplay.h; sourceTree = "<group>"; };
+		1BB69CB518548D2200D9EF16 /* SettingDisplay.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SettingDisplay.m; sourceTree = "<group>"; };
 		1BD159A61807C2CF00093AFA /* DisplaySetting.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DisplaySetting.h; sourceTree = "<group>"; };
 		1BD159A71807C2CF00093AFA /* DisplaySetting.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DisplaySetting.m; sourceTree = "<group>"; };
 		2363BCDF184473FA002F71FA /* TableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TableViewController.h; sourceTree = "<group>"; };
@@ -171,8 +171,8 @@
 				23D9E989184ED08E005A1B93 /* MenuViewController.m */,
 				239C4C61185078DA00C85F3E /* AlterationViewController.h */,
 				239C4C62185078DA00C85F3E /* AlterationViewController.m */,
-				1BB69C7F185433C800D9EF16 /* SettingDisplay.h */,
-				1BB69C80185433C800D9EF16 /* SettingDisplay.m */,
+				1BB69CB418548D2200D9EF16 /* SettingDisplay.h */,
+				1BB69CB518548D2200D9EF16 /* SettingDisplay.m */,
 			);
 			name = Controller;
 			sourceTree = "<group>";
@@ -422,7 +422,7 @@
 				2363BCE1184473FA002F71FA /* TableViewController.m in Sources */,
 				23D9E98A184ED08F005A1B93 /* MenuViewController.m in Sources */,
 				239C4C63185078DA00C85F3E /* AlterationViewController.m in Sources */,
-				1BB69C81185433C800D9EF16 /* SettingDisplay.m in Sources */,
+				1BB69CB618548D2200D9EF16 /* SettingDisplay.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
