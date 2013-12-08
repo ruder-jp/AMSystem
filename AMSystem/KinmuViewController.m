@@ -14,6 +14,7 @@
 {
     NSInteger daysnum;
     int date;
+    NSString* monthDate;
 }
 @property(nonatomic,retain)WorkModel* worksModel;
 @property(nonatomic,retain)Work* work;
@@ -65,11 +66,19 @@
     //今月の日数を取得
     NSDate *now = [NSDate date];
     /* NSCalendarを取得する */
+    NSDate *month = [NSDate date];
+    NSDateFormatter *monthFormatter = [[NSDateFormatter alloc] init];
+    [monthFormatter setDateFormat:@"yyyy-MM"];
+    NSString *monthStr = [monthFormatter stringFromDate:month];
+    monthDate = monthStr;
     NSCalendar *calendar = [[NSCalendar alloc] initWithCalendarIdentifier: NSGregorianCalendar];;
     NSInteger daysOfThisMonth =[ calendar rangeOfUnit:NSDayCalendarUnit inUnit:NSMonthCalendarUnit forDate:now ].length;
     daysnum = daysOfThisMonth;
     return daysOfThisMonth;
+    
 }
+
+
 
 
 /*
@@ -84,84 +93,120 @@
 {
     UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"Cell"];
     
+    
+    
+    
     if (cell == nil) {
         cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:@"Cell"];
     }
 
     if(indexPath.row == 0) {
         cell.textLabel.text = [self passString:@"1"];
+        cell.backgroundColor =[self daycolor:@"1"];
     } else if(indexPath.row == 1){
         cell.textLabel.text = [self passString:@"2"];
+        cell.backgroundColor =[self daycolor:@"2"];
     } else if(indexPath.row == 2){
         cell.textLabel.text = [self passString:@"3"];
+        cell.backgroundColor =[self daycolor:@"3"];
     } else if(indexPath.row == 3){
         cell.textLabel.text = [self passString:@"4"];
+        cell.backgroundColor =[self daycolor:@"4"];
     } else if(indexPath.row == 4){
         cell.textLabel.text = [self passString:@"5"];
+        cell.backgroundColor =[self daycolor:@"5"];
     } else if(indexPath.row == 5){
         cell.textLabel.text = [self passString:@"6"];
+        cell.backgroundColor =[self daycolor:@"6"];
     } else if(indexPath.row == 6){
         cell.textLabel.text = [self passString:@"7"];
+        cell.backgroundColor =[self daycolor:@"7"];
     } else if(indexPath.row == 7){
         cell.textLabel.text = [self passString:@"8"];
+        cell.backgroundColor =[self daycolor:@"8"];
     } else if(indexPath.row == 8){
         cell.textLabel.text = [self passString:@"9"];
+        cell.backgroundColor =[self daycolor:@"9"];
     } else if(indexPath.row == 9){
         cell.textLabel.text = [self passString:@"10"];
+        cell.backgroundColor =[self daycolor:@"10"];
     } else if(indexPath.row == 10){
         cell.textLabel.text = [self passString:@"11"];
+        cell.backgroundColor =[self daycolor:@"11"];
     } else if(indexPath.row == 11){
         cell.textLabel.text = [self passString:@"12"];
+        cell.backgroundColor =[self daycolor:@"12"];
     } else if(indexPath.row == 12){
         cell.textLabel.text = [self passString:@"13"];
+        cell.backgroundColor =[self daycolor:@"13"];
     } else if(indexPath.row == 13){
         cell.textLabel.text = [self passString:@"14"];
+        cell.backgroundColor =[self daycolor:@"14"];
     } else if(indexPath.row == 14){
         cell.textLabel.text = [self passString:@"15"];
+        cell.backgroundColor =[self daycolor:@"15"];
     } else if(indexPath.row == 15){
         cell.textLabel.text = [self passString:@"16"];
+        cell.backgroundColor =[self daycolor:@"16"];
     } else if(indexPath.row == 16){
         cell.textLabel.text = [self passString:@"17"];
+        cell.backgroundColor =[self daycolor:@"17"];
     } else if(indexPath.row == 17){
         cell.textLabel.text = [self passString:@"18"];
+        cell.backgroundColor =[self daycolor:@"18"];
     } else if(indexPath.row == 18){
         cell.textLabel.text = [self passString:@"19"];
+        cell.backgroundColor =[self daycolor:@"19"];
     } else if(indexPath.row == 19){
         cell.textLabel.text = [self passString:@"20"];
+        cell.backgroundColor =[self daycolor:@"20"];
     } else if(indexPath.row == 20){
         cell.textLabel.text = [self passString:@"21"];
+        cell.backgroundColor =[self daycolor:@"21"];
     } else if(indexPath.row == 21){
         cell.textLabel.text = [self passString:@"22"];
+        cell.backgroundColor =[self daycolor:@"22"];
     } else if(indexPath.row == 22){
         cell.textLabel.text = [self passString:@"23"];
+        cell.backgroundColor =[self daycolor:@"23"];
     } else if(indexPath.row == 23){
         cell.textLabel.text = [self passString:@"24"];
+        cell.backgroundColor =[self daycolor:@"24"];
     } else if(indexPath.row == 24){
         cell.textLabel.text = [self passString:@"25"];
+        cell.backgroundColor =[self daycolor:@"25"];
     } else if(indexPath.row == 25){
         cell.textLabel.text = [self passString:@"26"];
+        cell.backgroundColor =[self daycolor:@"26"];
     } else if(indexPath.row == 26){
         cell.textLabel.text = [self passString:@"27"];
+        cell.backgroundColor =[self daycolor:@"27"];
     } else if(indexPath.row == 27){
         cell.textLabel.text = [self passString:@"28"];
+        cell.backgroundColor =[self daycolor:@"28"];
     } else if(indexPath.row == 28){
         cell.textLabel.text = [self passString:@"29"];
+        cell.backgroundColor =[self daycolor:@"29"];
     } else if(indexPath.row == 29){
         cell.textLabel.text = [self passString:@"30"];
+        cell.backgroundColor =[self daycolor:@"30"];
     } else {
         cell.textLabel.text = [self passString:@"31"];
+        cell.backgroundColor =[self daycolor:@"31"];
     }    
     return cell;
     
 }
 
--(NSString*)passString:(NSString*)days
+
+
+-(NSString*)passString:(NSString*)day
 {
     NSString* dayNumber;
-    if(days.length < 2){
-        dayNumber = [NSString stringWithFormat:@"0%@",days];
+    if(day.length < 2){
+        dayNumber = [NSString stringWithFormat:@"0%@",day];
     }else{
-        dayNumber = days;
+        dayNumber = day;
     }
     NSArray* array = [self.worksModel datas:dayNumber];
     int count = [array count];
@@ -170,16 +215,53 @@
     if(count != 0){
         for(int i=0;i < count;i++){
             Work* tmp = array[i];
-            dateText = [[NSString alloc]initWithFormat:@"%@                     %@              %@",days,tmp.start,tmp.end];
-
-
+            
+            dateText = [[NSString alloc]initWithFormat:@"%@                     %@              %@",day,tmp.start,tmp.end];
         }
     }else{
-        dateText = days;
+        dateText = day;
     }
     return dateText;
 }
 
+-(UIColor*)daycolor:(NSString*)day
+{
+    NSString* dayNumber;
+    if(day.length < 2){
+        dayNumber = [NSString stringWithFormat:@"0%@",day];
+    }else{
+        dayNumber = day;
+    }
+    NSMutableString *fusion = [NSMutableString stringWithString: monthDate];
+    [fusion appendFormat:@"-%@",dayNumber];
+    NSInteger weekday = [self weekday:fusion];
+    NSLog(@"%@",fusion);
+    UIView* setView = [[UIView alloc]init];
+    if(weekday == 7)
+    {
+        setView.backgroundColor = [UIColor cyanColor];
+        return setView.backgroundColor;
+    }else if(weekday == 1){
+        setView.backgroundColor = [UIColor redColor];
+        return setView.backgroundColor;
+    }else{
+        setView.backgroundColor = [UIColor whiteColor];
+        return setView.backgroundColor;
+
+    }
+}
+
+-(NSInteger)weekday:(NSString*)day
+{
+    NSDateFormatter* dateFormatter = [[NSDateFormatter alloc]init];
+    [dateFormatter setDateFormat:@"yyyy-MM-dd"];
+    NSDate * days = [dateFormatter dateFromString:day];
+    NSCalendar* gregorian=[[NSCalendar alloc]initWithCalendarIdentifier:NSGregorianCalendar];
+    NSDateComponents *weekdayComponents = [gregorian components:(NSDayCalendarUnit|NSWeekdayCalendarUnit)fromDate:days];
+    NSInteger weekday = [weekdayComponents weekday];
+    
+    return weekday;
+}
 
 
 /*

@@ -46,30 +46,35 @@
                                    userInfo:nil
                                     repeats:YES];
     [self.topButton setTitle:@"始業"forState:UIControlStateNormal];
+}
+
+-(void)viewDidAppear:(BOOL)animated
+{
     self.worksModel = [[WorkModel alloc]init];
     self.work = [[Work alloc]init];
     [self passDate];
-        NSArray* array = [self.worksModel monthDate];
-        int count = [array count];
-        for(int i=0;i < count;i++){
-            Work* tmp = array[i];
-            
-            BOOL dateTest = [tmp.date isEqualToString:insertDay];
-            if(dateTest == YES)
-            {
-                _startLavel.text = tmp.start;
-                _endLavel.text = tmp.end;
-                self.view.tag = ERROR;
-            }else{
-                _startLavel.text = nil;
-                _endLavel.text = nil;
-                self.view.tag = START;
-            }
-        }
     
+    NSArray* array = [self.worksModel monthDate];
+    int count = [array count];
+    for(int i=0;i < count;i++){
+        Work* tmp = array[i];
+        
+        BOOL dateTest = [tmp.date isEqualToString:insertDay];
+        if(dateTest == YES)
+        {
+            _startLavel.text = tmp.start;
+            _endLavel.text = tmp.end;
+            self.view.tag = ERROR;
+        }else{
+            _startLavel.text = nil;
+            _endLavel.text = nil;
+            self.view.tag = START;
+        }
+    }
+    NSLog(@"%@",@"viewdidappier");
+    [super viewDidAppear:animated];
 }
 
-//初期化処理
 -(void)passDate
 {
     NSDate *todayDate = [NSDate date];

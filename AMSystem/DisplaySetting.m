@@ -111,14 +111,6 @@ rest;     //! 編集対象となる休憩時間
     self.endTime.text = timeObject.end;
     self.startRest.text = restObject.start;
     self.endRest.text = restObject.end;
-    //NSLog(@"viewDidAppear");
-    
-    //        CGRect datePickerFrame = self.myDatePicker.frame;
-    //        CGRect toolBarFrame = self.toolBar.frame;
-    //        toolBarFrame.origin.y = self.view.frame.size.height;
-    //        datePickerFrame.origin.y = self.view.frame.size.height + self.toolBar.frame.size.height;
-    //        self.myDatePicker.frame = datePickerFrame;
-    //        self.toolBar.frame = toolBarFrame;
     
     
 }
@@ -207,9 +199,9 @@ rest;     //! 編集対象となる休憩時間
     
 }
 
-- (IBAction)hidePickerRecognized:(id)sender {
-    [self hidePicker];
-}
+
+
+
 
 - (IBAction)backButton:(id)sender {
     [self dismissModalViewControllerAnimated:YES];
@@ -236,7 +228,7 @@ clickedButtonAtIndex:(NSInteger)buttonIndex {
             
             
         {
-            //NSLog(@"%i",boo);
+            
             Time* newTime = [[Time alloc] init];
             Rest* newRest = [[Rest alloc] init];
             //newTime.start = self.startTime.text;
@@ -300,5 +292,8 @@ clickedButtonAtIndex:(NSInteger)buttonIndex {
     //指定した日付形式で日付を表示する
     _whichText.text = [df stringFromDate:picker.date];
     
+}
+- (IBAction)hidePickerRecognized:(id)sender {
+    [self hidePicker];
 }
 @end

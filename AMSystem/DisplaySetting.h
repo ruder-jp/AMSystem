@@ -28,6 +28,7 @@
 //テキストフィールドをタップしたとき
 - (IBAction)textFieldClicked:(UITextField *)sender;
 
+- (IBAction)hidePickerRecognized:(id)sender;
 
 
 //ツールバー
