@@ -56,7 +56,7 @@
 
 -(NSString*)tableView:(UITableView *)tableView titleForHeaderInSection:(NSInteger)section
 { 
-    return @"日付　　　       始業　　      　 終業";
+    return @"日付(曜日)　　 始業　　      　 終業";
     
     
 }
@@ -203,11 +203,12 @@
 -(NSString*)passString:(NSString*)day
 {
     NSString* dayNumber;
-    if(day.length < 2){
+        if(day.length < 2){
         dayNumber = [NSString stringWithFormat:@"0%@",day];
     }else{
         dayNumber = day;
     }
+    
     NSArray* array = [self.worksModel datas:dayNumber];
     int count = [array count];
     date = date + 1;
@@ -216,12 +217,28 @@
         for(int i=0;i < count;i++){
             Work* tmp = array[i];
             
-            dateText = [[NSString alloc]initWithFormat:@"%@                     %@              %@",day,tmp.start,tmp.end];
+            dateText = [[NSString alloc]initWithFormat:@"%@%@                 %@              %@",day,[self stringWeekDay:day],tmp.start,tmp.end];
         }
     }else{
-        dateText = day;
+        dateText =[[NSString alloc]initWithFormat:@"%@%@",day,[self stringWeekDay:day]];
     }
     return dateText;
+}
+-(NSString*)stringWeekDay:(NSString*)day
+{
+    NSString* dayNumber;
+    NSString* backDate;
+    NSArray* arrayWeekday = [NSArray arrayWithObjects:@"",@"(日)",@"(月)",@"(火)",@"(水)",@"(木)",@"(金)",@"(土)",nil];
+    if(day.length < 2){
+        dayNumber = [NSString stringWithFormat:@"0%@",day];
+    }else{
+        dayNumber = day;
+    }
+    NSMutableString *fusion = [NSMutableString stringWithString: monthDate];
+    [fusion appendFormat:@"-%@",dayNumber];
+    NSInteger weekday = [self weekday:fusion];
+    backDate = arrayWeekday[weekday];
+    return backDate;
 }
 
 -(UIColor*)daycolor:(NSString*)day
@@ -235,7 +252,6 @@
     NSMutableString *fusion = [NSMutableString stringWithString: monthDate];
     [fusion appendFormat:@"-%@",dayNumber];
     NSInteger weekday = [self weekday:fusion];
-    NSLog(@"%@",fusion);
     UIView* setView = [[UIView alloc]init];
     if(weekday == 7)
     {
@@ -258,9 +274,9 @@
     NSDate * days = [dateFormatter dateFromString:day];
     NSCalendar* gregorian=[[NSCalendar alloc]initWithCalendarIdentifier:NSGregorianCalendar];
     NSDateComponents *weekdayComponents = [gregorian components:(NSDayCalendarUnit|NSWeekdayCalendarUnit)fromDate:days];
-    NSInteger weekday = [weekdayComponents weekday];
+    NSInteger intWeekday = [weekdayComponents weekday];
     
-    return weekday;
+    return intWeekday;
 }
 
 

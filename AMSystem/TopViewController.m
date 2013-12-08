@@ -71,7 +71,6 @@
             self.view.tag = START;
         }
     }
-    NSLog(@"%@",@"viewdidappier");
     [super viewDidAppear:animated];
 }
 
