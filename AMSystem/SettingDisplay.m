@@ -334,6 +334,7 @@ clickedButtonAtIndex:(NSInteger)buttonIndex {
         passTextFld.autocapitalizationType = UITextAutocapitalizationTypeNone;
         passTextFld.clearButtonMode = UITextFieldViewModeWhileEditing;
         
+        
         NSArray *members = groups[indexPath.section];
         nameLabel.text = members[indexPath.row];
         NSArray *texttagArray = texttags[indexPath.section];

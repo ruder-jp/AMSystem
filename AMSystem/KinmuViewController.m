@@ -216,8 +216,6 @@
     if(count != 0){
         for(int i=0;i < count;i++){
             Work* tmp = array[i];
-            NSArray* passDate = [NSArray arrayWithObjects:tmp.date,tmp.start,tmp.end, nil];
-            
             dateText = [[NSString alloc]initWithFormat:@"%@%@                 %@              %@",day,[self stringWeekDay:day],tmp.start,tmp.end];
         }
     }else{
@@ -349,12 +347,12 @@
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    NSInteger number = indexPath.row +1;
-    NSString* numberStr = [NSString stringWithFormat:@"%d",number];
+//    NSInteger number = indexPath.row +1;
+//    NSString* numberStr = [NSString stringWithFormat:@"%d",number];
     [tableView deselectRowAtIndexPath:indexPath animated:YES];
      AlterationViewController   *alteration = [self.storyboard instantiateViewControllerWithIdentifier:@"alteration"];
-    alteration.delegate = self;
-    alteration.date = [self passArray:numberStr];
+//    alteration.delegate = self;
+//    alteration.date = [self passArray:numberStr];
     alteration.title = @"勤務時間変更";
     [[self navigationController] pushViewController:alteration animated:YES];
     

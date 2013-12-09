@@ -121,17 +121,8 @@ rest;     //! 編集対象となる休憩時間
 	[UIView setAnimationDuration:0.2];
 	[UIView setAnimationDelegate:self];
 	picker.frame = CGRectMake(0, self.view.frame.size.height - picker.frame.size.height, 320, 216);
-    
-    
-    
-    
-    
-    
-    
+
 	[UIView commitAnimations];
-    
-	
-	
 }
 
 - (void)hidePicker {
@@ -269,8 +260,6 @@ clickedButtonAtIndex:(NSInteger)buttonIndex {
         picker.date = convertDate;
     }
     [self showPicker];
-    
-    
     
     //キーボードは表示させない
     return NO;
