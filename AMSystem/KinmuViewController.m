@@ -356,7 +356,7 @@
      AlterationViewController   *alteration = [self.storyboard instantiateViewControllerWithIdentifier:@"alteration"];
     alteration.delegate = self;
     NSLog(@"%@",[self passArray:numberStr]);
-//    alteration.date = [self passArray:numberStr];
+    alteration.date = [self passArray:numberStr];
     alteration.title = @"勤務時間変更";
     [[self navigationController] pushViewController:alteration animated:YES];
     
