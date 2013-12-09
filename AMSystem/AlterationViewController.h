@@ -8,6 +8,14 @@
 
 #import <UIKit/UIKit.h>
 
+@protocol KinmuDelegate
+
+@end
+
 @interface AlterationViewController : UIViewController
+
+@property (nonatomic, assign) id<KinmuDelegate> delegate; 
+@property (nonatomic, retain) NSArray*  date;
+
 
 @end

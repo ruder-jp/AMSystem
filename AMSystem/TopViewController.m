@@ -32,7 +32,6 @@
 {
     self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
     if (self) {
-        // Custom initialization
     }
     return self;
 }
@@ -62,9 +61,17 @@
         BOOL dateTest = [tmp.date isEqualToString:insertDay];
         if(dateTest == YES)
         {
-            _startLavel.text = tmp.start;
-            _endLavel.text = tmp.end;
-            self.view.tag = ERROR;
+            if(tmp.start != nil && tmp.end == nil)
+            {
+                _startLavel.text = tmp.start;
+                _endLavel.text = nil;
+                self.view.tag = END;
+            }else{
+                _startLavel.text = tmp.start;
+                _endLavel.text = tmp.end;
+                self.view.tag = ERROR;
+            }
+            
         }else{
             _startLavel.text = nil;
             _endLavel.text = nil;
@@ -122,8 +129,8 @@
         [alert addButtonWithTitle:@"OK"];
     }else if(self.view.tag == END){
         alert =[[UIAlertView alloc]
-                             initWithTitle:@"就業確認"
-                             message:@"就業してもよろしいですか？"
+                             initWithTitle:@"終業確認"
+                             message:@"終業してもよろしいですか？"
                              delegate:self
                              cancelButtonTitle:@"キャンセル"otherButtonTitles:nil];
         [alert addButtonWithTitle:@"OK"];
