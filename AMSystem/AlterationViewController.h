@@ -25,7 +25,6 @@
 
 //@property (nonatomic, assign) id<AlterationViewDelegate> delegate; //! 書籍の追加、または編集画面が完了したことを通知するデリゲート
 
-//@property (nonatomic, retain) NSArray*  date;
-//
+@property (nonatomic, retain) NSArray*  date;
 
 @end
