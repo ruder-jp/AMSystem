@@ -17,4 +17,7 @@
 @property (weak, nonatomic) UITextField *whichText;
 
 - (IBAction)hidePickerRecognized:(id)sender;
+
+- (IBAction)confirmButton:(id)sender;
+
 @end

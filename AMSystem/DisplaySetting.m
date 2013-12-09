@@ -292,6 +292,7 @@ clickedButtonAtIndex:(NSInteger)buttonIndex {
     //指定した日付形式で日付を表示する
     _whichText.text = [df stringFromDate:picker.date];
     
+    
 }
 - (IBAction)hidePickerRecognized:(id)sender {
     [self hidePicker];

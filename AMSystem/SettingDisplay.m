@@ -28,6 +28,10 @@ time;     //! 編集対象となる勤務時間
 
 @property (nonatomic, retain) Rest*
 rest;     //! 編集対象となる休憩時間
+//@property (nonatomic, retain) Time* newTime;
+//Rest* newRest = [[Rest alloc] init];
+
+
 
 @end
 
@@ -39,7 +43,10 @@ rest;     //! 編集対象となる休憩時間
     //テキストタグ用データ
     NSArray *texttags;
     NSInteger *texttag;
+    
 }
+
+@synthesize time,rest;
 
 - (id)initWithStyle:(UITableViewStyle)style
 {
@@ -53,13 +60,16 @@ rest;     //! 編集対象となる休憩時間
 - (void)viewDidLoad
 {
     [super viewDidLoad];
+    time = [[Time alloc] init];
+    rest = [[Rest alloc] init];
+    //_newTime = [[Time alloc] init];
     
     groupNames = @[@"就業時間帯", @"休憩時間帯"];
     groups = @[
                @[@"始業", @"終業"],
                @[@"開始", @"終了"]
                ];
-    texttags = @[@"TAG_START_TIME",@"TAG_END_TIME",@"TAG_START_REST",@"TAG_END_REST"];
+    texttags = @[@[@"TAG_START_TIME",@"TAG_END_TIME"],@[@"TAG_START_REST",@"TAG_END_REST"]];
     
     picker = [[UIDatePicker alloc] init];
     picker.datePickerMode = UIDatePickerModeTime;
@@ -121,7 +131,7 @@ rest;     //! 編集対象となる休憩時間
 - (BOOL)textFieldShouldBeginEditing:(UITextField *)textField {
     //テキストフィールドの編集を始めるときに、ピッカーを呼び出す。
     _whichText = textField;
-    //_whichText.tag = textField.tag;
+    _whichText.tag = textField.tag;
     
     //テキストフィールドに設定している時間をデートピッカーの初期時間に設定する
     NSDate *convertDate;
@@ -154,21 +164,98 @@ rest;     //! 編集対象となる休憩時間
     [self hidePicker];
 }
 
+- (IBAction)confirmButton:(id)sender {
+    //完了ボタンの処理
+        [self hidePicker];
+        UIAlertView *alert = [[UIAlertView alloc] init];
+        alert.delegate = self;
+        alert.title = @"確認";
+        alert.message = @"保存しますか？";
+        [alert addButtonWithTitle:@"キャンセル"];
+        [alert addButtonWithTitle:@"OK"];
+        [alert show];
+        
+}
+
+//完了ボタンを押して表示させるアラートビューの詳細
+-(void)alertView:(UIAlertView*)alertView
+clickedButtonAtIndex:(NSInteger)buttonIndex {
+    
+    switch (buttonIndex) {
+        case 0:
+            //キャンセルボタンがタップされたときの処理
+            break;
+        case 1:
+            //OKボタンがタップされたときの処理
+            //NSString*  insert = @"INSERT INTO kinmu (day,start,end) VALUES (?,?,?)";
+            
+            //[_timeModel noteJudgment];
+            
+            
+        //{
+            
+            //newTime.start = self.startTime.text;
+            NSLog(@"%@",time.start);
+            if([_timeModel noteJudgment]){
+                [_timeModel insert:time];
+            }else{
+                [_timeModel update:time];
+            }
+            if([_restModel noteJudgment]){
+                [_restModel insert:rest];
+            }else{
+                [_restModel update:rest];
+            }
+            
+        //}
+            break;
+    }
+    
+}
+
 /**
  * 日付ピッカーの値が変更されたとき
  */
 - (void)datePicker_ValueChanged:(id)sender
 {
-    //UIDatePicker *datePicker = sender;
-    NSLog(@"おまえ変わったよな");
     
     //時間をテキストフィールドに表示する
     NSDateFormatter *df = [[NSDateFormatter alloc] init];
     df.dateFormat = @"HH:mm";
     
+    
+
+    
     //指定した日付形式で日付を表示する
     _whichText.text = [df stringFromDate:picker.date];
+    NSLog(@"%@",_whichText.text);
+    switch (_whichText.tag){
+        case 185320:
+            time.start = _whichText.text;
+            //NSLog(@"%@",_newTime.start);
+            NSLog(@"startTimeに格納");
+            NSLog(@"%@",time.start);
+            break;
+        case 185336:
+            time.end = _whichText.text;
+            NSLog(@"endTimeに格納");
+            break;
+        case 185352:
+            rest.start = _whichText.text;
+            NSLog(@"startRestに格納");
+            
+            break;
+        case 185368:
+            rest.end = _whichText.text;
+            NSLog(@"endRestに格納");
+            break;
+        default:
+            NSLog(@"あほ");
+            
+            
+    }
     
+
 }
 
 
@@ -231,7 +318,7 @@ rest;     //! 編集対象となる休憩時間
         [cell.contentView addSubview:nameLabel];
         
         // テキスト
-        passTextFld = [[UITextField alloc] initWithFrame:CGRectMake(130, 20, 140, 50)];
+        passTextFld = [[UITextField alloc] initWithFrame:CGRectMake(130, 14, 140, 50)];
         passTextFld.delegate = self;
         [passTextFld setFont:textFont];
         passTextFld.autocapitalizationType = UITextAutocapitalizationTypeNone;
@@ -239,46 +326,9 @@ rest;     //! 編集対象となる休憩時間
         
         NSArray *members = groups[indexPath.section];
         nameLabel.text = members[indexPath.row];
-        passTextFld.tag = texttags[indexPath.row];
-        //        switch (indexPath.row){
-        //            case 0:
-        //                [nameLabel setText:@"始業"];
-        //                passTextFld.text = @"ほんだけいすけ";
-        //                //passTextFld.returnKeyType = UIReturnKeyNext;
-        //                //passTextFld.secureTextEntry = NO;
-        //                passTextFld.tag = TAG_USER_ID;
-        //                break;
-        //            case 1:
-        //                [nameLabel setText:@"終業"];
-        //                passTextFld.placeholder = @"かがわしんじ";
-        //                passTextFld.tag = TAG_PASSWORD;
-        //                break;
-        //            case 2:
-        //                [nameLabel setText:@"開始"];
-        //                passTextFld.placeholder = @"てらい";
-        //                passTextFld.tag = TAG_PASSWORD;
-        //                break;
-        //            case 3:
-        //                [nameLabel setText:@"終了"];
-        //                passTextFld.placeholder = @"けんいち";
-        //                passTextFld.tag = TAG_PASSWORD;
-        //                break;
-        //
-        //        }
-        //        if (indexPath.row == 0)
-        //        {
-        //            [nameLabel setText:@"始業"];
-        //            passTextFld.text = @"ほんだけいすけ";
-        //            //passTextFld.returnKeyType = UIReturnKeyNext;
-        //            //passTextFld.secureTextEntry = NO;
-        //            passTextFld.tag = TAG_USER_ID;
-        //        }
-        //        else
-        //        {
-        //            [nameLabel setText:@"終業"];
-        //            passTextFld.placeholder = @"かがわしんじ";
-        //            passTextFld.tag = TAG_PASSWORD;
-        //        }
+        NSArray *texttagArray = texttags[indexPath.section];
+        passTextFld.tag = texttagArray[indexPath.row];
+    
         [cell.contentView addSubview:passTextFld];
     }
     

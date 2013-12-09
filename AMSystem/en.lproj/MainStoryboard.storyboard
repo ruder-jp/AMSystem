@@ -152,7 +152,14 @@
                             <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
                             <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxY="YES"/>
                             <items>
-                                <navigationItem title="勤務時間設定" id="RbQ-8o-MkP"/>
+                                <navigationItem title="勤務時間設定" id="RbQ-8o-MkP">
+                                    <barButtonItem key="leftBarButtonItem" title="戻る" id="PNn-F0-okV"/>
+                                    <barButtonItem key="rightBarButtonItem" title="完了" id="u6w-ke-ECl">
+                                        <connections>
+                                            <action selector="confirmButton:" destination="eGh-bT-Htk" id="Qfo-Pq-COe"/>
+                                        </connections>
+                                    </barButtonItem>
+                                </navigationItem>
                             </items>
                         </navigationBar>
                         <prototypes>
@@ -767,84 +774,6 @@
             <point key="canvasLocation" x="475" y="-342"/>
         </scene>
     </scenes>
-    <classes>
-        <class className="AlterationViewController" superclassName="UIViewController">
-            <source key="sourceIdentifier" type="project" relativePath="./Classes/AlterationViewController.h"/>
-        </class>
-        <class className="DisplaySetting" superclassName="UIViewController">
-            <source key="sourceIdentifier" type="project" relativePath="./Classes/DisplaySetting.h"/>
-            <relationships>
-                <relationship kind="action" name="backButton:"/>
-                <relationship kind="action" name="changeDatePicker:"/>
-                <relationship kind="action" name="confirmButton:"/>
-                <relationship kind="action" name="datePickerDone:" candidateClass="UIBarButtonItem"/>
-                <relationship kind="action" name="hidePickerRecognized:"/>
-                <relationship kind="action" name="textFieldClicked:" candidateClass="UITextField"/>
-                <relationship kind="outlet" name="cancelPicker" candidateClass="UIBarButtonItem"/>
-                <relationship kind="outlet" name="donePicker" candidateClass="UIBarButtonItem"/>
-                <relationship kind="outlet" name="endRest" candidateClass="UITextField"/>
-                <relationship kind="outlet" name="endTime" candidateClass="UITextField"/>
-                <relationship kind="outlet" name="myDatePicker" candidateClass="UIDatePicker"/>
-                <relationship kind="outlet" name="startRest" candidateClass="UITextField"/>
-                <relationship kind="outlet" name="startTime" candidateClass="UITextField"/>
-                <relationship kind="outlet" name="toolBar" candidateClass="UIToolbar"/>
-            </relationships>
-        </class>
-        <class className="KinmuViewController" superclassName="UITableViewController">
-            <source key="sourceIdentifier" type="project" relativePath="./Classes/KinmuViewController.h"/>
-            <relationships>
-                <relationship kind="action" name="kinmuBackButton:"/>
-            </relationships>
-        </class>
-        <class className="MenuViewController" superclassName="UIViewController">
-            <source key="sourceIdentifier" type="project" relativePath="./Classes/MenuViewController.h"/>
-            <relationships>
-                <relationship kind="action" name="backButton:"/>
-            </relationships>
-        </class>
-        <class className="NSLayoutConstraint" superclassName="NSObject">
-            <source key="sourceIdentifier" type="project" relativePath="./Classes/NSLayoutConstraint.h"/>
-        </class>
-        <class className="SettingDisplay" superclassName="UITableViewController">
-            <source key="sourceIdentifier" type="project" relativePath="./Classes/SettingDisplay.h"/>
-            <relationships>
-                <relationship kind="action" name="hidePickerRecognized:"/>
-            </relationships>
-        </class>
-        <class className="TestInsertViewController" superclassName="UIViewController">
-            <source key="sourceIdentifier" type="project" relativePath="./Classes/TestInsertViewController.h"/>
-            <relationships>
-                <relationship kind="action" name="insertButton:"/>
-                <relationship kind="action" name="selectButton:"/>
-                <relationship kind="action" name="testBackButton:"/>
-                <relationship kind="action" name="updateButton:"/>
-            </relationships>
-        </class>
-        <class className="TopViewController" superclassName="UIViewController">
-            <source key="sourceIdentifier" type="project" relativePath="./Classes/TopViewController.h"/>
-            <relationships>
-                <relationship kind="action" name="pushButton:"/>
-                <relationship kind="outlet" name="dayLavel" candidateClass="UILabel"/>
-                <relationship kind="outlet" name="endLavel" candidateClass="UILabel"/>
-                <relationship kind="outlet" name="startLavel" candidateClass="UILabel"/>
-                <relationship kind="outlet" name="timeLavel" candidateClass="UILabel"/>
-                <relationship kind="outlet" name="topButton" candidateClass="UIButton"/>
-            </relationships>
-        </class>
-        <class className="ViewController" superclassName="UIViewController">
-            <source key="sourceIdentifier" type="project" relativePath="./Classes/ViewController.h"/>
-            <relationships>
-                <relationship kind="action" name="backButton:"/>
-                <relationship kind="action" name="bushButton:"/>
-                <relationship kind="action" name="helpBackButton:"/>
-                <relationship kind="outlet" name="dayLavel" candidateClass="UILabel"/>
-                <relationship kind="outlet" name="endTime" candidateClass="UILabel"/>
-                <relationship kind="outlet" name="startTime" candidateClass="UILabel"/>
-                <relationship kind="outlet" name="timeLavel" candidateClass="UILabel"/>
-                <relationship kind="outlet" name="topButton" candidateClass="UIButton"/>
-            </relationships>
-        </class>
-    </classes>
     <simulatedMetricsContainer key="defaultSimulatedMetrics">
         <simulatedStatusBarMetrics key="statusBar"/>
         <simulatedOrientationMetrics key="orientation"/>
