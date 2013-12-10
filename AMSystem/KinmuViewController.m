@@ -116,102 +116,7 @@
     if (cell == nil) {
         cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:@"Cell"];
     }
-    [self updateCell:cell atIndexPath:indexPath];
-
-//    if(indexPath.row == 0) {
-//        cell.textLabel.text = [self passString:@"1"];
-//        cell.backgroundColor =[self daycolor:@"1"];
-//    } else if(indexPath.row == 1){
-//        cell.textLabel.text = [self passString:@"2"];
-//        cell.backgroundColor =[self daycolor:@"2"];
-//    } else if(indexPath.row == 2){
-//        cell.textLabel.text = [self passString:@"3"];
-//        cell.backgroundColor =[self daycolor:@"3"];
-//    } else if(indexPath.row == 3){
-//        cell.textLabel.text = [self passString:@"4"];
-//        cell.backgroundColor =[self daycolor:@"4"];
-//    } else if(indexPath.row == 4){
-//        cell.textLabel.text = [self passString:@"5"];
-//        cell.backgroundColor =[self daycolor:@"5"];
-//    } else if(indexPath.row == 5){
-//        cell.textLabel.text = [self passString:@"6"];
-//        cell.backgroundColor =[self daycolor:@"6"];
-//    } else if(indexPath.row == 6){
-//        cell.textLabel.text = [self passString:@"7"];
-//        cell.backgroundColor =[self daycolor:@"7"];
-//    } else if(indexPath.row == 7){
-//        cell.textLabel.text = [self passString:@"8"];
-//        cell.backgroundColor =[self daycolor:@"8"];
-//    } else if(indexPath.row == 8){
-//        cell.textLabel.text = [self passString:@"9"];
-//        cell.backgroundColor =[self daycolor:@"9"];
-//    } else if(indexPath.row == 9){
-//        cell.textLabel.text = [self passString:@"10"];
-//        cell.backgroundColor =[self daycolor:@"10"];
-//    } else if(indexPath.row == 10){
-//        cell.textLabel.text = [self passString:@"11"];
-//        cell.backgroundColor =[self daycolor:@"11"];
-//    } else if(indexPath.row == 11){
-//        cell.textLabel.text = [self passString:@"12"];
-//        cell.backgroundColor =[self daycolor:@"12"];
-//    } else if(indexPath.row == 12){
-//        cell.textLabel.text = [self passString:@"13"];
-//        cell.backgroundColor =[self daycolor:@"13"];
-//    } else if(indexPath.row == 13){
-//        cell.textLabel.text = [self passString:@"14"];
-//        cell.backgroundColor =[self daycolor:@"14"];
-//    } else if(indexPath.row == 14){
-//        cell.textLabel.text = [self passString:@"15"];
-//        cell.backgroundColor =[self daycolor:@"15"];
-//    } else if(indexPath.row == 15){
-//        cell.textLabel.text = [self passString:@"16"];
-//        cell.backgroundColor =[self daycolor:@"16"];
-//    } else if(indexPath.row == 16){
-//        cell.textLabel.text = [self passString:@"17"];
-//        cell.backgroundColor =[self daycolor:@"17"];
-//    } else if(indexPath.row == 17){
-//        cell.textLabel.text = [self passString:@"18"];
-//        cell.backgroundColor =[self daycolor:@"18"];
-//    } else if(indexPath.row == 18){
-//        cell.textLabel.text = [self passString:@"19"];
-//        cell.backgroundColor =[self daycolor:@"19"];
-//    } else if(indexPath.row == 19){
-//        cell.textLabel.text = [self passString:@"20"];
-//        cell.backgroundColor =[self daycolor:@"20"];
-//    } else if(indexPath.row == 20){
-//        cell.textLabel.text = [self passString:@"21"];
-//        cell.backgroundColor =[self daycolor:@"21"];
-//    } else if(indexPath.row == 21){
-//        cell.textLabel.text = [self passString:@"22"];
-//        cell.backgroundColor =[self daycolor:@"22"];
-//    } else if(indexPath.row == 22){
-//        cell.textLabel.text = [self passString:@"23"];
-//        cell.backgroundColor =[self daycolor:@"23"];
-//    } else if(indexPath.row == 23){
-//        cell.textLabel.text = [self passString:@"24"];
-//        cell.backgroundColor =[self daycolor:@"24"];
-//    } else if(indexPath.row == 24){
-//        cell.textLabel.text = [self passString:@"25"];
-//        cell.backgroundColor =[self daycolor:@"25"];
-//    } else if(indexPath.row == 25){
-//        cell.textLabel.text = [self passString:@"26"];
-//        cell.backgroundColor =[self daycolor:@"26"];
-//    } else if(indexPath.row == 26){
-//        cell.textLabel.text = [self passString:@"27"];
-//        cell.backgroundColor =[self daycolor:@"27"];
-//    } else if(indexPath.row == 27){
-//        cell.textLabel.text = [self passString:@"28"];
-//        cell.backgroundColor =[self daycolor:@"28"];
-//    } else if(indexPath.row == 28){
-//        cell.textLabel.text = [self passString:@"29"];
-//        cell.backgroundColor =[self daycolor:@"29"];
-//    } else if(indexPath.row == 29){
-//        cell.textLabel.text = [self passString:@"30"];
-//        cell.backgroundColor =[self daycolor:@"30"];
-//    } else {
-//        cell.textLabel.text = [self passString:@"31"];
-//        cell.backgroundColor =[self daycolor:@"31"];
-//    }    
+    [self updateCell:cell atIndexPath:indexPath]; 
     return cell;
     
 }
@@ -369,15 +274,12 @@
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
     NSInteger number = indexPath.row +1;
-    //NSLog(@"%d",number);
     NSString* numberStr = [NSString stringWithFormat:@"%d",number];
     [tableView deselectRowAtIndexPath:indexPath animated:YES];
      AlterationViewController   *alteration = [self.storyboard instantiateViewControllerWithIdentifier:@"alteration"];
     alteration.delegate = self;
-    //NSLog(@"%@",[self passArray:numberStr]);
     alteration.date = [self passArray:numberStr];
     alteration.title = @"勤務時間変更";
-    //NSLog(@"@d",alteration.date);
     [[self navigationController] pushViewController:alteration animated:YES];
     
 }
