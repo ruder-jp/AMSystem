@@ -21,6 +21,7 @@
 
 @property (nonatomic, retain) RestModel*            restModel; //! 休憩時間設定を管理するオブジェクト
 @property (nonatomic, retain) Time*                time;     //! 編集対象となる書籍
+@property (nonatomic, retain) TimeModel* timesModel;
 @property (nonatomic, retain) WorkModel* worksmodel;
 @property (nonatomic, retain) Work*      works;
 
@@ -30,7 +31,7 @@
     //NSString *workDate;
 }
 
-@synthesize delegate,date,works;
+@synthesize delegate,date,works,time;
 
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
 {
@@ -49,7 +50,10 @@
     
     self.worksmodel = [[WorkModel alloc]init];
     self.works = [[Work alloc]init];
+    self.timesModel = [[TimeModel alloc]init];
+    self.time = [[Time alloc]init];
     
+    [self overtime];
     
     picker = [[UIDatePicker alloc] init];
     picker.datePickerMode = UIDatePickerModeTime;
@@ -92,6 +96,37 @@
     _startRest.text = restObject.start;
     _endRest.text = restObject.end;
 
+}
+
+-(NSString*)arrayDate:(NSInteger)number
+{
+    NSArray* dateArray = [self.worksmodel datas:date[0]];
+    NSLog(@"%@",dateArray);
+    NSString* passDate = dateArray[number];
+    return passDate;
+    
+}
+
+
+-(NSString*)timeDate
+{
+    NSString* dateStr = [self.time end];
+    return dateStr;
+}
+
+-(NSString*)overtime
+{
+    NSString* passDate;
+    NSDate *endWorkDate;
+    NSDate *endTimeDate;
+    NSDateFormatter *dateFormatter = [[NSDateFormatter alloc]init];
+    [dateFormatter setDateFormat:@"HH:mm"];
+    //nullは許されてない
+    endWorkDate = [dateFormatter dateFromString:[self arrayDate:2]];
+    endTimeDate = [dateFormatter dateFromString:[self timeDate]];
+    NSLog(@"endwork%@",endWorkDate);
+    NSLog(@"endtime%@",endTimeDate);
+    return passDate;
 }
 
 - (void)viewDidAppear:(BOOL)animated
