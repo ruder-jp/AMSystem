@@ -53,7 +53,7 @@
     self.work = [[Work alloc]init];
     [self passDate];
     
-    NSArray* array = [self.worksModel monthDate];
+    NSArray* array = [self.worksModel datas:insertDay];
     int count = [array count];
     for(int i=0;i < count;i++){
         Work* tmp = array[i];
