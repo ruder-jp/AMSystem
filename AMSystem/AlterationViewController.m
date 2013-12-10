@@ -26,9 +26,11 @@
 
 @end
 
-@implementation AlterationViewController
+@implementation AlterationViewController{
+    NSString *workDate;
+}
 
-@synthesize delegate,date;
+@synthesize delegate,date,works;
 
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
 {
@@ -74,13 +76,16 @@
     int count = [dateArray count];
     for(int i = 0; i < count;i++)
     {
-        Work* works = dateArray[i];
+        works = dateArray[i];
+        workDate = works.date;
+        NSLog(@"%@",workDate);
         _startTime.text = works.start;
         _endTime.text = works.end;
     }
     if( self.work )
 	{
 		_startTime.text      = self.work.start;
+        
 		_endTime.text     = self.work.end;
 	}
 
@@ -89,7 +94,6 @@
 - (void)viewDidAppear:(BOOL)animated
 {
     [super viewDidAppear:animated];
-    
     self.restModel = [[RestModel alloc] init];
     
     Rest* restObject = [self.restModel setting];
@@ -115,11 +119,12 @@
  */
 - (void)done:(id)sender
 {
-    NSLog(@"%@",self.works.date);
+    //self.works = [Work alloc];
+    NSLog(@"%@",workDate);
 	Work* newWork = [[Work alloc] init];
-	newWork.day_id    = self.work.day_id;
-    newWork.date = self.works.date;
-	newWork.start     = _startTime.text;
+	newWork.day_id = works.day_id;
+    newWork.date   = workDate;
+	newWork.start  = _startTime.text;
 	newWork.end    = _endTime.text;
     [_worksmodel update:newWork];
 	//newWork.copyright = _copyrightDatePicker.date;
@@ -142,7 +147,6 @@
 
 - (void)showPicker {
 	//ピッカーが下から出るアニメーション
-    NSLog(@"しょうぴっかー");
 	[UIView beginAnimations:nil context:NULL];
 	[UIView setAnimationDuration:0.2];
 	[UIView setAnimationDelegate:self];
@@ -165,7 +169,6 @@
 }
 
 - (BOOL)textFieldShouldBeginEditing:(UITextField *)textField {
-    NSLog(@"てきすとおおお");
     
     //テキストフィールドの編集を始めるときに、ピッカーを呼び出す。
     _whichText = textField;

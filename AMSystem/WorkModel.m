@@ -92,11 +92,14 @@
 
 - (BOOL)update:(Work *)work
 {
+    NSLog(@"あっぷでーと");
+    NSLog(@"date%@",work.date);
 	FMDatabase* db = [self getConnection];
     //field count
     [db open];
-    NSUInteger max = [db intForQuery:@"SELECT id from works where date = '%@'",work];
-    NSString* sql =[[NSString alloc]initWithFormat:@"UPDATE  works SET start = julianday('%@') end = julianday('%@') WHERE id = %@;",work.start,work.end,[NSNumber numberWithInteger:max]];
+    NSString* idSql = [[NSString alloc]initWithFormat:@"SELECT id from works where date = julianday('%@')",work.date];
+    NSUInteger max = [db intForQuery:idSql];
+    NSString* sql =[[NSString alloc]initWithFormat:@"UPDATE  works SET start = julianday('%@'),end = julianday('%@') WHERE id = %@;",work.start,work.end,[NSNumber numberWithInteger:max]];
     BOOL isSucceeded = [db executeUpdate:sql];
 	[db close];
 	return isSucceeded;
