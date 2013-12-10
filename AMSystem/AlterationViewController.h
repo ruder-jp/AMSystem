@@ -32,6 +32,8 @@
 @property (nonatomic, assign) id<EditWorkDelegate> delegate; //! 書籍の追加、または編集画面が完了したことを通知するデリゲート
 - (IBAction)hidePickerRecognized:(id)sender;
 
+- (void)confirmButton:(id)sender;
+
 @property (nonatomic, retain) NSArray*  date;
 @property (nonatomic, retain)Work* work;
 

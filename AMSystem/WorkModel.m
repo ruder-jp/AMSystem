@@ -80,7 +80,7 @@
 {
     FMDatabase* db = [self getConnection];
     NSLog(@"インサート%@",work.date);
-    NSString* sql =[[NSString alloc]initWithFormat:@"INSERT INTO works (date,start,end,time_id,rest_id) VALUES (julianday('%@'),julianday('%@'),julianday('%@'),%i,%i);",work.date,work.start,work.end,work.time_id,work.rest_id];
+    NSString* sql =[[NSString alloc]initWithFormat:@"INSERT INTO works (date,start,end,time_id,rest_id) VALUES (julianday('%@'),julianday('%@'),julianday('%@'),1,1);",work.date,work.start,work.end];
 //    NSLog(@"%@",work.date);
     [db open];
     [db setShouldCacheStatements:YES];

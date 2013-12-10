@@ -61,7 +61,7 @@
     [self.view addSubview:picker];
     
     // 完了ボタン
-    UIBarButtonItem* doneButton = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemDone target:self action:@selector( done: )];
+    UIBarButtonItem* doneButton = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemDone target:self action:@selector( confirmButton: )];
     self.navigationItem.rightBarButtonItem = doneButton;
     
     _startTime.delegate = self;
@@ -84,21 +84,21 @@
     if( self.work )
 	{
 		_startTime.text      = self.work.start;
-        
 		_endTime.text     = self.work.end;
 	}
+    self.restModel = [[RestModel alloc] init];
+    Rest* restObject = [self.restModel setting];
+    NSLog(@"%@",restObject.start);
+    _startRest.text = restObject.start;
+    _endRest.text = restObject.end;
 
 }
 
 - (void)viewDidAppear:(BOOL)animated
 {
     [super viewDidAppear:animated];
-    self.restModel = [[RestModel alloc] init];
-    
-    Rest* restObject = [self.restModel setting];
     //NSLog(@"%@",restObject.start);
-    _startRest.text = restObject.start;
-    _endRest.text = restObject.end;
+    
     
     
 }
@@ -116,30 +116,73 @@
  *
  * @param sender 送信者データ。
  */
-- (void)done:(id)sender
+//- (void)done:(id)sender
+//{
+//	Work* newWork = [[Work alloc] init];
+//	newWork.day_id = works.day_id;
+//    newWork.date   = date[0];
+//	newWork.start  = _startTime.text;
+//	newWork.end    = _endTime.text;
+//
+//	if( self.work )
+//	{
+//        [_worksmodel update:newWork];
+//	}
+//	else
+//	{
+//        [_worksmodel insert:newWork];
+//	}
+//}
+
+//完了ボタンの処理
+- (void)confirmButton:(id)sender
 {
-    //self.works = [Work alloc];
-//    NSLog(@"%@",workDate);
-	Work* newWork = [[Work alloc] init];
-	newWork.day_id = works.day_id;
-    newWork.date   = date[0];
-	newWork.start  = _startTime.text;
-	newWork.end    = _endTime.text;
-    NSLog(@"%@",newWork.date);
-//    
+    [self hidePicker];
+    UIAlertView *alert = [[UIAlertView alloc] init];
+    alert.delegate = self;
+    alert.title = @"確認";
+    alert.message = @"保存しますか？";
+    [alert addButtonWithTitle:@"キャンセル"];
+    [alert addButtonWithTitle:@"OK"];
+    [alert show];
     
+}
+
+//完了ボタンを押して表示させるアラートビューの詳細
+-(void)alertView:(UIAlertView*)alertView
+clickedButtonAtIndex:(NSInteger)buttonIndex {
     
-	if( self.work )
-	{
-        [_worksmodel update:newWork];
+    switch (buttonIndex) {
+        case 0:
+            //キャンセルボタンがタップされたときの処理
+            break;
+        case 1:
+            //OKボタンがタップされたときの処理
+            //NSString*  insert = @"INSERT INTO kinmu (day,start,end) VALUES (?,?,?)";
+            
+            //[_timeModel noteJudgment];
+        {
+            Work* newWork = [[Work alloc] init];
+            newWork.day_id = works.day_id;
+            newWork.date   = date[0];
+            newWork.start  = _startTime.text;
+            newWork.end    = _endTime.text;
+            Rest* newRest = [[Rest alloc] init];
+            newRest.start = self.startRest.text;
+            newRest.end   = self.endRest.text;
+            [_restModel update:newRest];
+            if( self.work )
+            {
+                [_worksmodel update:newWork];
+            }
+            else
+            {
+                [_worksmodel insert:newWork];
+            }
+        }
+            break;
+    }
     
-//		[self.delegate editWorkDidFinish:self.work newWork:newWork];
-	}
-	else
-	{
-        [_worksmodel insert:newWork];
-//		[self.delegate addWorkDidFinish:newWork];
-	}
 }
 
 - (void)checkDone
