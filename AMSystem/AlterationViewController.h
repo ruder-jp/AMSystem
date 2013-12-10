@@ -25,6 +25,7 @@
 @property (weak, nonatomic) IBOutlet UITextField *endTime;
 @property (weak, nonatomic) IBOutlet UITextField *startRest;
 @property (weak, nonatomic) IBOutlet UITextField *endRest;
+@property (weak, nonatomic) IBOutlet UILabel *overtimeLavel;
 
 //どのテキストがタップしたか検出する変数
 @property (weak, nonatomic) UITextField *whichText;

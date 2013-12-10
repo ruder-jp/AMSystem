@@ -51,9 +51,11 @@
     self.worksmodel = [[WorkModel alloc]init];
     self.works = [[Work alloc]init];
     self.timesModel = [[TimeModel alloc]init];
-    self.time = [[Time alloc]init];
+//    self.time = [[Time alloc]init];
     
     [self overtime];
+    
+//    endwork = []
     
     picker = [[UIDatePicker alloc] init];
     picker.datePickerMode = UIDatePickerModeTime;
@@ -98,6 +100,25 @@
 
 }
 
+-(void)overtime
+{
+    Time *times = [self.timesModel setting ];
+    
+    NSDate* endtime = [[NSDate alloc]init];
+    NSDate* endwork = [[NSDate alloc]init];
+    NSTimeInterval since;
+    endwork = [self changeDate:date[2]];
+    endtime = [self changeDate:times.end];
+	since = [endwork timeIntervalSinceDate:endtime];
+    NSLog(@"%f時", since/(60*60));
+    NSString *overStr = [NSString stringWithFormat:@"%f分間", since/60];
+    NSMutableString *str = [NSMutableString stringWithString:overStr];
+    //文字削除
+//    [str deleteCharactersInRange:NSMakeRange(, 3)]
+    _overtimeLavel.text = overStr;
+    
+}
+
 -(NSString*)arrayDate:(NSInteger)number
 {
     NSArray* dateArray = [self.worksmodel datas:date[0]];
@@ -114,20 +135,7 @@
     return dateStr;
 }
 
--(NSString*)overtime
-{
-    NSString* passDate;
-    NSDate *endWorkDate;
-    NSDate *endTimeDate;
-    NSDateFormatter *dateFormatter = [[NSDateFormatter alloc]init];
-    [dateFormatter setDateFormat:@"HH:mm"];
-    //nullは許されてない
-    endWorkDate = [dateFormatter dateFromString:[self arrayDate:2]];
-    endTimeDate = [dateFormatter dateFromString:[self timeDate]];
-    NSLog(@"endwork%@",endWorkDate);
-    NSLog(@"endtime%@",endTimeDate);
-    return passDate;
-}
+
 
 - (void)viewDidAppear:(BOOL)animated
 {
@@ -218,6 +226,14 @@ clickedButtonAtIndex:(NSInteger)buttonIndex {
             break;
     }
     
+}
+
+-(NSDate*)changeDate:(NSString*)date
+{
+    NSDateFormatter *changeFormatter = [[NSDateFormatter alloc]init];
+    [changeFormatter setDateFormat:@"HH:mm"];
+    NSDate* change = [changeFormatter dateFromString:date];
+    return change;
 }
 
 - (void)checkDone

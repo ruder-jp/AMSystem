@@ -47,6 +47,8 @@
     [self.topButton setTitle:@"始業"forState:UIControlStateNormal];
 }
 
+
+
 -(void)viewDidAppear:(BOOL)animated
 {
     self.worksModel = [[WorkModel alloc]init];

@@ -603,18 +603,23 @@
                                 <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
+                            <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" text="Label" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="eYk-OH-Kbx">
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                         <gestureRecognizers/>
                         <constraints>
                             <constraint firstItem="Vt1-88-Fm4" firstAttribute="top" secondItem="NYc-24-26P" secondAttribute="top" constant="41" id="0s0-6J-sCS"/>
                             <constraint firstItem="QFS-Im-aJa" firstAttribute="trailing" secondItem="gVt-xi-1RE" secondAttribute="trailing" type="default" id="11a-4f-sFv"/>
+                            <constraint firstAttribute="bottom" secondItem="Ssr-lB-v29" secondAttribute="bottom" constant="102" id="1Le-Ig-EV9"/>
                             <constraint firstItem="hJL-8F-8n9" firstAttribute="top" secondItem="o8W-XW-Nl3" secondAttribute="top" type="default" id="9F0-Hz-IDI"/>
                             <constraint firstItem="gVt-xi-1RE" firstAttribute="top" secondItem="NYc-24-26P" secondAttribute="top" constant="188" id="Csi-0H-C2A"/>
+                            <constraint firstItem="eYk-OH-Kbx" firstAttribute="centerX" secondItem="o8W-XW-Nl3" secondAttribute="centerX" type="default" id="DJE-jb-PPh"/>
                             <constraint firstItem="o8W-XW-Nl3" firstAttribute="leading" secondItem="gVt-xi-1RE" secondAttribute="leading" type="default" id="FcY-ja-Y2E"/>
                             <constraint firstItem="5zf-My-CHR" firstAttribute="baseline" secondItem="Ssr-lB-v29" secondAttribute="baseline" type="default" id="G7r-c3-EVV"/>
-                            <constraint firstItem="5zf-My-CHR" firstAttribute="centerX" secondItem="o8W-XW-Nl3" secondAttribute="centerX" type="default" id="KaI-Cm-k8h"/>
-                            <constraint firstAttribute="bottom" secondItem="Ssr-lB-v29" secondAttribute="bottom" constant="133" id="KdX-op-v9n"/>
                             <constraint firstItem="xpG-fa-kou" firstAttribute="top" secondItem="NYc-24-26P" secondAttribute="top" constant="70" id="Lmm-TJ-hdu"/>
                             <constraint firstItem="fay-WX-v4Y" firstAttribute="leading" secondItem="PPh-im-hVx" secondAttribute="leading" type="default" id="MTv-8Y-MaN"/>
                             <constraint firstItem="gVt-xi-1RE" firstAttribute="trailing" secondItem="o8W-XW-Nl3" secondAttribute="trailing" type="default" id="NnD-Xw-GWe"/>
@@ -626,6 +631,7 @@
                             <constraint firstItem="PPh-im-hVx" firstAttribute="trailing" secondItem="Ssr-lB-v29" secondAttribute="trailing" type="default" id="dRt-01-eoF"/>
                             <constraint firstItem="gVt-xi-1RE" firstAttribute="leading" secondItem="QFS-Im-aJa" secondAttribute="leading" type="default" id="eeP-Rm-NwB"/>
                             <constraint firstItem="Mw6-HC-85o" firstAttribute="leading" secondItem="Ssr-lB-v29" secondAttribute="leading" type="default" id="foD-hJ-NVA"/>
+                            <constraint firstItem="eYk-OH-Kbx" firstAttribute="baseline" secondItem="Ssr-lB-v29" secondAttribute="baseline" type="default" id="iHR-VA-GMs"/>
                             <constraint firstItem="xpG-fa-kou" firstAttribute="trailing" secondItem="QFS-Im-aJa" secondAttribute="trailing" type="default" id="iSm-pl-sKt"/>
                             <constraint firstItem="Vd5-7I-zJQ" firstAttribute="leading" secondItem="hJL-8F-8n9" secondAttribute="leading" type="default" id="nfj-9w-73G"/>
                             <constraint firstItem="xpG-fa-kou" firstAttribute="leading" secondItem="NYc-24-26P" secondAttribute="leading" constant="140" id="nvj-dD-eS0"/>
@@ -634,6 +640,7 @@
                             <constraint firstItem="o8W-XW-Nl3" firstAttribute="top" secondItem="gVt-xi-1RE" secondAttribute="bottom" constant="8" symbolic="YES" type="default" id="rnf-Hf-nnm"/>
                             <constraint firstItem="QFS-Im-aJa" firstAttribute="top" secondItem="xpG-fa-kou" secondAttribute="bottom" constant="8" symbolic="YES" type="default" id="sXy-Gl-FSc"/>
                             <constraint firstItem="Mw6-HC-85o" firstAttribute="leading" secondItem="Vt1-88-Fm4" secondAttribute="leading" type="default" id="tAk-Vq-9gy"/>
+                            <constraint firstItem="eYk-OH-Kbx" firstAttribute="centerX" secondItem="5zf-My-CHR" secondAttribute="centerX" type="default" id="vUi-L9-kFK"/>
                         </constraints>
                         <connections>
                             <outletCollection property="gestureRecognizers" destination="b24-ju-6yX" appends="YES" id="WnP-og-nt8"/>
@@ -642,6 +649,7 @@
                     <connections>
                         <outlet property="endRest" destination="o8W-XW-Nl3" id="agq-Uw-ecq"/>
                         <outlet property="endTime" destination="QFS-Im-aJa" id="JAa-jT-lGc"/>
+                        <outlet property="overtimeLavel" destination="eYk-OH-Kbx" id="pyX-Tm-Gk0"/>
                         <outlet property="startRest" destination="gVt-xi-1RE" id="xpA-QJ-ZPQ"/>
                         <outlet property="startTime" destination="xpG-fa-kou" id="tQM-Ys-aFf"/>
                     </connections>
