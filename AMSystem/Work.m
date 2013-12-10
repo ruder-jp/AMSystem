@@ -21,8 +21,8 @@
         self.date  = nil;
         self.start = nil;
         self.end = nil;
-        self.time_id = 0;
-        self.rest_id = 0;
+        self.time_id = 1;
+        self.rest_id = 1;
     }
     return self;
 }
