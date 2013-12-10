@@ -14,16 +14,21 @@
 #import "Rest.h"
 #import "WorkModel.h"
 #import "Work.h"
+#import "KinmuViewController.h"
 
 
 @interface AlterationViewController ()
 
+@property (nonatomic, retain) RestModel*            restModel; //! 休憩時間設定を管理するオブジェクト
+
 @property (nonatomic, retain) Time*                time;     //! 編集対象となる書籍
+@property (nonatomic, retain) WorkModel* worksmodel;
+
 @end
 
 @implementation AlterationViewController
 
-@synthesize delegate;
+@synthesize delegate,date;
 
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
 {
@@ -39,13 +44,25 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
-
+    picker = [[UIDatePicker alloc] init];
+    picker.datePickerMode = UIDatePickerModeTime;
+    picker.frame = CGRectMake(0, self.view.frame.size.height, 320, 216);
+    [picker addTarget:self
+               action:@selector(datePicker_ValueChanged:)
+     forControlEvents:UIControlEventValueChanged];
+    
+    [self.view addSubview:picker];
     
     _startTime.delegate = self;
     _endTime.delegate = self;
+    _startRest.delegate = self;
+    _endRest.delegate = self;
 	// Do any additional setup after loading the view.
-    _startTime.text      = _time.start;
+    _startTime.text      = date[1];
+    _endTime.text = date[2];
     //_authorTextField.text     = self.book.author;
+    //NSLog(@"%@",self.work.date);
+    
     
     if( self.work )
 	{
@@ -54,6 +71,22 @@
 	}
 
 }
+
+- (void)viewDidAppear:(BOOL)animated
+{
+    [super viewDidAppear:animated];
+    
+    self.restModel = [[RestModel alloc] init];
+    
+    Rest* restObject = [self.restModel setting];
+    NSLog(@"%@",restObject.start);
+    _startRest.text = restObject.start;
+    _endRest.text = restObject.end;
+    
+    
+}
+
+
 
 - (void)didReceiveMemoryWarning
 {
@@ -76,11 +109,12 @@
     
 	if( self.work )
 	{
-		//[self.delegate editWorkDidFinish:self.work newWork:newWork];
+    
+		[self.delegate editWorkDidFinish:self.work newWork:newWork];
 	}
 	else
 	{
-		//[self.delegate addWorkDidFinish:newWork];
+		[self.delegate addWorkDidFinish:newWork];
 	}
 }
 
@@ -89,4 +123,63 @@
 	self.navigationItem.rightBarButtonItem.enabled = ( _startTime.text.length > 0 && _endTime.text.length > 0 );
 }
 
+- (void)showPicker {
+	//ピッカーが下から出るアニメーション
+    NSLog(@"しょうぴっかー");
+	[UIView beginAnimations:nil context:NULL];
+	[UIView setAnimationDuration:0.2];
+	[UIView setAnimationDelegate:self];
+	picker.frame = CGRectMake(0, self.view.frame.size.height - picker.frame.size.height, 320, 216);
+    
+	[UIView commitAnimations];
+}
+
+- (void)hidePicker {
+	//ピッカーを下に隠すアニメーション
+	[UIView beginAnimations:nil context:NULL];
+	[UIView setAnimationDuration:0.2];
+	[UIView setAnimationDelegate:self];
+	picker.frame = CGRectMake(0, self.view.frame.size.height, 320, 216);
+	[UIView commitAnimations];
+}
+
+- (IBAction)hidePickerRecognized:(id)sender {
+    [self hidePicker];
+}
+
+- (BOOL)textFieldShouldBeginEditing:(UITextField *)textField {
+    NSLog(@"てきすとおおお");
+    //テキストフィールドの編集を始めるときに、ピッカーを呼び出す。
+    _whichText = textField;
+    
+    //テキストフィールドに設定している時間をデートピッカーの初期時間に設定する
+    NSDate *convertDate;
+    
+    NSDateFormatter *dateFormatter = [[NSDateFormatter alloc]init];
+    [dateFormatter setDateFormat:@"HH:mm"];
+    //nullは許されてない
+    convertDate = [dateFormatter dateFromString:_whichText.text];
+    if(convertDate != nil){
+        picker.date = convertDate;
+    }
+    [self showPicker];
+    
+    //キーボードは表示させない
+    return NO;
+}
+
+/**
+ * 日付ピッカーの値が変更されたとき
+ */
+- (void)datePicker_ValueChanged:(id)sender
+{    
+    //時間をテキストフィールドに表示する
+    NSDateFormatter *df = [[NSDateFormatter alloc] init];
+    df.dateFormat = @"HH:mm";
+    
+    //指定した日付形式で日付を表示する
+    _whichText.text = [df stringFromDate:picker.date];
+    
+    
+}
 @end
