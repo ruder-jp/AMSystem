@@ -12,8 +12,6 @@
 @interface DisplaySetting : UIViewController <UITextFieldDelegate>
 {
     UIDatePicker *picker;
-    
-    //UIToolbar *toolbar;
 }
 
 //テキストフィールド
