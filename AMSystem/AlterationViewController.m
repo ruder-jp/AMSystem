@@ -24,7 +24,6 @@
 @property (nonatomic, retain) WorkModel* worksmodel;
 @property (nonatomic, retain) Work*      works;
 
-
 @end
 
 @implementation AlterationViewController
@@ -59,22 +58,25 @@
     
     [self.view addSubview:picker];
     
+    // 完了ボタン
+    UIBarButtonItem* doneButton = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemDone target:self action:@selector( done: )];
+    self.navigationItem.rightBarButtonItem = doneButton;
     
     _startTime.delegate = self;
     _endTime.delegate = self;
     _startRest.delegate = self;
     _endRest.delegate = self;
 	// Do any additional setup after loading the view.
-    NSLog(@"%@",date[0]);
+    //NSLog(@"%@",date[0]);
     
     //_authorTextField.text     = self.book.author;
     NSArray* dateArray = [self.worksmodel datas:date[0]];
     int count = [dateArray count];
     for(int i = 0; i < count;i++)
     {
-        Work* tmp = dateArray[i];
-        _startTime.text = tmp.start;
-        _endTime.text = tmp.end;
+        Work* works = dateArray[i];
+        _startTime.text = works.start;
+        _endTime.text = works.end;
     }
     if( self.work )
 	{
@@ -91,7 +93,7 @@
     self.restModel = [[RestModel alloc] init];
     
     Rest* restObject = [self.restModel setting];
-    NSLog(@"%@",restObject.start);
+    //NSLog(@"%@",restObject.start);
     _startRest.text = restObject.start;
     _endRest.text = restObject.end;
     
@@ -113,10 +115,13 @@
  */
 - (void)done:(id)sender
 {
+    NSLog(@"%@",self.works.date);
 	Work* newWork = [[Work alloc] init];
 	newWork.day_id    = self.work.day_id;
+    newWork.date = self.works.date;
 	newWork.start     = _startTime.text;
 	newWork.end    = _endTime.text;
+    [_worksmodel update:newWork];
 	//newWork.copyright = _copyrightDatePicker.date;
     
 	if( self.work )
@@ -161,6 +166,7 @@
 
 - (BOOL)textFieldShouldBeginEditing:(UITextField *)textField {
     NSLog(@"てきすとおおお");
+    
     //テキストフィールドの編集を始めるときに、ピッカーを呼び出す。
     _whichText = textField;
     
