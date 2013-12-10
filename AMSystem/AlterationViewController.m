@@ -18,12 +18,17 @@
 
 @interface AlterationViewController ()
 
-@property (nonatomic, retain) Time*                time;     //! 編集対象となる書籍
+@property (nonatomic, retain) Time*  time;
+@property (nonatomic, retain) WorkModel* worksModel;
+@property (nonatomic, retain) Work* works;
+
+
+
 @end
 
 @implementation AlterationViewController
 
-@synthesize delegate;
+@synthesize delegate,date;
 
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
 {
@@ -39,13 +44,24 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
-
+    self.worksModel = [[WorkModel alloc]init];
+    self.works = [[Work alloc]init];
     
     _startTime.delegate = self;
     _endTime.delegate = self;
 	// Do any additional setup after loading the view.
-    _startTime.text      = _time.start;
+    
     //_authorTextField.text     = self.book.author;
+    NSArray* dateArray = [self.worksModel datas:date[0]];
+    NSArray* timeArray = [self.worksModel datas:date[0]];
+    
+    int count = [dateArray count];
+    for(int i = 0; i < count;i++)
+    {
+        Work* tmp = dateArray[i];
+        _startTime.text = tmp.start;
+        _endTime.text = tmp.end;
+    }
     
     if( self.work )
 	{

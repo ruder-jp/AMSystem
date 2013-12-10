@@ -9,7 +9,7 @@
 #import <UIKit/UIKit.h>
 #import "AlterationViewController.h"
 
-@interface KinmuViewController : UITableViewController<EditWorkDelegate>
+@interface KinmuViewController : UITableViewController
 
 
 @end

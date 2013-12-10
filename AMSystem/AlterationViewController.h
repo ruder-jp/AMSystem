@@ -7,7 +7,7 @@
 //
 
 #import <UIKit/UIKit.h>
-
+#import "KinmuViewController.h"
 
 @class Work;
 
@@ -22,8 +22,6 @@
 
 @property (nonatomic, assign) id<EditWorkDelegate> delegate; //! 書籍の追加、または編集画面が完了したことを通知するデリゲート
 @property (nonatomic, retain) Work*                work;     //! 編集対象となる書籍
-
-//@property (nonatomic, assign) id<AlterationViewDelegate> delegate; //! 書籍の追加、または編集画面が完了したことを通知するデリゲート
 
 @property (nonatomic, retain) NSArray*  date;
 

@@ -636,6 +636,7 @@
                         <outlet property="endRest" destination="o8W-XW-Nl3" id="agq-Uw-ecq"/>
                         <outlet property="endTime" destination="QFS-Im-aJa" id="JAa-jT-lGc"/>
                         <outlet property="startRest" destination="gVt-xi-1RE" id="xpA-QJ-ZPQ"/>
+                        <outlet property="startTime" destination="xpG-fa-kou" id="WNS-fW-yTA"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="3GW-CI-ES7" userLabel="First Responder" sceneMemberID="firstResponder"/>

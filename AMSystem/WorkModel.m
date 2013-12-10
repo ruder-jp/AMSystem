@@ -90,6 +90,18 @@
 	return isSucceeded;
 }
 
+- (BOOL)update:(Work *)work
+{
+	FMDatabase* db = [self getConnection];
+    //field count
+    [db open];
+    NSUInteger max = [db intForQuery:@"SELECT id from works where date = '%@'",work];
+    NSString* sql =[[NSString alloc]initWithFormat:@"UPDATE  works SET start = julianday('%@') end = julianday('%@') WHERE id = %@;",work.start,work.end,[NSNumber numberWithInteger:max]];
+    BOOL isSucceeded = [db executeUpdate:sql];
+	[db close];
+	return isSucceeded;
+}
+
 
 -(NSArray*)datas:(NSString*)daysNumber
 {
