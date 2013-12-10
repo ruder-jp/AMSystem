@@ -27,7 +27,7 @@
 @end
 
 @implementation AlterationViewController{
-    NSString *workDate;
+    //NSString *workDate;
 }
 
 @synthesize delegate,date,works;
@@ -77,7 +77,7 @@
     for(int i = 0; i < count;i++)
     {
         works = dateArray[i];
-        workDate = works.date;
+        //workDate = works.date;
         _startTime.text = works.start;
         _endTime.text = works.end;
     }
