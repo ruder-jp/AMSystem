@@ -78,7 +78,14 @@
     
 }
 
-
+-(NSString*)passMonth
+{
+    NSDate *month = [NSDate date];
+    NSDateFormatter *monthFormatter = [[NSDateFormatter alloc] init];
+    [monthFormatter setDateFormat:@"yyyy-MM"];
+    NSString *monthStr = [monthFormatter stringFromDate:month];
+    return monthStr;
+}
 
 
 /*
@@ -235,6 +242,8 @@
     }else{
         dayNumber = day;
     }
+    NSMutableString *fusion = [NSMutableString stringWithString: monthDate];
+    [fusion appendFormat:@"-%@",dayNumber];
     NSArray* array = [self.worksModel datas:dayNumber];
     NSArray* passDate;
     int count = [array count];
@@ -242,10 +251,10 @@
     if(count != 0){
         for(int i=0;i < count;i++){
             Work* tmp = array[i];
-            passDate = [NSArray arrayWithObjects:dayNumber,tmp.start,tmp.end, nil];
+            passDate = [NSArray arrayWithObjects:fusion,tmp.start,tmp.end, nil];
         }
     }else{
-         passDate = [NSArray arrayWithObjects:dayNumber,@"",@"",nil];
+         passDate = [NSArray arrayWithObjects:fusion,@"",@"",nil];
     }
     return passDate;
 }

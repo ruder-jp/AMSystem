@@ -42,7 +42,6 @@
     [monthFormatter setDateFormat:@"yyyy-MM"];
     NSString *monthStr = [monthFormatter stringFromDate:month];
     return monthStr;
-    
 }
 
 -(void)createSql
@@ -113,7 +112,14 @@
     NSString* days = daysNumber;
     [db open];
     NSString* sqlBefore =@"SELECT id, strftime('%Y-%m-%d',date) ,strftime('%H:%M',start) , strftime('%H:%M',end) , rest_id , time_id FROM works";
-    NSString* sqlBack =[[NSString alloc]initWithFormat:@" where date = julianday('%@-%@');",[self passMonth],days];
+    
+    NSString* sqlBack;
+    if(days.length != 2){
+        sqlBack =[[NSString alloc]initWithFormat:@" where date = julianday('%@');",days];
+    }else{
+        sqlBack =[[NSString alloc]initWithFormat:@" where date = julianday('%@-%@');",[self passMonth],days];
+    }
+    
     NSString* sql =[[NSString alloc]initWithFormat:@"%@%@",sqlBefore,sqlBack];
     FMResultSet* results = [db executeQuery:sql];
     NSMutableArray* datas = [[NSMutableArray alloc] initWithCapacity:0];

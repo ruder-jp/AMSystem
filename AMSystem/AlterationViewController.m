@@ -50,6 +50,8 @@
     self.worksmodel = [[WorkModel alloc]init];
     self.works = [[Work alloc]init];
     
+    NSLog(@"%@",date[0]);
+    
     
     picker = [[UIDatePicker alloc] init];
     picker.datePickerMode = UIDatePickerModeTime;
