@@ -172,8 +172,6 @@
     useWork.date = insertDay;
     useWork.start = insertTime;
     useWork.end = nil;
-    useWork.time_id = 0;
-    useWork.rest_id = 0;
     [self.worksModel insertStart:useWork];
 }
 
