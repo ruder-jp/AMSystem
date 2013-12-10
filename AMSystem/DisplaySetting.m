@@ -106,6 +106,7 @@ rest;     //! 編集対象となる休憩時間
     
     Time* timeObject = [self.timeModel setting];
     Rest* restObject = [self.restModel setting];
+    NSLog(@"%@",restObject.start);
     
     self.startTime.text = timeObject.start;
     self.endTime.text = timeObject.end;
@@ -246,6 +247,7 @@ clickedButtonAtIndex:(NSInteger)buttonIndex {
 }
 
 - (BOOL)textFieldShouldBeginEditing:(UITextField *)textField {
+    NSLog(@"てきすとおおお");
     //テキストフィールドの編集を始めるときに、ピッカーを呼び出す。
     _whichText = textField;
     

@@ -349,13 +349,15 @@
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
     NSInteger number = indexPath.row +1;
+    //NSLog(@"%d",number);
     NSString* numberStr = [NSString stringWithFormat:@"%d",number];
     [tableView deselectRowAtIndexPath:indexPath animated:YES];
      AlterationViewController   *alteration = [self.storyboard instantiateViewControllerWithIdentifier:@"alteration"];
     alteration.delegate = self;
-    NSLog(@"%@",[self passArray:numberStr]);
+    //NSLog(@"%@",[self passArray:numberStr]);
     alteration.date = [self passArray:numberStr];
     alteration.title = @"勤務時間変更";
+    //NSLog(@"@d",alteration.date);
     [[self navigationController] pushViewController:alteration animated:YES];
     
 }
