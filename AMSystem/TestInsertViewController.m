@@ -73,7 +73,12 @@
 }
 
 - (IBAction)selectButton:(id)sender {
-    NSArray* array = [self.worksModel datas:@"03"];
+    NSArray* array = [self.worksModel monthDate];
+    NSDate * zangyou;
+    NSDate * sumZangyou;
+    NSDateFormatter *dateFormatter = [[NSDateFormatter alloc]init];
+    [dateFormatter setDateFormat:@"yyyy-MM-dd HH:mm:ss"];
+//    NSDate *date = [dateFormatter dateFromString:];
     int count = [array count];
     for(int i=0;i < count;i++){
         Work* tmp = array[i];

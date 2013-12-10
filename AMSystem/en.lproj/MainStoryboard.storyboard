@@ -304,7 +304,7 @@
             </objects>
             <point key="canvasLocation" x="24" y="-1075"/>
         </scene>
-        <!--Menu View Controller - Title-->
+        <!--Menu View Controller - Menu-->
         <scene sceneID="RaN-oF-xvB">
             <objects>
                 <viewController id="o9v-a1-Tr3" customClass="MenuViewController" sceneMemberID="viewController">
@@ -351,9 +351,9 @@
                                     <segue destination="fLJ-lx-2vs" kind="modal" id="m4t-kb-s3N"/>
                                 </connections>
                             </button>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="p5k-qI-cpz">
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="CrW-Ke-4If">
                                 <fontDescription key="fontDescription" type="boldSystem" pointSize="15"/>
-                                <state key="normal" title="test">
+                                <state key="normal" title="残業">
                                     <color key="titleColor" red="0.19607843459999999" green="0.30980393290000002" blue="0.52156865600000002" alpha="1" colorSpace="calibratedRGB"/>
                                     <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
@@ -361,23 +361,26 @@
                                     <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
                                 <connections>
-                                    <segue destination="LFP-xF-d7l" kind="modal" id="NSK-gh-eEI"/>
+                                    <segue destination="LFP-xF-d7l" kind="modal" id="ewL-J1-l4L"/>
                                 </connections>
                             </button>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                         <constraints>
+                            <constraint firstAttribute="bottom" secondItem="CrW-Ke-4If" secondAttribute="bottom" constant="87" id="9p2-B3-BDl"/>
+                            <constraint firstItem="6yp-ny-65e" firstAttribute="centerX" secondItem="Hpc-wp-K0T" secondAttribute="centerX" type="default" id="DrT-5U-FHt"/>
                             <constraint firstItem="hlm-VA-krI" firstAttribute="top" secondItem="Hpc-wp-K0T" secondAttribute="top" constant="219" id="OvL-xQ-VbB"/>
                             <constraint firstItem="6P1-oa-qaA" firstAttribute="leading" secondItem="6yp-ny-65e" secondAttribute="leading" type="default" id="SKz-2f-mlZ"/>
-                            <constraint firstAttribute="bottom" secondItem="p5k-qI-cpz" secondAttribute="bottom" constant="90" id="TGw-JC-1YS"/>
-                            <constraint firstItem="6yp-ny-65e" firstAttribute="centerX" secondItem="Hpc-wp-K0T" secondAttribute="centerX" type="default" id="Wwo-2r-ZJI"/>
+                            <constraint firstItem="6yp-ny-65e" firstAttribute="trailing" secondItem="6P1-oa-qaA" secondAttribute="trailing" type="default" id="WQa-tY-fM9"/>
                             <constraint firstItem="hlm-VA-krI" firstAttribute="leading" secondItem="6yp-ny-65e" secondAttribute="leading" type="default" id="ayu-OE-se1"/>
-                            <constraint firstItem="hlm-VA-krI" firstAttribute="leading" secondItem="p5k-qI-cpz" secondAttribute="leading" type="default" id="eSa-02-6aa"/>
+                            <constraint firstItem="hlm-VA-krI" firstAttribute="leading" secondItem="CrW-Ke-4If" secondAttribute="leading" type="default" id="cCc-7O-zrp"/>
+                            <constraint firstItem="hlm-VA-krI" firstAttribute="trailing" secondItem="CrW-Ke-4If" secondAttribute="trailing" type="default" id="hHx-8s-BDS"/>
                             <constraint firstItem="6P1-oa-qaA" firstAttribute="top" secondItem="Hpc-wp-K0T" secondAttribute="top" constant="88" id="oPr-0w-IGn"/>
-                            <constraint firstItem="6yp-ny-65e" firstAttribute="top" secondItem="Hpc-wp-K0T" secondAttribute="top" constant="157" id="sWT-TI-HEz"/>
+                            <constraint firstItem="6yp-ny-65e" firstAttribute="top" secondItem="Hpc-wp-K0T" secondAttribute="top" constant="152" id="pqb-rL-brs"/>
+                            <constraint firstItem="hlm-VA-krI" firstAttribute="trailing" secondItem="6yp-ny-65e" secondAttribute="trailing" type="default" id="rlJ-Oe-6Yi"/>
                         </constraints>
                     </view>
-                    <navigationItem key="navigationItem" title="Title" id="9az-K5-QXG">
+                    <navigationItem key="navigationItem" title="Menu" id="9az-K5-QXG">
                         <barButtonItem key="leftBarButtonItem" title="戻る" id="ecm-sX-0F5">
                             <connections>
                                 <action selector="backButton:" destination="o9v-a1-Tr3" id="zgl-eG-Ukz"/>
@@ -690,15 +693,43 @@
                                     <action selector="updateButton:" destination="iPa-Dg-4nu" eventType="touchUpInside" id="0Wy-hL-sRz"/>
                                 </connections>
                             </button>
+                            <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" text="残業時間" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="11a-9p-32a">
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" text="Label" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="C8g-Wc-O4a">
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" text="実働時間" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="am2-jK-3ah">
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" text="Label" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="HaW-TF-EYU">
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                         <constraints>
-                            <constraint firstItem="c39-vn-tWQ" firstAttribute="top" secondItem="rVO-9f-boA" secondAttribute="top" constant="141" id="8gE-CL-uq7"/>
-                            <constraint firstItem="j4l-IP-DOq" firstAttribute="leading" secondItem="c39-vn-tWQ" secondAttribute="leading" type="default" id="9Dw-7O-yFE"/>
+                            <constraint firstItem="11a-9p-32a" firstAttribute="centerX" secondItem="rVO-9f-boA" secondAttribute="centerX" type="default" id="2JD-f8-0Vt"/>
+                            <constraint firstItem="M92-RF-Js7" firstAttribute="top" secondItem="rVO-9f-boA" secondAttribute="top" constant="186" id="2i9-6n-4Rn"/>
+                            <constraint firstItem="am2-jK-3ah" firstAttribute="top" secondItem="rVO-9f-boA" secondAttribute="top" constant="102" id="8uv-FP-6gM"/>
+                            <constraint firstItem="j4l-IP-DOq" firstAttribute="leading" secondItem="rVO-9f-boA" secondAttribute="leading" constant="119" id="ELG-8v-mQR"/>
+                            <constraint firstAttribute="bottom" secondItem="j4l-IP-DOq" secondAttribute="bottom" constant="46" id="Ee4-fI-17b"/>
+                            <constraint firstItem="C8g-Wc-O4a" firstAttribute="centerX" secondItem="M92-RF-Js7" secondAttribute="centerX" type="default" id="Gyz-gq-3jI"/>
+                            <constraint firstItem="C8g-Wc-O4a" firstAttribute="top" secondItem="rVO-9f-boA" secondAttribute="top" constant="68" id="QbJ-AL-sXh"/>
+                            <constraint firstItem="11a-9p-32a" firstAttribute="top" secondItem="rVO-9f-boA" secondAttribute="top" constant="33" id="f4Z-YZ-SIn"/>
+                            <constraint firstItem="HaW-TF-EYU" firstAttribute="centerX" secondItem="11a-9p-32a" secondAttribute="centerX" type="default" id="nBr-i9-ePy"/>
+                            <constraint firstItem="c39-vn-tWQ" firstAttribute="trailing" secondItem="am2-jK-3ah" secondAttribute="trailing" type="default" id="nOp-4r-bDw"/>
                             <constraint firstItem="c39-vn-tWQ" firstAttribute="leading" secondItem="M92-RF-Js7" secondAttribute="leading" type="default" id="pui-9b-JZU"/>
-                            <constraint firstItem="j4l-IP-DOq" firstAttribute="centerX" secondItem="rVO-9f-boA" secondAttribute="centerX" type="default" id="roe-jo-5FG"/>
-                            <constraint firstItem="M92-RF-Js7" firstAttribute="top" secondItem="rVO-9f-boA" secondAttribute="top" constant="67" id="tos-7R-PJo"/>
-                            <constraint firstItem="j4l-IP-DOq" firstAttribute="top" secondItem="rVO-9f-boA" secondAttribute="top" constant="215" id="xkn-FS-h8X"/>
+                            <constraint firstItem="HaW-TF-EYU" firstAttribute="top" secondItem="am2-jK-3ah" secondAttribute="bottom" constant="8" symbolic="YES" type="default" id="q8C-0J-v4z"/>
+                            <constraint firstItem="c39-vn-tWQ" firstAttribute="centerX" secondItem="j4l-IP-DOq" secondAttribute="centerX" type="default" id="sS1-gi-k8T"/>
+                            <constraint firstAttribute="bottom" secondItem="c39-vn-tWQ" secondAttribute="bottom" constant="116" id="yMi-Jf-pBV"/>
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" id="d8T-4u-ci2">
@@ -768,91 +799,6 @@
             <point key="canvasLocation" x="475" y="-342"/>
         </scene>
     </scenes>
-    <classes>
-        <class className="AlterationViewController" superclassName="UIViewController">
-            <source key="sourceIdentifier" type="project" relativePath="./Classes/AlterationViewController.h"/>
-            <relationships>
-                <relationship kind="outlet" name="endRest" candidateClass="UITextField"/>
-                <relationship kind="outlet" name="endTime" candidateClass="UITextField"/>
-                <relationship kind="outlet" name="startRest" candidateClass="UITextField"/>
-                <relationship kind="outlet" name="startTime" candidateClass="UITextField"/>
-            </relationships>
-        </class>
-        <class className="DisplaySetting" superclassName="UIViewController">
-            <source key="sourceIdentifier" type="project" relativePath="./Classes/DisplaySetting.h"/>
-            <relationships>
-                <relationship kind="action" name="backButton:"/>
-                <relationship kind="action" name="changeDatePicker:"/>
-                <relationship kind="action" name="confirmButton:"/>
-                <relationship kind="action" name="datePickerDone:" candidateClass="UIBarButtonItem"/>
-                <relationship kind="action" name="hidePickerRecognized:"/>
-                <relationship kind="action" name="textFieldClicked:" candidateClass="UITextField"/>
-                <relationship kind="outlet" name="cancelPicker" candidateClass="UIBarButtonItem"/>
-                <relationship kind="outlet" name="donePicker" candidateClass="UIBarButtonItem"/>
-                <relationship kind="outlet" name="endRest" candidateClass="UITextField"/>
-                <relationship kind="outlet" name="endTime" candidateClass="UITextField"/>
-                <relationship kind="outlet" name="myDatePicker" candidateClass="UIDatePicker"/>
-                <relationship kind="outlet" name="startRest" candidateClass="UITextField"/>
-                <relationship kind="outlet" name="startTime" candidateClass="UITextField"/>
-                <relationship kind="outlet" name="toolBar" candidateClass="UIToolbar"/>
-            </relationships>
-        </class>
-        <class className="KinmuViewController" superclassName="UITableViewController">
-            <source key="sourceIdentifier" type="project" relativePath="./Classes/KinmuViewController.h"/>
-            <relationships>
-                <relationship kind="action" name="kinmuBackButton:"/>
-            </relationships>
-        </class>
-        <class className="MenuViewController" superclassName="UIViewController">
-            <source key="sourceIdentifier" type="project" relativePath="./Classes/MenuViewController.h"/>
-            <relationships>
-                <relationship kind="action" name="backButton:"/>
-            </relationships>
-        </class>
-        <class className="NSLayoutConstraint" superclassName="NSObject">
-            <source key="sourceIdentifier" type="project" relativePath="./Classes/NSLayoutConstraint.h"/>
-        </class>
-        <class className="SettingDisplay" superclassName="UITableViewController">
-            <source key="sourceIdentifier" type="project" relativePath="./Classes/SettingDisplay.h"/>
-            <relationships>
-                <relationship kind="action" name="confirmButton:"/>
-                <relationship kind="action" name="hidePickerRecognized:"/>
-            </relationships>
-        </class>
-        <class className="TestInsertViewController" superclassName="UIViewController">
-            <source key="sourceIdentifier" type="project" relativePath="./Classes/TestInsertViewController.h"/>
-            <relationships>
-                <relationship kind="action" name="insertButton:"/>
-                <relationship kind="action" name="selectButton:"/>
-                <relationship kind="action" name="testBackButton:"/>
-                <relationship kind="action" name="updateButton:"/>
-            </relationships>
-        </class>
-        <class className="TopViewController" superclassName="UIViewController">
-            <source key="sourceIdentifier" type="project" relativePath="./Classes/TopViewController.h"/>
-            <relationships>
-                <relationship kind="action" name="pushButton:"/>
-                <relationship kind="outlet" name="dayLavel" candidateClass="UILabel"/>
-                <relationship kind="outlet" name="endLavel" candidateClass="UILabel"/>
-                <relationship kind="outlet" name="startLavel" candidateClass="UILabel"/>
-                <relationship kind="outlet" name="timeLavel" candidateClass="UILabel"/>
-                <relationship kind="outlet" name="topButton" candidateClass="UIButton"/>
-            </relationships>
-        </class>
-        <class className="ViewController" superclassName="UIViewController">
-            <source key="sourceIdentifier" type="project" relativePath="./Classes/ViewController.h"/>
-            <relationships>
-                <relationship kind="action" name="backButton:"/>
-                <relationship kind="action" name="bushButton:"/>
-                <relationship kind="action" name="helpBackButton:"/>
-                <relationship kind="outlet" name="dayLavel" candidateClass="UILabel"/>
-                <relationship kind="outlet" name="endTime" candidateClass="UILabel"/>
-                <relationship kind="outlet" name="startTime" candidateClass="UILabel"/>
-                <relationship kind="outlet" name="timeLavel" candidateClass="UILabel"/>
-                <relationship kind="outlet" name="topButton" candidateClass="UIButton"/>
-            </relationships>
-        </class>
-    </classes>
     <simulatedMetricsContainer key="defaultSimulatedMetrics">
         <simulatedStatusBarMetrics key="statusBar"/>
         <simulatedOrientationMetrics key="orientation"/>
