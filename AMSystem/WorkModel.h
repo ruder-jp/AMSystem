@@ -18,5 +18,6 @@
 -(NSArray*)monthDate;
 -(BOOL)update:(Work*)work;
 -(BOOL)updateEnd:(Work *)work;
+-(Work*)insert:(Work *)time;
 
 @end

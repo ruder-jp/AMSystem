@@ -76,6 +76,26 @@
     
 }
 
+-(Work* )insert:(Work *)work
+{
+    FMDatabase* db = [self getConnection];
+    NSLog(@"インサート%@",work.date);
+    NSString* sql =[[NSString alloc]initWithFormat:@"INSERT INTO works (date,start,end,time_id,rest_id) VALUES (julianday('%@'),julianday('%@'),julianday('%@'),%i,%i);",work.date,work.start,work.end,work.time_id,work.rest_id];
+//    NSLog(@"%@",work.date);
+    [db open];
+    [db setShouldCacheStatements:YES];
+	if([db executeUpdate:sql]){
+		work.day_id = [db lastInsertRowId];
+	}
+	else
+	{
+		work = nil;
+	}
+    
+    [db close];
+    return work;
+}
+
 - (BOOL)updateEnd:(Work *)work
 {
 	FMDatabase* db = [self getConnection];

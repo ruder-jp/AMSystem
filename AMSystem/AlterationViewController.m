@@ -50,8 +50,6 @@
     self.worksmodel = [[WorkModel alloc]init];
     self.works = [[Work alloc]init];
     
-    NSLog(@"%@",date[0]);
-    
     
     picker = [[UIDatePicker alloc] init];
     picker.datePickerMode = UIDatePickerModeTime;
@@ -80,7 +78,6 @@
     {
         works = dateArray[i];
         workDate = works.date;
-        NSLog(@"%@",workDate);
         _startTime.text = works.start;
         _endTime.text = works.end;
     }
@@ -122,22 +119,25 @@
 - (void)done:(id)sender
 {
     //self.works = [Work alloc];
-    NSLog(@"%@",workDate);
+//    NSLog(@"%@",workDate);
 	Work* newWork = [[Work alloc] init];
 	newWork.day_id = works.day_id;
-    newWork.date   = workDate;
+    newWork.date   = date[0];
 	newWork.start  = _startTime.text;
 	newWork.end    = _endTime.text;
-    [_worksmodel update:newWork];
-	//newWork.copyright = _copyrightDatePicker.date;
+    NSLog(@"%@",newWork.date);
+//    
+    
     
 	if( self.work )
 	{
+        [_worksmodel update:newWork];
     
 //		[self.delegate editWorkDidFinish:self.work newWork:newWork];
 	}
 	else
 	{
+        [_worksmodel insert:newWork];
 //		[self.delegate addWorkDidFinish:newWork];
 	}
 }
